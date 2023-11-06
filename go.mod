@@ -1,4 +1,4 @@
-module github.ibm.com/CloudEngineering/go-sdk-template
+module github.ibm.com/Christopher-Wolf/logs-router-go-sdk
 
 go 1.19
 

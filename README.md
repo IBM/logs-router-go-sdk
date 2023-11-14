@@ -20,17 +20,19 @@ Changes might occur which impact applications that use this SDK.
 
 <!-- toc -->
 
-- [Overview](#overview)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-  * [Go modules](#go-modules)
-  * [`go get` command](#go-get-command)
-- [Using the SDK](#using-the-sdk)
-- [Questions](#questions)
-- [Issues](#issues)
-- [Open source @ IBM](#open-source--ibm)
-- [Contributing](#contributing)
-- [License](#license)
+- [“IBM 0.0.1](#ibm-001)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+    - [Go modules](#go-modules)
+    - [`go get` command](#go-get-command)
+  - [Using the SDK](#using-the-sdk)
+  - [Questions](#questions)
+  - [Issues](#issues)
+  - [Open source @ IBM](#open-source--ibm)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 <!-- tocstop -->
 

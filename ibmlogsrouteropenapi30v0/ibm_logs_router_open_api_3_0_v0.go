@@ -29,8 +29,8 @@ import (
 	"reflect"
 	"time"
 
+	common "github.com/IBM/cloud-go-sdk/common"
 	"github.com/IBM/go-sdk-core/v5/core"
-	common "github.com/IBM/logs-router-go-sdk/common"
 	"github.com/go-openapi/strfmt"
 )
 
@@ -173,8 +173,8 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) DisableRetries() {
 	ibmLogsRouterOpenApi30.Service.DisableRetries()
 }
 
-// ListTenants : List of tenant IDs
-// List the tenant IDs defined in your account.
+// ListTenants : List of tenants
+// List of tenants defined in your account.
 func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) ListTenants(listTenantsOptions *ListTenantsOptions) (result *TenantDetailsResponseCollection, response *core.DetailedResponse, err error) {
 	return ibmLogsRouterOpenApi30.ListTenantsWithContext(context.Background(), listTenantsOptions)
 }
@@ -225,8 +225,8 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) ListTenantsWithContext(c
 	return
 }
 
-// CreateTenant : Add/onboard a new tenant
-// Add/onboard a new tenant.
+// CreateTenant : Create (onboard) a new tenant
+// Create (onboard) a new tenant.
 func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) CreateTenant(createTenantOptions *CreateTenantOptions) (result *TenantDetailsResponse, response *core.DetailedResponse, err error) {
 	return ibmLogsRouterOpenApi30.CreateTenantWithContext(context.Background(), createTenantOptions)
 }
@@ -363,8 +363,8 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) GetTenantDetailWithConte
 	return
 }
 
-// DeleteTenant : Delete a tenant
-// Delete a tenant.
+// DeleteTenant : Delete (offboard) a tenant
+// Delete (offboard) a tenant.
 func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) DeleteTenant(deleteTenantOptions *DeleteTenantOptions) (result *TenantDeleteResponse, response *core.DetailedResponse, err error) {
 	return ibmLogsRouterOpenApi30.DeleteTenantWithContext(context.Background(), deleteTenantOptions)
 }

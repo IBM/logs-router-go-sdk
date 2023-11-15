@@ -1,3 +1,4 @@
+//go:build examples
 // +build examples
 
 /**
@@ -23,8 +24,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/IBM/cloud-go-sdk/ibmlogsrouteropenapi30v0"
 	"github.com/IBM/go-sdk-core/v5/core"
+	"github.com/IBM/logs-router-go-sdk/ibmlogsrouteropenapi30v0"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -48,7 +49,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0 Examples Tests`, func() {
 
 	var (
 		ibmLogsRouterOpenApi30Service *ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0
-		config       map[string]string
+		config                        map[string]string
 	)
 
 	var shouldSkipTest = func() {
@@ -151,7 +152,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0 Examples Tests`, func() {
 			// begin-get_tenant_detail
 
 			getTenantDetailOptions := ibmLogsRouterOpenApi30Service.NewGetTenantDetailOptions(
-				CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"),
+				CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5"),
 			)
 
 			tenantDetailsResponse, response, err := ibmLogsRouterOpenApi30Service.GetTenantDetail(getTenantDetailOptions)
@@ -171,13 +172,12 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0 Examples Tests`, func() {
 			fmt.Println("\nUpdateTarget() result:")
 			// begin-update_target
 
-			tenantDetailsResponsePatchModel := &ibmlogsrouteropenapi30v0.TenantDetailsResponsePatch{
-			}
+			tenantDetailsResponsePatchModel := &ibmlogsrouteropenapi30v0.TenantDetailsResponsePatch{}
 			tenantDetailsResponsePatchModelAsPatch, asPatchErr := tenantDetailsResponsePatchModel.AsPatch()
 			Expect(asPatchErr).To(BeNil())
 
 			updateTargetOptions := ibmLogsRouterOpenApi30Service.NewUpdateTargetOptions(
-				CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"),
+				CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5"),
 				tenantDetailsResponsePatchModelAsPatch,
 			)
 
@@ -199,7 +199,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0 Examples Tests`, func() {
 			// begin-delete_tenant
 
 			deleteTenantOptions := ibmLogsRouterOpenApi30Service.NewDeleteTenantOptions(
-				CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"),
+				CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5"),
 			)
 
 			tenantDeleteResponse, response, err := ibmLogsRouterOpenApi30Service.DeleteTenant(deleteTenantOptions)

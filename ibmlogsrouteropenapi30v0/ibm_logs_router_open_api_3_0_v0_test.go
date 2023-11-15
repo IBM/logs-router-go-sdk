@@ -26,8 +26,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/IBM/cloud-go-sdk/ibmlogsrouteropenapi30v0"
 	"github.com/IBM/go-sdk-core/v5/core"
+	"github.com/IBM/logs-router-go-sdk/ibmlogsrouteropenapi30v0"
 	"github.com/go-openapi/strfmt"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
@@ -66,14 +66,13 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 		Context(`Using external config, construct service client instances`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"IBM_LOGS_ROUTER_OPEN_API_3_0_URL": "https://ibmlogsrouteropenapi30v0/api",
+				"IBM_LOGS_ROUTER_OPEN_API_3_0_URL":       "https://ibmlogsrouteropenapi30v0/api",
 				"IBM_LOGS_ROUTER_OPEN_API_3_0_AUTH_TYPE": "noauth",
 			}
 
 			It(`Create service client using external config successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
-				})
+				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{})
 				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
 				Expect(serviceErr).To(BeNil())
 				ClearTestEnvironment(testEnvironment)
@@ -102,8 +101,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 			})
 			It(`Create service client using external config and set url programatically successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
-				})
+				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{})
 				err := ibmLogsRouterOpenApi30Service.SetServiceURL("https://testService/api")
 				Expect(err).To(BeNil())
 				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
@@ -121,13 +119,12 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid Auth`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"IBM_LOGS_ROUTER_OPEN_API_3_0_URL": "https://ibmlogsrouteropenapi30v0/api",
+				"IBM_LOGS_ROUTER_OPEN_API_3_0_URL":       "https://ibmlogsrouteropenapi30v0/api",
 				"IBM_LOGS_ROUTER_OPEN_API_3_0_AUTH_TYPE": "someOtherAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
-			ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
-			})
+			ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{})
 
 			It(`Instantiate service client with error`, func() {
 				Expect(ibmLogsRouterOpenApi30Service).To(BeNil())
@@ -138,7 +135,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid URL`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"IBM_LOGS_ROUTER_OPEN_API_3_0_AUTH_TYPE":   "NOAuth",
+				"IBM_LOGS_ROUTER_OPEN_API_3_0_AUTH_TYPE": "NOAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
@@ -166,7 +163,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 	Describe(`Parameterized URL tests`, func() {
 		It(`Format parameterized URL with all default values`, func() {
 			constructedURL, err := ibmlogsrouteropenapi30v0.ConstructServiceURL(nil)
-			Expect(constructedURL).To(Equal("https://management.private.eu-gb.logs-router.test.cloud.ibm.com/v1"))
+			Expect(constructedURL).To(Equal("https://management.us-east.logs-router.cloud.ibm.com/v1"))
 			Expect(constructedURL).ToNot(BeNil())
 			Expect(err).To(BeNil())
 		})
@@ -644,7 +641,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 		})
 	})
 	Describe(`GetTenantDetail(getTenantDetailOptions *GetTenantDetailOptions) - Operation response error`, func() {
-		getTenantDetailPath := "/tenants/9fab83da-98cb-4f18-a7ba-b6f0435c9673"
+		getTenantDetailPath := "/tenants/f3a466c9-c4db-4eee-95cc-ba82db58e2b5"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -668,7 +665,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 
 				// Construct an instance of the GetTenantDetailOptions model
 				getTenantDetailOptionsModel := new(ibmlogsrouteropenapi30v0.GetTenantDetailOptions)
-				getTenantDetailOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				getTenantDetailOptionsModel.TenantID = CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				getTenantDetailOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := ibmLogsRouterOpenApi30Service.GetTenantDetail(getTenantDetailOptionsModel)
@@ -689,7 +686,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 		})
 	})
 	Describe(`GetTenantDetail(getTenantDetailOptions *GetTenantDetailOptions)`, func() {
-		getTenantDetailPath := "/tenants/9fab83da-98cb-4f18-a7ba-b6f0435c9673"
+		getTenantDetailPath := "/tenants/f3a466c9-c4db-4eee-95cc-ba82db58e2b5"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -719,7 +716,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 
 				// Construct an instance of the GetTenantDetailOptions model
 				getTenantDetailOptionsModel := new(ibmlogsrouteropenapi30v0.GetTenantDetailOptions)
-				getTenantDetailOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				getTenantDetailOptionsModel.TenantID = CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				getTenantDetailOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -778,7 +775,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 
 				// Construct an instance of the GetTenantDetailOptions model
 				getTenantDetailOptionsModel := new(ibmlogsrouteropenapi30v0.GetTenantDetailOptions)
-				getTenantDetailOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				getTenantDetailOptionsModel.TenantID = CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				getTenantDetailOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -798,7 +795,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 
 				// Construct an instance of the GetTenantDetailOptions model
 				getTenantDetailOptionsModel := new(ibmlogsrouteropenapi30v0.GetTenantDetailOptions)
-				getTenantDetailOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				getTenantDetailOptionsModel.TenantID = CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				getTenantDetailOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := ibmLogsRouterOpenApi30Service.SetServiceURL("")
@@ -839,7 +836,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 
 				// Construct an instance of the GetTenantDetailOptions model
 				getTenantDetailOptionsModel := new(ibmlogsrouteropenapi30v0.GetTenantDetailOptions)
-				getTenantDetailOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				getTenantDetailOptionsModel.TenantID = CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				getTenantDetailOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -856,7 +853,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 		})
 	})
 	Describe(`DeleteTenant(deleteTenantOptions *DeleteTenantOptions) - Operation response error`, func() {
-		deleteTenantPath := "/tenants/9fab83da-98cb-4f18-a7ba-b6f0435c9673"
+		deleteTenantPath := "/tenants/f3a466c9-c4db-4eee-95cc-ba82db58e2b5"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -880,7 +877,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 
 				// Construct an instance of the DeleteTenantOptions model
 				deleteTenantOptionsModel := new(ibmlogsrouteropenapi30v0.DeleteTenantOptions)
-				deleteTenantOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				deleteTenantOptionsModel.TenantID = CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				deleteTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := ibmLogsRouterOpenApi30Service.DeleteTenant(deleteTenantOptionsModel)
@@ -901,7 +898,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 		})
 	})
 	Describe(`DeleteTenant(deleteTenantOptions *DeleteTenantOptions)`, func() {
-		deleteTenantPath := "/tenants/9fab83da-98cb-4f18-a7ba-b6f0435c9673"
+		deleteTenantPath := "/tenants/f3a466c9-c4db-4eee-95cc-ba82db58e2b5"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -931,7 +928,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 
 				// Construct an instance of the DeleteTenantOptions model
 				deleteTenantOptionsModel := new(ibmlogsrouteropenapi30v0.DeleteTenantOptions)
-				deleteTenantOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				deleteTenantOptionsModel.TenantID = CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				deleteTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -990,7 +987,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 
 				// Construct an instance of the DeleteTenantOptions model
 				deleteTenantOptionsModel := new(ibmlogsrouteropenapi30v0.DeleteTenantOptions)
-				deleteTenantOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				deleteTenantOptionsModel.TenantID = CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				deleteTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -1010,7 +1007,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 
 				// Construct an instance of the DeleteTenantOptions model
 				deleteTenantOptionsModel := new(ibmlogsrouteropenapi30v0.DeleteTenantOptions)
-				deleteTenantOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				deleteTenantOptionsModel.TenantID = CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				deleteTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := ibmLogsRouterOpenApi30Service.SetServiceURL("")
@@ -1051,7 +1048,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 
 				// Construct an instance of the DeleteTenantOptions model
 				deleteTenantOptionsModel := new(ibmlogsrouteropenapi30v0.DeleteTenantOptions)
-				deleteTenantOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				deleteTenantOptionsModel.TenantID = CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				deleteTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -1068,7 +1065,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 		})
 	})
 	Describe(`UpdateTarget(updateTargetOptions *UpdateTargetOptions) - Operation response error`, func() {
-		updateTargetPath := "/tenants/9fab83da-98cb-4f18-a7ba-b6f0435c9673"
+		updateTargetPath := "/tenants/f3a466c9-c4db-4eee-95cc-ba82db58e2b5"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -1101,7 +1098,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 
 				// Construct an instance of the UpdateTargetOptions model
 				updateTargetOptionsModel := new(ibmlogsrouteropenapi30v0.UpdateTargetOptions)
-				updateTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				updateTargetOptionsModel.TenantID = CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				updateTargetOptionsModel.TenantDetailsResponsePatch = tenantDetailsResponsePatchModelAsPatch
 				updateTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -1123,7 +1120,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 		})
 	})
 	Describe(`UpdateTarget(updateTargetOptions *UpdateTargetOptions)`, func() {
-		updateTargetPath := "/tenants/9fab83da-98cb-4f18-a7ba-b6f0435c9673"
+		updateTargetPath := "/tenants/f3a466c9-c4db-4eee-95cc-ba82db58e2b5"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -1178,7 +1175,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 
 				// Construct an instance of the UpdateTargetOptions model
 				updateTargetOptionsModel := new(ibmlogsrouteropenapi30v0.UpdateTargetOptions)
-				updateTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				updateTargetOptionsModel.TenantID = CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				updateTargetOptionsModel.TenantDetailsResponsePatch = tenantDetailsResponsePatchModelAsPatch
 				updateTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -1263,7 +1260,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 
 				// Construct an instance of the UpdateTargetOptions model
 				updateTargetOptionsModel := new(ibmlogsrouteropenapi30v0.UpdateTargetOptions)
-				updateTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				updateTargetOptionsModel.TenantID = CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				updateTargetOptionsModel.TenantDetailsResponsePatch = tenantDetailsResponsePatchModelAsPatch
 				updateTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -1293,7 +1290,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 
 				// Construct an instance of the UpdateTargetOptions model
 				updateTargetOptionsModel := new(ibmlogsrouteropenapi30v0.UpdateTargetOptions)
-				updateTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				updateTargetOptionsModel.TenantID = CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				updateTargetOptionsModel.TenantDetailsResponsePatch = tenantDetailsResponsePatchModelAsPatch
 				updateTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -1344,7 +1341,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 
 				// Construct an instance of the UpdateTargetOptions model
 				updateTargetOptionsModel := new(ibmlogsrouteropenapi30v0.UpdateTargetOptions)
-				updateTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				updateTargetOptionsModel.TenantID = CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				updateTargetOptionsModel.TenantDetailsResponsePatch = tenantDetailsResponsePatchModelAsPatch
 				updateTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -1391,22 +1388,22 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 			})
 			It(`Invoke NewDeleteTenantOptions successfully`, func() {
 				// Construct an instance of the DeleteTenantOptions model
-				tenantID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				tenantID := CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				deleteTenantOptionsModel := ibmLogsRouterOpenApi30Service.NewDeleteTenantOptions(tenantID)
-				deleteTenantOptionsModel.SetTenantID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
+				deleteTenantOptionsModel.SetTenantID(CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5"))
 				deleteTenantOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(deleteTenantOptionsModel).ToNot(BeNil())
-				Expect(deleteTenantOptionsModel.TenantID).To(Equal(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")))
+				Expect(deleteTenantOptionsModel.TenantID).To(Equal(CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")))
 				Expect(deleteTenantOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewGetTenantDetailOptions successfully`, func() {
 				// Construct an instance of the GetTenantDetailOptions model
-				tenantID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				tenantID := CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				getTenantDetailOptionsModel := ibmLogsRouterOpenApi30Service.NewGetTenantDetailOptions(tenantID)
-				getTenantDetailOptionsModel.SetTenantID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
+				getTenantDetailOptionsModel.SetTenantID(CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5"))
 				getTenantDetailOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(getTenantDetailOptionsModel).ToNot(BeNil())
-				Expect(getTenantDetailOptionsModel.TenantID).To(Equal(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")))
+				Expect(getTenantDetailOptionsModel.TenantID).To(Equal(CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")))
 				Expect(getTenantDetailOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewListTenantsOptions successfully`, func() {
@@ -1418,14 +1415,14 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 			})
 			It(`Invoke NewUpdateTargetOptions successfully`, func() {
 				// Construct an instance of the UpdateTargetOptions model
-				tenantID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+				tenantID := CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 				tenantDetailsResponsePatch := map[string]interface{}{"anyKey": "anyValue"}
 				updateTargetOptionsModel := ibmLogsRouterOpenApi30Service.NewUpdateTargetOptions(tenantID, tenantDetailsResponsePatch)
-				updateTargetOptionsModel.SetTenantID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
+				updateTargetOptionsModel.SetTenantID(CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5"))
 				updateTargetOptionsModel.SetTenantDetailsResponsePatch(map[string]interface{}{"anyKey": "anyValue"})
 				updateTargetOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(updateTargetOptionsModel).ToNot(BeNil())
-				Expect(updateTargetOptionsModel.TenantID).To(Equal(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")))
+				Expect(updateTargetOptionsModel.TenantID).To(Equal(CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")))
 				Expect(updateTargetOptionsModel.TenantDetailsResponsePatch).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
 				Expect(updateTargetOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
@@ -1437,7 +1434,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 			Expect(mockByteArray).ToNot(BeNil())
 		})
 		It(`Invoke CreateMockUUID() successfully`, func() {
-			mockUUID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
+			mockUUID := CreateMockUUID("f3a466c9-c4db-4eee-95cc-ba82db58e2b5")
 			Expect(mockUUID).ToNot(BeNil())
 		})
 		It(`Invoke CreateMockReader() successfully`, func() {

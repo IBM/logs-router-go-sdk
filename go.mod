@@ -1,4 +1,4 @@
-module github.ibm.com/Christopher-Wolf/logs-router-go-sdk
+module github.com/IBM/logs-router-go-sdk
 
 go 1.19
 

@@ -26,7 +26,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/IBM/cloud-go-sdk/ibmlogsrouteropenapi30v0"
+	"github.com/IBM/logs-router-go-sdk/ibmlogsrouteropenapi30v0"
 	"github.com/IBM/go-sdk-core/v5/core"
 	"github.com/go-openapi/strfmt"
 	. "github.com/onsi/ginkgo"

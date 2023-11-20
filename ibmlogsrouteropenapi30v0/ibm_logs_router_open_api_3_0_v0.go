@@ -29,7 +29,7 @@ import (
 	"reflect"
 	"time"
 
-	common "github.com/IBM/cloud-go-sdk/common"
+	common "github.com/IBM/logs-router-go-sdk/common"
 	"github.com/IBM/go-sdk-core/v5/core"
 	"github.com/go-openapi/strfmt"
 )

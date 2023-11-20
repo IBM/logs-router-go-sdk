@@ -5,7 +5,7 @@ please ask a question at
 
 # Issues
 If you encounter an issue with the project, you are welcome to submit a
-[bug report](github.ibm.com/Christopher-Wolf/logs-router-go-sdk/issues).
+[bug report](github.com/IBM/logs-router-go-sdk/issues).
 Before that, please search for similar issues. It's possible that someone has already reported the problem.
 
 # General Information

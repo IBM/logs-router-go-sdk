@@ -29,8 +29,8 @@ import (
 	"reflect"
 	"time"
 
-	common "github.com/IBM/logs-router-go-sdk/common"
 	"github.com/IBM/go-sdk-core/v5/core"
+	common "github.com/IBM/logs-router-go-sdk/common"
 	"github.com/go-openapi/strfmt"
 )
 
@@ -44,15 +44,15 @@ type IbmLogsRouterOpenApi30V0 struct {
 }
 
 // DefaultServiceURL is the default URL to make service requests to.
-const DefaultServiceURL = "https://management.private.eu-gb.logs-router.test.cloud.ibm.com/v1"
+const DefaultServiceURL = "https://management.us-east.logs-router.cloud.ibm.com/v1"
 
 // DefaultServiceName is the default key used to find external configuration information.
 const DefaultServiceName = "ibm_logs_router_open_api_3_0"
 
-const ParameterizedServiceURL = "https://management.private.{region}.logs-router.test.cloud.ibm.com/v1"
+const ParameterizedServiceURL = "https://management.{region}.logs-router.cloud.ibm.com/v1"
 
 var defaultUrlVariables = map[string]string{
-	"region": "eu-gb",
+	"region": "us-east",
 }
 
 // IbmLogsRouterOpenApi30V0Options : Service options
@@ -341,6 +341,7 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) GetTenantDetailWithConte
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
 
 	request, err := builder.Build()
 	if err != nil {
@@ -401,6 +402,7 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) DeleteTenantWithContext(
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
 
 	request, err := builder.Build()
 	if err != nil {
@@ -461,7 +463,7 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) UpdateTargetWithContext(
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/merge-patch+json")
+	builder.AddHeader("Content-Type", "application/json")
 
 	_, err = builder.SetBodyContentJSON(updateTargetOptions.TenantDetailsResponsePatch)
 	if err != nil {
@@ -513,10 +515,10 @@ type CreateTenantOptions struct {
 // NewCreateTenantOptions : Instantiate CreateTenantOptions
 func (*IbmLogsRouterOpenApi30V0) NewCreateTenantOptions(targetType string, targetHost string, targetPort int64, accessCredential string, targetInstanceCrn string) *CreateTenantOptions {
 	return &CreateTenantOptions{
-		TargetType: core.StringPtr(targetType),
-		TargetHost: core.StringPtr(targetHost),
-		TargetPort: core.Int64Ptr(targetPort),
-		AccessCredential: core.StringPtr(accessCredential),
+		TargetType:        core.StringPtr(targetType),
+		TargetHost:        core.StringPtr(targetHost),
+		TargetPort:        core.Int64Ptr(targetPort),
+		AccessCredential:  core.StringPtr(accessCredential),
 		TargetInstanceCrn: core.StringPtr(targetInstanceCrn),
 	}
 }
@@ -802,7 +804,7 @@ type UpdateTargetOptions struct {
 // NewUpdateTargetOptions : Instantiate UpdateTargetOptions
 func (*IbmLogsRouterOpenApi30V0) NewUpdateTargetOptions(tenantID *strfmt.UUID, tenantDetailsResponsePatch map[string]interface{}) *UpdateTargetOptions {
 	return &UpdateTargetOptions{
-		TenantID: tenantID,
+		TenantID:                   tenantID,
 		TenantDetailsResponsePatch: tenantDetailsResponsePatch,
 	}
 }

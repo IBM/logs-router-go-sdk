@@ -26,8 +26,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/IBM/logs-router-go-sdk/ibmlogsrouteropenapi30v0"
 	"github.com/IBM/go-sdk-core/v5/core"
+	"github.com/IBM/logs-router-go-sdk/ibmlogsrouteropenapi30v0"
 	"github.com/go-openapi/strfmt"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
@@ -66,14 +66,13 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 		Context(`Using external config, construct service client instances`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"IBM_LOGS_ROUTER_OPEN_API_3_0_URL": "https://ibmlogsrouteropenapi30v0/api",
+				"IBM_LOGS_ROUTER_OPEN_API_3_0_URL":       "https://ibmlogsrouteropenapi30v0/api",
 				"IBM_LOGS_ROUTER_OPEN_API_3_0_AUTH_TYPE": "noauth",
 			}
 
 			It(`Create service client using external config successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
-				})
+				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{})
 				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
 				Expect(serviceErr).To(BeNil())
 				ClearTestEnvironment(testEnvironment)
@@ -102,8 +101,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 			})
 			It(`Create service client using external config and set url programatically successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
-				})
+				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{})
 				err := ibmLogsRouterOpenApi30Service.SetServiceURL("https://testService/api")
 				Expect(err).To(BeNil())
 				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
@@ -121,13 +119,12 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid Auth`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"IBM_LOGS_ROUTER_OPEN_API_3_0_URL": "https://ibmlogsrouteropenapi30v0/api",
+				"IBM_LOGS_ROUTER_OPEN_API_3_0_URL":       "https://ibmlogsrouteropenapi30v0/api",
 				"IBM_LOGS_ROUTER_OPEN_API_3_0_AUTH_TYPE": "someOtherAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
-			ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
-			})
+			ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{})
 
 			It(`Instantiate service client with error`, func() {
 				Expect(ibmLogsRouterOpenApi30Service).To(BeNil())
@@ -138,7 +135,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid URL`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"IBM_LOGS_ROUTER_OPEN_API_3_0_AUTH_TYPE":   "NOAuth",
+				"IBM_LOGS_ROUTER_OPEN_API_3_0_AUTH_TYPE": "NOAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
@@ -166,7 +163,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 	Describe(`Parameterized URL tests`, func() {
 		It(`Format parameterized URL with all default values`, func() {
 			constructedURL, err := ibmlogsrouteropenapi30v0.ConstructServiceURL(nil)
-			Expect(constructedURL).To(Equal("https://management.private.eu-gb.logs-router.test.cloud.ibm.com/v1"))
+			Expect(constructedURL).To(Equal("https://management.eu-gb.logs-router.cloud.ibm.com/v1"))
 			Expect(constructedURL).ToNot(BeNil())
 			Expect(err).To(BeNil())
 		})

@@ -16,38 +16,38 @@
  * limitations under the License.
  */
 
-package ibmlogsrouteropenapi30v0_test
+package ibmcloudlogsroutingv0_test
 
 import (
 	"encoding/json"
 	"fmt"
 	"os"
 
-	"github.com/IBM/logs-router-go-sdk/ibmlogsrouteropenapi30v0"
+	"github.com/IBM/cloud-go-sdk/ibmcloudlogsroutingv0"
 	"github.com/IBM/go-sdk-core/v5/core"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
 
 //
-// This file provides an example of how to use the IBM logs-router - OpenAPI 3.0 service.
+// This file provides an example of how to use the IBM Cloud Logs Routing service.
 //
 // The following configuration properties are assumed to be defined:
-// IBM_LOGS_ROUTER_OPEN_API_3_0_URL=<service base url>
-// IBM_LOGS_ROUTER_OPEN_API_3_0_AUTH_TYPE=iam
-// IBM_LOGS_ROUTER_OPEN_API_3_0_APIKEY=<IAM apikey>
-// IBM_LOGS_ROUTER_OPEN_API_3_0_AUTH_URL=<IAM token service base URL - omit this if using the production environment>
+// IBM_CLOUD_LOGS_ROUTING_URL=<service base url>
+// IBM_CLOUD_LOGS_ROUTING_AUTH_TYPE=iam
+// IBM_CLOUD_LOGS_ROUTING_APIKEY=<IAM apikey>
+// IBM_CLOUD_LOGS_ROUTING_AUTH_URL=<IAM token service base URL - omit this if using the production environment>
 //
 // These configuration properties can be exported as environment variables, or stored
 // in a configuration file and then:
 // export IBM_CREDENTIALS_FILE=<name of configuration file>
 //
-var _ = Describe(`IbmLogsRouterOpenApi30V0 Examples Tests`, func() {
+var _ = Describe(`IbmCloudLogsRoutingV0 Examples Tests`, func() {
 
-	const externalConfigFile = "../ibm_logs_router_open_api30_v0.env"
+	const externalConfigFile = "../ibm_cloud_logs_routing_v0.env"
 
 	var (
-		ibmLogsRouterOpenApi30Service *ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0
+		ibmCloudLogsRoutingService *ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0
 		config       map[string]string
 	)
 
@@ -64,7 +64,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0 Examples Tests`, func() {
 			}
 
 			os.Setenv("IBM_CREDENTIALS_FILE", externalConfigFile)
-			config, err = core.GetServiceProperties(ibmlogsrouteropenapi30v0.DefaultServiceName)
+			config, err = core.GetServiceProperties(ibmcloudlogsroutingv0.DefaultServiceName)
 			if err != nil {
 				Skip("Error loading service properties, skipping examples: " + err.Error())
 			} else if len(config) == 0 {
@@ -84,9 +84,9 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0 Examples Tests`, func() {
 
 			// begin-common
 
-			ibmLogsRouterOpenApi30ServiceOptions := &ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{}
+			ibmCloudLogsRoutingServiceOptions := &ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{}
 
-			ibmLogsRouterOpenApi30Service, err = ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(ibmLogsRouterOpenApi30ServiceOptions)
+			ibmCloudLogsRoutingService, err = ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0UsingExternalConfig(ibmCloudLogsRoutingServiceOptions)
 
 			if err != nil {
 				panic(err)
@@ -94,11 +94,11 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0 Examples Tests`, func() {
 
 			// end-common
 
-			Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+			Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 		})
 	})
 
-	Describe(`IbmLogsRouterOpenApi30V0 request examples`, func() {
+	Describe(`IbmCloudLogsRoutingV0 request examples`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
@@ -106,26 +106,26 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0 Examples Tests`, func() {
 			fmt.Println("\nListTenants() result:")
 			// begin-list_tenants
 
-			listTenantsOptions := ibmLogsRouterOpenApi30Service.NewListTenantsOptions()
+			listTenantsOptions := ibmCloudLogsRoutingService.NewListTenantsOptions()
 
-			tenantDetailsResponseCollection, response, err := ibmLogsRouterOpenApi30Service.ListTenants(listTenantsOptions)
+			tenantCollection, response, err := ibmCloudLogsRoutingService.ListTenants(listTenantsOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(tenantDetailsResponseCollection, "", "  ")
+			b, _ := json.MarshalIndent(tenantCollection, "", "  ")
 			fmt.Println(string(b))
 
 			// end-list_tenants
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(tenantDetailsResponseCollection).ToNot(BeNil())
+			Expect(tenantCollection).ToNot(BeNil())
 		})
 		It(`CreateTenant request example`, func() {
 			fmt.Println("\nCreateTenant() result:")
 			// begin-create_tenant
 
-			createTenantOptions := ibmLogsRouterOpenApi30Service.NewCreateTenantOptions(
+			createTenantOptions := ibmCloudLogsRoutingService.NewCreateTenantOptions(
 				"logdna",
 				"www.example.com",
 				int64(38),
@@ -133,87 +133,87 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0 Examples Tests`, func() {
 				"crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::",
 			)
 
-			tenantDetailsResponse, response, err := ibmLogsRouterOpenApi30Service.CreateTenant(createTenantOptions)
+			tenant, response, err := ibmCloudLogsRoutingService.CreateTenant(createTenantOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(tenantDetailsResponse, "", "  ")
+			b, _ := json.MarshalIndent(tenant, "", "  ")
 			fmt.Println(string(b))
 
 			// end-create_tenant
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(tenantDetailsResponse).ToNot(BeNil())
+			Expect(tenant).ToNot(BeNil())
 		})
 		It(`GetTenantDetail request example`, func() {
 			fmt.Println("\nGetTenantDetail() result:")
 			// begin-get_tenant_detail
 
-			getTenantDetailOptions := ibmLogsRouterOpenApi30Service.NewGetTenantDetailOptions(
+			getTenantDetailOptions := ibmCloudLogsRoutingService.NewGetTenantDetailOptions(
 				CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"),
 			)
 
-			tenantDetailsResponse, response, err := ibmLogsRouterOpenApi30Service.GetTenantDetail(getTenantDetailOptions)
+			tenant, response, err := ibmCloudLogsRoutingService.GetTenantDetail(getTenantDetailOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(tenantDetailsResponse, "", "  ")
+			b, _ := json.MarshalIndent(tenant, "", "  ")
 			fmt.Println(string(b))
 
 			// end-get_tenant_detail
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(tenantDetailsResponse).ToNot(BeNil())
+			Expect(tenant).ToNot(BeNil())
 		})
 		It(`UpdateTarget request example`, func() {
 			fmt.Println("\nUpdateTarget() result:")
 			// begin-update_target
 
-			tenantDetailsResponsePatchModel := &ibmlogsrouteropenapi30v0.TenantDetailsResponsePatch{
+			tenantPatchModel := &ibmcloudlogsroutingv0.TenantPatch{
 			}
-			tenantDetailsResponsePatchModelAsPatch, asPatchErr := tenantDetailsResponsePatchModel.AsPatch()
+			tenantPatchModelAsPatch, asPatchErr := tenantPatchModel.AsPatch()
 			Expect(asPatchErr).To(BeNil())
 
-			updateTargetOptions := ibmLogsRouterOpenApi30Service.NewUpdateTargetOptions(
+			updateTargetOptions := ibmCloudLogsRoutingService.NewUpdateTargetOptions(
 				CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"),
-				tenantDetailsResponsePatchModelAsPatch,
+				tenantPatchModelAsPatch,
 			)
 
-			tenantDetailsResponse, response, err := ibmLogsRouterOpenApi30Service.UpdateTarget(updateTargetOptions)
+			tenant, response, err := ibmCloudLogsRoutingService.UpdateTarget(updateTargetOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(tenantDetailsResponse, "", "  ")
+			b, _ := json.MarshalIndent(tenant, "", "  ")
 			fmt.Println(string(b))
 
 			// end-update_target
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(tenantDetailsResponse).ToNot(BeNil())
+			Expect(tenant).ToNot(BeNil())
 		})
 		It(`DeleteTenant request example`, func() {
 			fmt.Println("\nDeleteTenant() result:")
 			// begin-delete_tenant
 
-			deleteTenantOptions := ibmLogsRouterOpenApi30Service.NewDeleteTenantOptions(
+			deleteTenantOptions := ibmCloudLogsRoutingService.NewDeleteTenantOptions(
 				CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"),
 			)
 
-			tenantDeleteResponse, response, err := ibmLogsRouterOpenApi30Service.DeleteTenant(deleteTenantOptions)
+			tenantDelete, response, err := ibmCloudLogsRoutingService.DeleteTenant(deleteTenantOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(tenantDeleteResponse, "", "  ")
+			b, _ := json.MarshalIndent(tenantDelete, "", "  ")
 			fmt.Println(string(b))
 
 			// end-delete_tenant
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(tenantDeleteResponse).ToNot(BeNil())
+			Expect(tenantDelete).ToNot(BeNil())
 		})
 	})
 })

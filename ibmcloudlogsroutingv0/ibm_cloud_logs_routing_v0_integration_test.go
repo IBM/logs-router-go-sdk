@@ -1,3 +1,4 @@
+//go:build integration
 // +build integration
 
 /**
@@ -16,7 +17,7 @@
  * limitations under the License.
  */
 
-package ibmlogsrouteropenapi30v0_test
+package ibmcloudlogsroutingv0_test
 
 import (
 	"fmt"
@@ -24,8 +25,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/IBM/logs-router-go-sdk/ibmlogsrouteropenapi30v0"
 	"github.com/IBM/go-sdk-core/v5/core"
+	"github.com/IBM/logs-router-go-sdk/ibmcloudlogsroutingv0"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -42,10 +43,10 @@ var _ = Describe(`IbmCloudLogsRoutingV0 Integration Tests`, func() {
 	const externalConfigFile = "../ibm_cloud_logs_routing_v0.env"
 
 	var (
-		err          error
-		ibmCloudLogsRoutingService *ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0
-		serviceURL   string
-		config       map[string]string
+		err                        error
+		ibmCloudLogsRoutingService *ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0
+		serviceURL                 string
+		config                     map[string]string
 	)
 
 	var shouldSkipTest = func() {
@@ -60,7 +61,7 @@ var _ = Describe(`IbmCloudLogsRoutingV0 Integration Tests`, func() {
 			}
 
 			os.Setenv("IBM_CREDENTIALS_FILE", externalConfigFile)
-			config, err = core.GetServiceProperties(ibmlogsrouteropenapi30v0.DefaultServiceName)
+			config, err = core.GetServiceProperties(ibmcloudlogsroutingv0.DefaultServiceName)
 			if err != nil {
 				Skip("Error loading service properties, skipping tests: " + err.Error())
 			}
@@ -79,9 +80,9 @@ var _ = Describe(`IbmCloudLogsRoutingV0 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It("Successfully construct the service client instance", func() {
-			ibmCloudLogsRoutingServiceOptions := &ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{}
+			ibmCloudLogsRoutingServiceOptions := &ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{}
 
-			ibmCloudLogsRoutingService, err = ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(ibmCloudLogsRoutingServiceOptions)
+			ibmCloudLogsRoutingService, err = ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0UsingExternalConfig(ibmCloudLogsRoutingServiceOptions)
 			Expect(err).To(BeNil())
 			Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 			Expect(ibmCloudLogsRoutingService.Service.Options.URL).To(Equal(serviceURL))
@@ -96,13 +97,12 @@ var _ = Describe(`IbmCloudLogsRoutingV0 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`ListTenants(listTenantsOptions *ListTenantsOptions)`, func() {
-			listTenantsOptions := &ibmlogsrouteropenapi30v0.ListTenantsOptions{
-			}
+			listTenantsOptions := &ibmcloudlogsroutingv0.ListTenantsOptions{}
 
-			tenantDetailsResponseCollection, response, err := ibmCloudLogsRoutingService.ListTenants(listTenantsOptions)
+			tenantCollection, response, err := ibmCloudLogsRoutingService.ListTenants(listTenantsOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(tenantDetailsResponseCollection).ToNot(BeNil())
+			Expect(tenantCollection).ToNot(BeNil())
 		})
 	})
 
@@ -111,18 +111,18 @@ var _ = Describe(`IbmCloudLogsRoutingV0 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`CreateTenant(createTenantOptions *CreateTenantOptions)`, func() {
-			createTenantOptions := &ibmlogsrouteropenapi30v0.CreateTenantOptions{
-				TargetType: core.StringPtr("logdna"),
-				TargetHost: core.StringPtr("www.example.com"),
-				TargetPort: core.Int64Ptr(int64(38)),
-				AccessCredential: core.StringPtr("testString"),
+			createTenantOptions := &ibmcloudlogsroutingv0.CreateTenantOptions{
+				TargetType:        core.StringPtr("logdna"),
+				TargetHost:        core.StringPtr("www.example.com"),
+				TargetPort:        core.Int64Ptr(int64(38)),
+				AccessCredential:  core.StringPtr("testString"),
 				TargetInstanceCrn: core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::"),
 			}
 
-			tenantDetailsResponse, response, err := ibmCloudLogsRoutingService.CreateTenant(createTenantOptions)
+			tenant, response, err := ibmCloudLogsRoutingService.CreateTenant(createTenantOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(tenantDetailsResponse).ToNot(BeNil())
+			Expect(tenant).ToNot(BeNil())
 		})
 	})
 
@@ -131,14 +131,14 @@ var _ = Describe(`IbmCloudLogsRoutingV0 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`GetTenantDetail(getTenantDetailOptions *GetTenantDetailOptions)`, func() {
-			getTenantDetailOptions := &ibmlogsrouteropenapi30v0.GetTenantDetailOptions{
+			getTenantDetailOptions := &ibmcloudlogsroutingv0.GetTenantDetailOptions{
 				TenantID: CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"),
 			}
 
-			tenantDetailsResponse, response, err := ibmCloudLogsRoutingService.GetTenantDetail(getTenantDetailOptions)
+			tenant, response, err := ibmCloudLogsRoutingService.GetTenantDetail(getTenantDetailOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(tenantDetailsResponse).ToNot(BeNil())
+			Expect(tenant).ToNot(BeNil())
 		})
 	})
 
@@ -147,24 +147,24 @@ var _ = Describe(`IbmCloudLogsRoutingV0 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`UpdateTarget(updateTargetOptions *UpdateTargetOptions)`, func() {
-			tenantDetailsResponsePatchModel := &ibmlogsrouteropenapi30v0.TenantDetailsResponsePatch{
-				TargetHost: core.StringPtr("www.example.com"),
-				TargetPort: core.Int64Ptr(int64(38)),
-				AccessCredential: core.StringPtr("testString"),
+			tenantPatchModel := &ibmcloudlogsroutingv0.TenantPatch{
+				TargetHost:        core.StringPtr("www.example.com"),
+				TargetPort:        core.Int64Ptr(int64(38)),
+				AccessCredential:  core.StringPtr("testString"),
 				TargetInstanceCrn: core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::"),
 			}
-			tenantDetailsResponsePatchModelAsPatch, asPatchErr := tenantDetailsResponsePatchModel.AsPatch()
+			tenantPatchModelAsPatch, asPatchErr := tenantPatchModel.AsPatch()
 			Expect(asPatchErr).To(BeNil())
 
-			updateTargetOptions := &ibmlogsrouteropenapi30v0.UpdateTargetOptions{
-				TenantID: CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"),
-				TenantDetailsResponsePatch: tenantDetailsResponsePatchModelAsPatch,
+			updateTargetOptions := &ibmcloudlogsroutingv0.UpdateTargetOptions{
+				TenantID:    CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"),
+				TenantPatch: tenantPatchModelAsPatch,
 			}
 
-			tenantDetailsResponse, response, err := ibmCloudLogsRoutingService.UpdateTarget(updateTargetOptions)
+			tenant, response, err := ibmCloudLogsRoutingService.UpdateTarget(updateTargetOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(tenantDetailsResponse).ToNot(BeNil())
+			Expect(tenant).ToNot(BeNil())
 		})
 	})
 
@@ -173,14 +173,14 @@ var _ = Describe(`IbmCloudLogsRoutingV0 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`DeleteTenant(deleteTenantOptions *DeleteTenantOptions)`, func() {
-			deleteTenantOptions := &ibmlogsrouteropenapi30v0.DeleteTenantOptions{
+			deleteTenantOptions := &ibmcloudlogsroutingv0.DeleteTenantOptions{
 				TenantID: CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"),
 			}
 
-			tenantDeleteResponse, response, err := ibmCloudLogsRoutingService.DeleteTenant(deleteTenantOptions)
+			tenantDelete, response, err := ibmCloudLogsRoutingService.DeleteTenant(deleteTenantOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(tenantDeleteResponse).ToNot(BeNil())
+			Expect(tenantDelete).ToNot(BeNil())
 		})
 	})
 })

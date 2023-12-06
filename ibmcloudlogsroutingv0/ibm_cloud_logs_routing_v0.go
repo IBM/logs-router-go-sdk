@@ -18,8 +18,8 @@
  * IBM OpenAPI SDK Code Generator Version: 3.81.0-c73a091c-20231026-215706
  */
 
-// Package ibmlogsrouteropenapi30v0 : Operations and models for the IbmLogsRouterOpenApi30V0 service
-package ibmlogsrouteropenapi30v0
+// Package ibmcloudlogsroutingv0 : Operations and models for the IbmCloudLogsRoutingV0 service
+package ibmcloudlogsroutingv0
 
 import (
 	"context"
@@ -34,36 +34,36 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// IbmLogsRouterOpenApi30V0 : IBM logs-router is an IBM cloud platform service to collect log-events of your VPC and
+// IbmCloudLogsRoutingV0 : IBM Cloud Logs Routing is an IBM cloud platform service to collect log-events of your VPC and
 // deliver them to the configured log sink.
 //
 // API Version: 0.0.1
 // See: http://cloud.ibm.com
-type IbmLogsRouterOpenApi30V0 struct {
+type IbmCloudLogsRoutingV0 struct {
 	Service *core.BaseService
 }
 
 // DefaultServiceURL is the default URL to make service requests to.
-const DefaultServiceURL = "https://management.us-east.logs-router.cloud.ibm.com/v1"
+const DefaultServiceURL = "https://management.private.eu-gb.logs-router.test.cloud.ibm.com/v1"
 
 // DefaultServiceName is the default key used to find external configuration information.
-const DefaultServiceName = "ibm_logs_router_open_api_3_0"
+const DefaultServiceName = "ibm_cloud_logs_routing"
 
-const ParameterizedServiceURL = "https://management.{region}.logs-router.cloud.ibm.com/v1"
+const ParameterizedServiceURL = "https://management.private.{region}.logs-router.test.cloud.ibm.com/v1"
 
 var defaultUrlVariables = map[string]string{
-	"region": "us-east",
+	"region": "eu-gb",
 }
 
-// IbmLogsRouterOpenApi30V0Options : Service options
-type IbmLogsRouterOpenApi30V0Options struct {
+// IbmCloudLogsRoutingV0Options : Service options
+type IbmCloudLogsRoutingV0Options struct {
 	ServiceName   string
 	URL           string
 	Authenticator core.Authenticator
 }
 
-// NewIbmLogsRouterOpenApi30V0UsingExternalConfig : constructs an instance of IbmLogsRouterOpenApi30V0 with passed in options and external configuration.
-func NewIbmLogsRouterOpenApi30V0UsingExternalConfig(options *IbmLogsRouterOpenApi30V0Options) (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0, err error) {
+// NewIbmCloudLogsRoutingV0UsingExternalConfig : constructs an instance of IbmCloudLogsRoutingV0 with passed in options and external configuration.
+func NewIbmCloudLogsRoutingV0UsingExternalConfig(options *IbmCloudLogsRoutingV0Options) (ibmCloudLogsRouting *IbmCloudLogsRoutingV0, err error) {
 	if options.ServiceName == "" {
 		options.ServiceName = DefaultServiceName
 	}
@@ -75,24 +75,24 @@ func NewIbmLogsRouterOpenApi30V0UsingExternalConfig(options *IbmLogsRouterOpenAp
 		}
 	}
 
-	ibmLogsRouterOpenApi30, err = NewIbmLogsRouterOpenApi30V0(options)
+	ibmCloudLogsRouting, err = NewIbmCloudLogsRoutingV0(options)
 	if err != nil {
 		return
 	}
 
-	err = ibmLogsRouterOpenApi30.Service.ConfigureService(options.ServiceName)
+	err = ibmCloudLogsRouting.Service.ConfigureService(options.ServiceName)
 	if err != nil {
 		return
 	}
 
 	if options.URL != "" {
-		err = ibmLogsRouterOpenApi30.Service.SetServiceURL(options.URL)
+		err = ibmCloudLogsRouting.Service.SetServiceURL(options.URL)
 	}
 	return
 }
 
-// NewIbmLogsRouterOpenApi30V0 : constructs an instance of IbmLogsRouterOpenApi30V0 with passed in options.
-func NewIbmLogsRouterOpenApi30V0(options *IbmLogsRouterOpenApi30V0Options) (service *IbmLogsRouterOpenApi30V0, err error) {
+// NewIbmCloudLogsRoutingV0 : constructs an instance of IbmCloudLogsRoutingV0 with passed in options.
+func NewIbmCloudLogsRoutingV0(options *IbmCloudLogsRoutingV0Options) (service *IbmCloudLogsRoutingV0, err error) {
 	serviceOptions := &core.ServiceOptions{
 		URL:           DefaultServiceURL,
 		Authenticator: options.Authenticator,
@@ -110,7 +110,7 @@ func NewIbmLogsRouterOpenApi30V0(options *IbmLogsRouterOpenApi30V0Options) (serv
 		}
 	}
 
-	service = &IbmLogsRouterOpenApi30V0{
+	service = &IbmCloudLogsRoutingV0{
 		Service: baseService,
 	}
 
@@ -122,13 +122,13 @@ func GetServiceURLForRegion(region string) (string, error) {
 	return "", fmt.Errorf("service does not support regional URLs")
 }
 
-// Clone makes a copy of "ibmLogsRouterOpenApi30" suitable for processing requests.
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) Clone() *IbmLogsRouterOpenApi30V0 {
-	if core.IsNil(ibmLogsRouterOpenApi30) {
+// Clone makes a copy of "ibmCloudLogsRouting" suitable for processing requests.
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) Clone() *IbmCloudLogsRoutingV0 {
+	if core.IsNil(ibmCloudLogsRouting) {
 		return nil
 	}
-	clone := *ibmLogsRouterOpenApi30
-	clone.Service = ibmLogsRouterOpenApi30.Service.Clone()
+	clone := *ibmCloudLogsRouting
+	clone.Service = ibmCloudLogsRouting.Service.Clone()
 	return &clone
 }
 
@@ -138,49 +138,49 @@ func ConstructServiceURL(providedUrlVariables map[string]string) (string, error)
 }
 
 // SetServiceURL sets the service URL
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) SetServiceURL(url string) error {
-	return ibmLogsRouterOpenApi30.Service.SetServiceURL(url)
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) SetServiceURL(url string) error {
+	return ibmCloudLogsRouting.Service.SetServiceURL(url)
 }
 
 // GetServiceURL returns the service URL
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) GetServiceURL() string {
-	return ibmLogsRouterOpenApi30.Service.GetServiceURL()
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) GetServiceURL() string {
+	return ibmCloudLogsRouting.Service.GetServiceURL()
 }
 
 // SetDefaultHeaders sets HTTP headers to be sent in every request
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) SetDefaultHeaders(headers http.Header) {
-	ibmLogsRouterOpenApi30.Service.SetDefaultHeaders(headers)
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) SetDefaultHeaders(headers http.Header) {
+	ibmCloudLogsRouting.Service.SetDefaultHeaders(headers)
 }
 
 // SetEnableGzipCompression sets the service's EnableGzipCompression field
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) SetEnableGzipCompression(enableGzip bool) {
-	ibmLogsRouterOpenApi30.Service.SetEnableGzipCompression(enableGzip)
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) SetEnableGzipCompression(enableGzip bool) {
+	ibmCloudLogsRouting.Service.SetEnableGzipCompression(enableGzip)
 }
 
 // GetEnableGzipCompression returns the service's EnableGzipCompression field
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) GetEnableGzipCompression() bool {
-	return ibmLogsRouterOpenApi30.Service.GetEnableGzipCompression()
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) GetEnableGzipCompression() bool {
+	return ibmCloudLogsRouting.Service.GetEnableGzipCompression()
 }
 
 // EnableRetries enables automatic retries for requests invoked for this service instance.
 // If either parameter is specified as 0, then a default value is used instead.
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) EnableRetries(maxRetries int, maxRetryInterval time.Duration) {
-	ibmLogsRouterOpenApi30.Service.EnableRetries(maxRetries, maxRetryInterval)
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) EnableRetries(maxRetries int, maxRetryInterval time.Duration) {
+	ibmCloudLogsRouting.Service.EnableRetries(maxRetries, maxRetryInterval)
 }
 
 // DisableRetries disables automatic retries for requests invoked for this service instance.
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) DisableRetries() {
-	ibmLogsRouterOpenApi30.Service.DisableRetries()
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) DisableRetries() {
+	ibmCloudLogsRouting.Service.DisableRetries()
 }
 
 // ListTenants : List of tenants
 // List of tenants defined in your account.
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) ListTenants(listTenantsOptions *ListTenantsOptions) (result *TenantDetailsResponseCollection, response *core.DetailedResponse, err error) {
-	return ibmLogsRouterOpenApi30.ListTenantsWithContext(context.Background(), listTenantsOptions)
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) ListTenants(listTenantsOptions *ListTenantsOptions) (result *TenantCollection, response *core.DetailedResponse, err error) {
+	return ibmCloudLogsRouting.ListTenantsWithContext(context.Background(), listTenantsOptions)
 }
 
 // ListTenantsWithContext is an alternate form of the ListTenants method which supports a Context parameter
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) ListTenantsWithContext(ctx context.Context, listTenantsOptions *ListTenantsOptions) (result *TenantDetailsResponseCollection, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) ListTenantsWithContext(ctx context.Context, listTenantsOptions *ListTenantsOptions) (result *TenantCollection, response *core.DetailedResponse, err error) {
 	err = core.ValidateStruct(listTenantsOptions, "listTenantsOptions")
 	if err != nil {
 		return
@@ -188,8 +188,8 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) ListTenantsWithContext(c
 
 	builder := core.NewRequestBuilder(core.GET)
 	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = ibmLogsRouterOpenApi30.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(ibmLogsRouterOpenApi30.Service.Options.URL, `/tenants`, nil)
+	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants`, nil)
 	if err != nil {
 		return
 	}
@@ -198,7 +198,7 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) ListTenantsWithContext(c
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("ibm_logs_router_open_api_3_0", "V0", "ListTenants")
+	sdkHeaders := common.GetSdkHeaders("ibm_cloud_logs_routing", "V0", "ListTenants")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -210,12 +210,12 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) ListTenantsWithContext(c
 	}
 
 	var rawResponse map[string]json.RawMessage
-	response, err = ibmLogsRouterOpenApi30.Service.Request(request, &rawResponse)
+	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
 	if err != nil {
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTenantDetailsResponseCollection)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTenantCollection)
 		if err != nil {
 			return
 		}
@@ -227,12 +227,12 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) ListTenantsWithContext(c
 
 // CreateTenant : Create (onboard) a new tenant
 // Create (onboard) a new tenant.
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) CreateTenant(createTenantOptions *CreateTenantOptions) (result *TenantDetailsResponse, response *core.DetailedResponse, err error) {
-	return ibmLogsRouterOpenApi30.CreateTenantWithContext(context.Background(), createTenantOptions)
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) CreateTenant(createTenantOptions *CreateTenantOptions) (result *Tenant, response *core.DetailedResponse, err error) {
+	return ibmCloudLogsRouting.CreateTenantWithContext(context.Background(), createTenantOptions)
 }
 
 // CreateTenantWithContext is an alternate form of the CreateTenant method which supports a Context parameter
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) CreateTenantWithContext(ctx context.Context, createTenantOptions *CreateTenantOptions) (result *TenantDetailsResponse, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) CreateTenantWithContext(ctx context.Context, createTenantOptions *CreateTenantOptions) (result *Tenant, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(createTenantOptions, "createTenantOptions cannot be nil")
 	if err != nil {
 		return
@@ -244,8 +244,8 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) CreateTenantWithContext(
 
 	builder := core.NewRequestBuilder(core.POST)
 	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = ibmLogsRouterOpenApi30.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(ibmLogsRouterOpenApi30.Service.Options.URL, `/tenants`, nil)
+	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants`, nil)
 	if err != nil {
 		return
 	}
@@ -254,7 +254,7 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) CreateTenantWithContext(
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("ibm_logs_router_open_api_3_0", "V0", "CreateTenant")
+	sdkHeaders := common.GetSdkHeaders("ibm_cloud_logs_routing", "V0", "CreateTenant")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -288,12 +288,12 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) CreateTenantWithContext(
 	}
 
 	var rawResponse map[string]json.RawMessage
-	response, err = ibmLogsRouterOpenApi30.Service.Request(request, &rawResponse)
+	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
 	if err != nil {
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTenantDetailsResponse)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTenant)
 		if err != nil {
 			return
 		}
@@ -305,12 +305,12 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) CreateTenantWithContext(
 
 // GetTenantDetail : Details of a tenant
 // List the details of the given tenant.
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) GetTenantDetail(getTenantDetailOptions *GetTenantDetailOptions) (result *TenantDetailsResponse, response *core.DetailedResponse, err error) {
-	return ibmLogsRouterOpenApi30.GetTenantDetailWithContext(context.Background(), getTenantDetailOptions)
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) GetTenantDetail(getTenantDetailOptions *GetTenantDetailOptions) (result *Tenant, response *core.DetailedResponse, err error) {
+	return ibmCloudLogsRouting.GetTenantDetailWithContext(context.Background(), getTenantDetailOptions)
 }
 
 // GetTenantDetailWithContext is an alternate form of the GetTenantDetail method which supports a Context parameter
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) GetTenantDetailWithContext(ctx context.Context, getTenantDetailOptions *GetTenantDetailOptions) (result *TenantDetailsResponse, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) GetTenantDetailWithContext(ctx context.Context, getTenantDetailOptions *GetTenantDetailOptions) (result *Tenant, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(getTenantDetailOptions, "getTenantDetailOptions cannot be nil")
 	if err != nil {
 		return
@@ -326,8 +326,8 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) GetTenantDetailWithConte
 
 	builder := core.NewRequestBuilder(core.GET)
 	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = ibmLogsRouterOpenApi30.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(ibmLogsRouterOpenApi30.Service.Options.URL, `/tenants/{tenant_id}`, pathParamsMap)
+	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants/{tenant_id}`, pathParamsMap)
 	if err != nil {
 		return
 	}
@@ -336,12 +336,11 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) GetTenantDetailWithConte
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("ibm_logs_router_open_api_3_0", "V0", "GetTenantDetail")
+	sdkHeaders := common.GetSdkHeaders("ibm_cloud_logs_routing", "V0", "GetTenantDetail")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
 
 	request, err := builder.Build()
 	if err != nil {
@@ -349,12 +348,12 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) GetTenantDetailWithConte
 	}
 
 	var rawResponse map[string]json.RawMessage
-	response, err = ibmLogsRouterOpenApi30.Service.Request(request, &rawResponse)
+	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
 	if err != nil {
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTenantDetailsResponse)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTenant)
 		if err != nil {
 			return
 		}
@@ -366,12 +365,12 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) GetTenantDetailWithConte
 
 // DeleteTenant : Delete (offboard) a tenant
 // Delete (offboard) a tenant.
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) DeleteTenant(deleteTenantOptions *DeleteTenantOptions) (result *TenantDeleteResponse, response *core.DetailedResponse, err error) {
-	return ibmLogsRouterOpenApi30.DeleteTenantWithContext(context.Background(), deleteTenantOptions)
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) DeleteTenant(deleteTenantOptions *DeleteTenantOptions) (result *TenantDelete, response *core.DetailedResponse, err error) {
+	return ibmCloudLogsRouting.DeleteTenantWithContext(context.Background(), deleteTenantOptions)
 }
 
 // DeleteTenantWithContext is an alternate form of the DeleteTenant method which supports a Context parameter
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) DeleteTenantWithContext(ctx context.Context, deleteTenantOptions *DeleteTenantOptions) (result *TenantDeleteResponse, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) DeleteTenantWithContext(ctx context.Context, deleteTenantOptions *DeleteTenantOptions) (result *TenantDelete, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(deleteTenantOptions, "deleteTenantOptions cannot be nil")
 	if err != nil {
 		return
@@ -387,8 +386,8 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) DeleteTenantWithContext(
 
 	builder := core.NewRequestBuilder(core.DELETE)
 	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = ibmLogsRouterOpenApi30.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(ibmLogsRouterOpenApi30.Service.Options.URL, `/tenants/{tenant_id}`, pathParamsMap)
+	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants/{tenant_id}`, pathParamsMap)
 	if err != nil {
 		return
 	}
@@ -397,12 +396,11 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) DeleteTenantWithContext(
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("ibm_logs_router_open_api_3_0", "V0", "DeleteTenant")
+	sdkHeaders := common.GetSdkHeaders("ibm_cloud_logs_routing", "V0", "DeleteTenant")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
 
 	request, err := builder.Build()
 	if err != nil {
@@ -410,12 +408,12 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) DeleteTenantWithContext(
 	}
 
 	var rawResponse map[string]json.RawMessage
-	response, err = ibmLogsRouterOpenApi30.Service.Request(request, &rawResponse)
+	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
 	if err != nil {
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTenantDeleteResponse)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTenantDelete)
 		if err != nil {
 			return
 		}
@@ -427,12 +425,12 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) DeleteTenantWithContext(
 
 // UpdateTarget : Update the target of a tenant
 // Update the target of a tenant.
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) UpdateTarget(updateTargetOptions *UpdateTargetOptions) (result *TenantDetailsResponse, response *core.DetailedResponse, err error) {
-	return ibmLogsRouterOpenApi30.UpdateTargetWithContext(context.Background(), updateTargetOptions)
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) UpdateTarget(updateTargetOptions *UpdateTargetOptions) (result *Tenant, response *core.DetailedResponse, err error) {
+	return ibmCloudLogsRouting.UpdateTargetWithContext(context.Background(), updateTargetOptions)
 }
 
 // UpdateTargetWithContext is an alternate form of the UpdateTarget method which supports a Context parameter
-func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) UpdateTargetWithContext(ctx context.Context, updateTargetOptions *UpdateTargetOptions) (result *TenantDetailsResponse, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) UpdateTargetWithContext(ctx context.Context, updateTargetOptions *UpdateTargetOptions) (result *Tenant, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(updateTargetOptions, "updateTargetOptions cannot be nil")
 	if err != nil {
 		return
@@ -448,8 +446,8 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) UpdateTargetWithContext(
 
 	builder := core.NewRequestBuilder(core.PATCH)
 	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = ibmLogsRouterOpenApi30.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(ibmLogsRouterOpenApi30.Service.Options.URL, `/tenants/{tenant_id}`, pathParamsMap)
+	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants/{tenant_id}`, pathParamsMap)
 	if err != nil {
 		return
 	}
@@ -458,14 +456,14 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) UpdateTargetWithContext(
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("ibm_logs_router_open_api_3_0", "V0", "UpdateTarget")
+	sdkHeaders := common.GetSdkHeaders("ibm_cloud_logs_routing", "V0", "UpdateTarget")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
+	builder.AddHeader("Content-Type", "application/merge-patch+json")
 
-	_, err = builder.SetBodyContentJSON(updateTargetOptions.TenantDetailsResponsePatch)
+	_, err = builder.SetBodyContentJSON(updateTargetOptions.TenantPatch)
 	if err != nil {
 		return
 	}
@@ -476,12 +474,12 @@ func (ibmLogsRouterOpenApi30 *IbmLogsRouterOpenApi30V0) UpdateTargetWithContext(
 	}
 
 	var rawResponse map[string]json.RawMessage
-	response, err = ibmLogsRouterOpenApi30.Service.Request(request, &rawResponse)
+	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
 	if err != nil {
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTenantDetailsResponse)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTenant)
 		if err != nil {
 			return
 		}
@@ -513,7 +511,7 @@ type CreateTenantOptions struct {
 }
 
 // NewCreateTenantOptions : Instantiate CreateTenantOptions
-func (*IbmLogsRouterOpenApi30V0) NewCreateTenantOptions(targetType string, targetHost string, targetPort int64, accessCredential string, targetInstanceCrn string) *CreateTenantOptions {
+func (*IbmCloudLogsRoutingV0) NewCreateTenantOptions(targetType string, targetHost string, targetPort int64, accessCredential string, targetInstanceCrn string) *CreateTenantOptions {
 	return &CreateTenantOptions{
 		TargetType:        core.StringPtr(targetType),
 		TargetHost:        core.StringPtr(targetHost),
@@ -569,7 +567,7 @@ type DeleteTenantOptions struct {
 }
 
 // NewDeleteTenantOptions : Instantiate DeleteTenantOptions
-func (*IbmLogsRouterOpenApi30V0) NewDeleteTenantOptions(tenantID *strfmt.UUID) *DeleteTenantOptions {
+func (*IbmCloudLogsRoutingV0) NewDeleteTenantOptions(tenantID *strfmt.UUID) *DeleteTenantOptions {
 	return &DeleteTenantOptions{
 		TenantID: tenantID,
 	}
@@ -597,7 +595,7 @@ type GetTenantDetailOptions struct {
 }
 
 // NewGetTenantDetailOptions : Instantiate GetTenantDetailOptions
-func (*IbmLogsRouterOpenApi30V0) NewGetTenantDetailOptions(tenantID *strfmt.UUID) *GetTenantDetailOptions {
+func (*IbmCloudLogsRoutingV0) NewGetTenantDetailOptions(tenantID *strfmt.UUID) *GetTenantDetailOptions {
 	return &GetTenantDetailOptions{
 		TenantID: tenantID,
 	}
@@ -623,7 +621,7 @@ type ListTenantsOptions struct {
 }
 
 // NewListTenantsOptions : Instantiate ListTenantsOptions
-func (*IbmLogsRouterOpenApi30V0) NewListTenantsOptions() *ListTenantsOptions {
+func (*IbmCloudLogsRoutingV0) NewListTenantsOptions() *ListTenantsOptions {
 	return &ListTenantsOptions{}
 }
 
@@ -633,60 +631,36 @@ func (options *ListTenantsOptions) SetHeaders(param map[string]string) *ListTena
 	return options
 }
 
-// TenantDeleteResponse : Response body from successful delete tenant operation.
-type TenantDeleteResponse struct {
-	// HTTP status code.
-	Status *int64 `json:"status,omitempty"`
-
-	// Status message.
-	Message *string `json:"message,omitempty"`
-}
-
-// UnmarshalTenantDeleteResponse unmarshals an instance of TenantDeleteResponse from the specified map of raw messages.
-func UnmarshalTenantDeleteResponse(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(TenantDeleteResponse)
-	err = core.UnmarshalPrimitive(m, "status", &obj.Status)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "message", &obj.Message)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// TenantDetailsResponse : Response body from a successful list tenant details operation.
-type TenantDetailsResponse struct {
+// Tenant : Response body from a successful list tenant details operation.
+type Tenant struct {
 	// Unique ID of the created instance.
-	ID *strfmt.UUID `json:"id,omitempty"`
+	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// The account ID the tenant belongs to.
-	AccountID *string `json:"account_id,omitempty"`
+	AccountID *string `json:"account_id" validate:"required"`
 
 	// Type of log-sink.
-	TargetType *string `json:"target_type,omitempty"`
+	TargetType *string `json:"target_type" validate:"required"`
 
 	// Host name of log-sink.
-	TargetHost *string `json:"target_host,omitempty"`
+	TargetHost *string `json:"target_host" validate:"required"`
 
 	// Network port of log sink.
-	TargetPort *int64 `json:"target_port,omitempty"`
+	TargetPort *int64 `json:"target_port" validate:"required"`
 
 	// Cloud resource name of the log-sink target instance.
-	TargetInstanceCrn *string `json:"target_instance_crn,omitempty"`
+	TargetInstanceCrn *string `json:"target_instance_crn" validate:"required"`
 
 	// Time stamp the tenant was originally created.
-	CreatedAt *string `json:"created_at,omitempty"`
+	CreatedAt *string `json:"created_at" validate:"required"`
 
 	// time stamp the tenant was last updated.
-	UpdatedAt *string `json:"updated_at,omitempty"`
+	UpdatedAt *string `json:"updated_at" validate:"required"`
 }
 
-// UnmarshalTenantDetailsResponse unmarshals an instance of TenantDetailsResponse from the specified map of raw messages.
-func UnmarshalTenantDetailsResponse(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(TenantDetailsResponse)
+// UnmarshalTenant unmarshals an instance of Tenant from the specified map of raw messages.
+func UnmarshalTenant(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(Tenant)
 	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
 	if err != nil {
 		return
@@ -723,16 +697,16 @@ func UnmarshalTenantDetailsResponse(m map[string]json.RawMessage, result interfa
 	return
 }
 
-// TenantDetailsResponseCollection : Response body from a successful list tenants operation.
-type TenantDetailsResponseCollection struct {
+// TenantCollection : Response body from a successful list tenants operation.
+type TenantCollection struct {
 	// List of tenants in the account.
-	Tenants []TenantDetailsResponse `json:"tenants,omitempty"`
+	Tenants []Tenant `json:"tenants,omitempty"`
 }
 
-// UnmarshalTenantDetailsResponseCollection unmarshals an instance of TenantDetailsResponseCollection from the specified map of raw messages.
-func UnmarshalTenantDetailsResponseCollection(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(TenantDetailsResponseCollection)
-	err = core.UnmarshalModel(m, "tenants", &obj.Tenants, UnmarshalTenantDetailsResponse)
+// UnmarshalTenantCollection unmarshals an instance of TenantCollection from the specified map of raw messages.
+func UnmarshalTenantCollection(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TenantCollection)
+	err = core.UnmarshalModel(m, "tenants", &obj.Tenants, UnmarshalTenant)
 	if err != nil {
 		return
 	}
@@ -740,8 +714,32 @@ func UnmarshalTenantDetailsResponseCollection(m map[string]json.RawMessage, resu
 	return
 }
 
-// TenantDetailsResponsePatch : The request body used when updating the target of a tenant. At least one other value is required.
-type TenantDetailsResponsePatch struct {
+// TenantDelete : Response body from successful delete tenant operation.
+type TenantDelete struct {
+	// HTTP status code.
+	Status *int64 `json:"status" validate:"required"`
+
+	// Status message.
+	Message *string `json:"message" validate:"required"`
+}
+
+// UnmarshalTenantDelete unmarshals an instance of TenantDelete from the specified map of raw messages.
+func UnmarshalTenantDelete(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TenantDelete)
+	err = core.UnmarshalPrimitive(m, "status", &obj.Status)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "message", &obj.Message)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// TenantPatch : The request body used when updating the target of a tenant. At least one other value is required.
+type TenantPatch struct {
 	// Fully-qualified host name of log-sink.
 	TargetHost *string `json:"target_host,omitempty"`
 
@@ -755,9 +753,9 @@ type TenantDetailsResponsePatch struct {
 	TargetInstanceCrn *string `json:"target_instance_crn,omitempty"`
 }
 
-// UnmarshalTenantDetailsResponsePatch unmarshals an instance of TenantDetailsResponsePatch from the specified map of raw messages.
-func UnmarshalTenantDetailsResponsePatch(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(TenantDetailsResponsePatch)
+// UnmarshalTenantPatch unmarshals an instance of TenantPatch from the specified map of raw messages.
+func UnmarshalTenantPatch(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TenantPatch)
 	err = core.UnmarshalPrimitive(m, "target_host", &obj.TargetHost)
 	if err != nil {
 		return
@@ -778,10 +776,10 @@ func UnmarshalTenantDetailsResponsePatch(m map[string]json.RawMessage, result in
 	return
 }
 
-// AsPatch returns a generic map representation of the TenantDetailsResponsePatch
-func (tenantDetailsResponsePatch *TenantDetailsResponsePatch) AsPatch() (_patch map[string]interface{}, err error) {
+// AsPatch returns a generic map representation of the TenantPatch
+func (tenantPatch *TenantPatch) AsPatch() (_patch map[string]interface{}, err error) {
 	var jsonData []byte
-	jsonData, err = json.Marshal(tenantDetailsResponsePatch)
+	jsonData, err = json.Marshal(tenantPatch)
 	if err == nil {
 		err = json.Unmarshal(jsonData, &_patch)
 	}
@@ -795,17 +793,17 @@ type UpdateTargetOptions struct {
 
 	// Updates the target setup. Only the listed fields can be updated and only the fields that need to be changed are
 	// required in the body. At least one field must be specified for the update.
-	TenantDetailsResponsePatch map[string]interface{} `json:"TenantDetailsResponse_patch" validate:"required"`
+	TenantPatch map[string]interface{} `json:"Tenant_patch" validate:"required"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewUpdateTargetOptions : Instantiate UpdateTargetOptions
-func (*IbmLogsRouterOpenApi30V0) NewUpdateTargetOptions(tenantID *strfmt.UUID, tenantDetailsResponsePatch map[string]interface{}) *UpdateTargetOptions {
+func (*IbmCloudLogsRoutingV0) NewUpdateTargetOptions(tenantID *strfmt.UUID, tenantPatch map[string]interface{}) *UpdateTargetOptions {
 	return &UpdateTargetOptions{
-		TenantID:                   tenantID,
-		TenantDetailsResponsePatch: tenantDetailsResponsePatch,
+		TenantID:    tenantID,
+		TenantPatch: tenantPatch,
 	}
 }
 
@@ -815,9 +813,9 @@ func (_options *UpdateTargetOptions) SetTenantID(tenantID *strfmt.UUID) *UpdateT
 	return _options
 }
 
-// SetTenantDetailsResponsePatch : Allow user to set TenantDetailsResponsePatch
-func (_options *UpdateTargetOptions) SetTenantDetailsResponsePatch(tenantDetailsResponsePatch map[string]interface{}) *UpdateTargetOptions {
-	_options.TenantDetailsResponsePatch = tenantDetailsResponsePatch
+// SetTenantPatch : Allow user to set TenantPatch
+func (_options *UpdateTargetOptions) SetTenantPatch(tenantPatch map[string]interface{}) *UpdateTargetOptions {
+	_options.TenantPatch = tenantPatch
 	return _options
 }
 

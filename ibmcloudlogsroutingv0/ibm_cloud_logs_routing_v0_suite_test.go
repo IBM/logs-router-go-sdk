@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ibmlogsrouteropenapi30v0_test
+package ibmcloudlogsroutingv0_test
 
 import (
 	"testing"
@@ -23,7 +23,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-func TestIbmLogsRouterOpenApi30V0(t *testing.T) {
+func TestIbmCloudLogsRoutingV0(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "IbmLogsRouterOpenApi30V0 Suite")
+	RunSpecs(t, "IbmCloudLogsRoutingV0 Suite")
 }

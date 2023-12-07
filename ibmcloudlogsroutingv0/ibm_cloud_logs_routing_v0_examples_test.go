@@ -1,3 +1,4 @@
+//go:build examples
 // +build examples
 
 /**
@@ -23,13 +24,12 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/IBM/cloud-go-sdk/ibmcloudlogsroutingv0"
 	"github.com/IBM/go-sdk-core/v5/core"
+	"github.com/IBM/logs-router-go-sdk/ibmcloudlogsroutingv0"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
 
-//
 // This file provides an example of how to use the IBM Cloud Logs Routing service.
 //
 // The following configuration properties are assumed to be defined:
@@ -41,14 +41,13 @@ import (
 // These configuration properties can be exported as environment variables, or stored
 // in a configuration file and then:
 // export IBM_CREDENTIALS_FILE=<name of configuration file>
-//
 var _ = Describe(`IbmCloudLogsRoutingV0 Examples Tests`, func() {
 
 	const externalConfigFile = "../ibm_cloud_logs_routing_v0.env"
 
 	var (
 		ibmCloudLogsRoutingService *ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0
-		config       map[string]string
+		config                     map[string]string
 	)
 
 	var shouldSkipTest = func() {
@@ -171,8 +170,7 @@ var _ = Describe(`IbmCloudLogsRoutingV0 Examples Tests`, func() {
 			fmt.Println("\nUpdateTarget() result:")
 			// begin-update_target
 
-			tenantPatchModel := &ibmcloudlogsroutingv0.TenantPatch{
-			}
+			tenantPatchModel := &ibmcloudlogsroutingv0.TenantPatch{}
 			tenantPatchModelAsPatch, asPatchErr := tenantPatchModel.AsPatch()
 			Expect(asPatchErr).To(BeNil())
 

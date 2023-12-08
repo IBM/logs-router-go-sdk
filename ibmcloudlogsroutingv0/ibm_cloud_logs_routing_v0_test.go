@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ibmlogsrouteropenapi30v0_test
+package ibmcloudlogsroutingv0_test
 
 import (
 	"bytes"
@@ -27,38 +27,38 @@ import (
 	"time"
 
 	"github.com/IBM/go-sdk-core/v5/core"
-	"github.com/IBM/logs-router-go-sdk/ibmlogsrouteropenapi30v0"
+	"github.com/IBM/logs-router-go-sdk/ibmcloudlogsroutingv0"
 	"github.com/go-openapi/strfmt"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
 
-var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
+var _ = Describe(`IbmCloudLogsRoutingV0`, func() {
 	var testServer *httptest.Server
 	Describe(`Service constructor tests`, func() {
 		It(`Instantiate service client`, func() {
-			ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+			ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 				Authenticator: &core.NoAuthAuthenticator{},
 			})
-			Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+			Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 			Expect(serviceErr).To(BeNil())
 		})
 		It(`Instantiate service client with error: Invalid URL`, func() {
-			ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+			ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 				URL: "{BAD_URL_STRING",
 			})
-			Expect(ibmLogsRouterOpenApi30Service).To(BeNil())
+			Expect(ibmCloudLogsRoutingService).To(BeNil())
 			Expect(serviceErr).ToNot(BeNil())
 		})
 		It(`Instantiate service client with error: Invalid Auth`, func() {
-			ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
-				URL: "https://ibmlogsrouteropenapi30v0/api",
+			ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
+				URL: "https://ibmcloudlogsroutingv0/api",
 				Authenticator: &core.BasicAuthenticator{
 					Username: "",
 					Password: "",
 				},
 			})
-			Expect(ibmLogsRouterOpenApi30Service).To(BeNil())
+			Expect(ibmCloudLogsRoutingService).To(BeNil())
 			Expect(serviceErr).ToNot(BeNil())
 		})
 	})
@@ -66,68 +66,68 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 		Context(`Using external config, construct service client instances`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"IBM_LOGS_ROUTER_OPEN_API_3_0_URL":       "https://ibmlogsrouteropenapi30v0/api",
-				"IBM_LOGS_ROUTER_OPEN_API_3_0_AUTH_TYPE": "noauth",
+				"IBM_CLOUD_LOGS_ROUTING_URL":       "https://ibmcloudlogsroutingv0/api",
+				"IBM_CLOUD_LOGS_ROUTING_AUTH_TYPE": "noauth",
 			}
 
 			It(`Create service client using external config successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{})
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0UsingExternalConfig(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{})
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 				Expect(serviceErr).To(BeNil())
 				ClearTestEnvironment(testEnvironment)
 
-				clone := ibmLogsRouterOpenApi30Service.Clone()
+				clone := ibmCloudLogsRoutingService.Clone()
 				Expect(clone).ToNot(BeNil())
-				Expect(clone.Service != ibmLogsRouterOpenApi30Service.Service).To(BeTrue())
-				Expect(clone.GetServiceURL()).To(Equal(ibmLogsRouterOpenApi30Service.GetServiceURL()))
-				Expect(clone.Service.Options.Authenticator).To(Equal(ibmLogsRouterOpenApi30Service.Service.Options.Authenticator))
+				Expect(clone.Service != ibmCloudLogsRoutingService.Service).To(BeTrue())
+				Expect(clone.GetServiceURL()).To(Equal(ibmCloudLogsRoutingService.GetServiceURL()))
+				Expect(clone.Service.Options.Authenticator).To(Equal(ibmCloudLogsRoutingService.Service.Options.Authenticator))
 			})
 			It(`Create service client using external config and set url from constructor successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0UsingExternalConfig(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL: "https://testService/api",
 				})
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service.Service.GetServiceURL()).To(Equal("https://testService/api"))
+				Expect(ibmCloudLogsRoutingService.Service.GetServiceURL()).To(Equal("https://testService/api"))
 				ClearTestEnvironment(testEnvironment)
 
-				clone := ibmLogsRouterOpenApi30Service.Clone()
+				clone := ibmCloudLogsRoutingService.Clone()
 				Expect(clone).ToNot(BeNil())
-				Expect(clone.Service != ibmLogsRouterOpenApi30Service.Service).To(BeTrue())
-				Expect(clone.GetServiceURL()).To(Equal(ibmLogsRouterOpenApi30Service.GetServiceURL()))
-				Expect(clone.Service.Options.Authenticator).To(Equal(ibmLogsRouterOpenApi30Service.Service.Options.Authenticator))
+				Expect(clone.Service != ibmCloudLogsRoutingService.Service).To(BeTrue())
+				Expect(clone.GetServiceURL()).To(Equal(ibmCloudLogsRoutingService.GetServiceURL()))
+				Expect(clone.Service.Options.Authenticator).To(Equal(ibmCloudLogsRoutingService.Service.Options.Authenticator))
 			})
 			It(`Create service client using external config and set url programatically successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{})
-				err := ibmLogsRouterOpenApi30Service.SetServiceURL("https://testService/api")
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0UsingExternalConfig(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{})
+				err := ibmCloudLogsRoutingService.SetServiceURL("https://testService/api")
 				Expect(err).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service.Service.GetServiceURL()).To(Equal("https://testService/api"))
+				Expect(ibmCloudLogsRoutingService.Service.GetServiceURL()).To(Equal("https://testService/api"))
 				ClearTestEnvironment(testEnvironment)
 
-				clone := ibmLogsRouterOpenApi30Service.Clone()
+				clone := ibmCloudLogsRoutingService.Clone()
 				Expect(clone).ToNot(BeNil())
-				Expect(clone.Service != ibmLogsRouterOpenApi30Service.Service).To(BeTrue())
-				Expect(clone.GetServiceURL()).To(Equal(ibmLogsRouterOpenApi30Service.GetServiceURL()))
-				Expect(clone.Service.Options.Authenticator).To(Equal(ibmLogsRouterOpenApi30Service.Service.Options.Authenticator))
+				Expect(clone.Service != ibmCloudLogsRoutingService.Service).To(BeTrue())
+				Expect(clone.GetServiceURL()).To(Equal(ibmCloudLogsRoutingService.GetServiceURL()))
+				Expect(clone.Service.Options.Authenticator).To(Equal(ibmCloudLogsRoutingService.Service.Options.Authenticator))
 			})
 		})
 		Context(`Using external config, construct service client instances with error: Invalid Auth`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"IBM_LOGS_ROUTER_OPEN_API_3_0_URL":       "https://ibmlogsrouteropenapi30v0/api",
-				"IBM_LOGS_ROUTER_OPEN_API_3_0_AUTH_TYPE": "someOtherAuth",
+				"IBM_CLOUD_LOGS_ROUTING_URL":       "https://ibmcloudlogsroutingv0/api",
+				"IBM_CLOUD_LOGS_ROUTING_AUTH_TYPE": "someOtherAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
-			ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{})
+			ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0UsingExternalConfig(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{})
 
 			It(`Instantiate service client with error`, func() {
-				Expect(ibmLogsRouterOpenApi30Service).To(BeNil())
+				Expect(ibmCloudLogsRoutingService).To(BeNil())
 				Expect(serviceErr).ToNot(BeNil())
 				ClearTestEnvironment(testEnvironment)
 			})
@@ -135,16 +135,16 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid URL`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"IBM_LOGS_ROUTER_OPEN_API_3_0_AUTH_TYPE": "NOAuth",
+				"IBM_CLOUD_LOGS_ROUTING_AUTH_TYPE": "NOAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
-			ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0UsingExternalConfig(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+			ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0UsingExternalConfig(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 				URL: "{BAD_URL_STRING",
 			})
 
 			It(`Instantiate service client with error`, func() {
-				Expect(ibmLogsRouterOpenApi30Service).To(BeNil())
+				Expect(ibmCloudLogsRoutingService).To(BeNil())
 				Expect(serviceErr).ToNot(BeNil())
 				ClearTestEnvironment(testEnvironment)
 			})
@@ -154,7 +154,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 		It(`GetServiceURLForRegion(region string)`, func() {
 			var url string
 			var err error
-			url, err = ibmlogsrouteropenapi30v0.GetServiceURLForRegion("INVALID_REGION")
+			url, err = ibmcloudlogsroutingv0.GetServiceURLForRegion("INVALID_REGION")
 			Expect(url).To(BeEmpty())
 			Expect(err).ToNot(BeNil())
 			fmt.Fprintf(GinkgoWriter, "Expected error: %s\n", err.Error())
@@ -162,8 +162,8 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 	})
 	Describe(`Parameterized URL tests`, func() {
 		It(`Format parameterized URL with all default values`, func() {
-			constructedURL, err := ibmlogsrouteropenapi30v0.ConstructServiceURL(nil)
-			Expect(constructedURL).To(Equal("https://management.eu-gb.logs-router.cloud.ibm.com/v1"))
+			constructedURL, err := ibmcloudlogsroutingv0.ConstructServiceURL(nil)
+			Expect(constructedURL).To(Equal("https://management.us-east.logs-router.cloud.ibm.com/v1"))
 			Expect(constructedURL).ToNot(BeNil())
 			Expect(err).To(BeNil())
 		})
@@ -171,7 +171,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 			var providedUrlVariables = map[string]string{
 				"invalid_variable_name": "value",
 			}
-			constructedURL, err := ibmlogsrouteropenapi30v0.ConstructServiceURL(providedUrlVariables)
+			constructedURL, err := ibmcloudlogsroutingv0.ConstructServiceURL(providedUrlVariables)
 			Expect(constructedURL).To(Equal(""))
 			Expect(err).ToNot(BeNil())
 		})
@@ -192,25 +192,25 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke ListTenants with error: Operation response processing error`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Construct an instance of the ListTenantsOptions model
-				listTenantsOptionsModel := new(ibmlogsrouteropenapi30v0.ListTenantsOptions)
+				listTenantsOptionsModel := new(ibmcloudlogsroutingv0.ListTenantsOptions)
 				listTenantsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.ListTenants(listTenantsOptionsModel)
+				result, response, operationErr := ibmCloudLogsRoutingService.ListTenants(listTenantsOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
 
 				// Enable retries and test again
-				ibmLogsRouterOpenApi30Service.EnableRetries(0, 0)
-				result, response, operationErr = ibmLogsRouterOpenApi30Service.ListTenants(listTenantsOptionsModel)
+				ibmCloudLogsRoutingService.EnableRetries(0, 0)
+				result, response, operationErr = ibmCloudLogsRoutingService.ListTenants(listTenantsOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
@@ -241,28 +241,28 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke ListTenants successfully with retries`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
-				ibmLogsRouterOpenApi30Service.EnableRetries(0, 0)
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
+				ibmCloudLogsRoutingService.EnableRetries(0, 0)
 
 				// Construct an instance of the ListTenantsOptions model
-				listTenantsOptionsModel := new(ibmlogsrouteropenapi30v0.ListTenantsOptions)
+				listTenantsOptionsModel := new(ibmcloudlogsroutingv0.ListTenantsOptions)
 				listTenantsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
 				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc()
-				_, _, operationErr := ibmLogsRouterOpenApi30Service.ListTenantsWithContext(ctx, listTenantsOptionsModel)
+				_, _, operationErr := ibmCloudLogsRoutingService.ListTenantsWithContext(ctx, listTenantsOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 
 				// Disable retries and test again
-				ibmLogsRouterOpenApi30Service.DisableRetries()
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.ListTenants(listTenantsOptionsModel)
+				ibmCloudLogsRoutingService.DisableRetries()
+				result, response, operationErr := ibmCloudLogsRoutingService.ListTenants(listTenantsOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
@@ -270,7 +270,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				// Re-test the timeout error with retries disabled
 				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc2()
-				_, _, operationErr = ibmLogsRouterOpenApi30Service.ListTenantsWithContext(ctx, listTenantsOptionsModel)
+				_, _, operationErr = ibmCloudLogsRoutingService.ListTenantsWithContext(ctx, listTenantsOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 			})
@@ -294,45 +294,45 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke ListTenants successfully`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.ListTenants(nil)
+				result, response, operationErr := ibmCloudLogsRoutingService.ListTenants(nil)
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
 				// Construct an instance of the ListTenantsOptions model
-				listTenantsOptionsModel := new(ibmlogsrouteropenapi30v0.ListTenantsOptions)
+				listTenantsOptionsModel := new(ibmcloudlogsroutingv0.ListTenantsOptions)
 				listTenantsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = ibmLogsRouterOpenApi30Service.ListTenants(listTenantsOptionsModel)
+				result, response, operationErr = ibmCloudLogsRoutingService.ListTenants(listTenantsOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
 
 			})
 			It(`Invoke ListTenants with error: Operation request error`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Construct an instance of the ListTenantsOptions model
-				listTenantsOptionsModel := new(ibmlogsrouteropenapi30v0.ListTenantsOptions)
+				listTenantsOptionsModel := new(ibmcloudlogsroutingv0.ListTenantsOptions)
 				listTenantsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
-				err := ibmLogsRouterOpenApi30Service.SetServiceURL("")
+				err := ibmCloudLogsRoutingService.SetServiceURL("")
 				Expect(err).To(BeNil())
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.ListTenants(listTenantsOptionsModel)
+				result, response, operationErr := ibmCloudLogsRoutingService.ListTenants(listTenantsOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
 				Expect(response).To(BeNil())
@@ -352,19 +352,19 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke ListTenants successfully`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Construct an instance of the ListTenantsOptions model
-				listTenantsOptionsModel := new(ibmlogsrouteropenapi30v0.ListTenantsOptions)
+				listTenantsOptionsModel := new(ibmcloudlogsroutingv0.ListTenantsOptions)
 				listTenantsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.ListTenants(listTenantsOptionsModel)
+				result, response, operationErr := ibmCloudLogsRoutingService.ListTenants(listTenantsOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 
@@ -392,15 +392,15 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke CreateTenant with error: Operation response processing error`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Construct an instance of the CreateTenantOptions model
-				createTenantOptionsModel := new(ibmlogsrouteropenapi30v0.CreateTenantOptions)
+				createTenantOptionsModel := new(ibmcloudlogsroutingv0.CreateTenantOptions)
 				createTenantOptionsModel.TargetType = core.StringPtr("logdna")
 				createTenantOptionsModel.TargetHost = core.StringPtr("www.example.com")
 				createTenantOptionsModel.TargetPort = core.Int64Ptr(int64(38))
@@ -408,14 +408,14 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				createTenantOptionsModel.TargetInstanceCrn = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
 				createTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.CreateTenant(createTenantOptionsModel)
+				result, response, operationErr := ibmCloudLogsRoutingService.CreateTenant(createTenantOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
 
 				// Enable retries and test again
-				ibmLogsRouterOpenApi30Service.EnableRetries(0, 0)
-				result, response, operationErr = ibmLogsRouterOpenApi30Service.CreateTenant(createTenantOptionsModel)
+				ibmCloudLogsRoutingService.EnableRetries(0, 0)
+				result, response, operationErr = ibmCloudLogsRoutingService.CreateTenant(createTenantOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
@@ -462,16 +462,16 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke CreateTenant successfully with retries`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
-				ibmLogsRouterOpenApi30Service.EnableRetries(0, 0)
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
+				ibmCloudLogsRoutingService.EnableRetries(0, 0)
 
 				// Construct an instance of the CreateTenantOptions model
-				createTenantOptionsModel := new(ibmlogsrouteropenapi30v0.CreateTenantOptions)
+				createTenantOptionsModel := new(ibmcloudlogsroutingv0.CreateTenantOptions)
 				createTenantOptionsModel.TargetType = core.StringPtr("logdna")
 				createTenantOptionsModel.TargetHost = core.StringPtr("www.example.com")
 				createTenantOptionsModel.TargetPort = core.Int64Ptr(int64(38))
@@ -482,13 +482,13 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				// Invoke operation with a Context to test a timeout error
 				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc()
-				_, _, operationErr := ibmLogsRouterOpenApi30Service.CreateTenantWithContext(ctx, createTenantOptionsModel)
+				_, _, operationErr := ibmCloudLogsRoutingService.CreateTenantWithContext(ctx, createTenantOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 
 				// Disable retries and test again
-				ibmLogsRouterOpenApi30Service.DisableRetries()
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.CreateTenant(createTenantOptionsModel)
+				ibmCloudLogsRoutingService.DisableRetries()
+				result, response, operationErr := ibmCloudLogsRoutingService.CreateTenant(createTenantOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
@@ -496,7 +496,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				// Re-test the timeout error with retries disabled
 				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc2()
-				_, _, operationErr = ibmLogsRouterOpenApi30Service.CreateTenantWithContext(ctx, createTenantOptionsModel)
+				_, _, operationErr = ibmCloudLogsRoutingService.CreateTenantWithContext(ctx, createTenantOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 			})
@@ -536,21 +536,21 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke CreateTenant successfully`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.CreateTenant(nil)
+				result, response, operationErr := ibmCloudLogsRoutingService.CreateTenant(nil)
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
 				// Construct an instance of the CreateTenantOptions model
-				createTenantOptionsModel := new(ibmlogsrouteropenapi30v0.CreateTenantOptions)
+				createTenantOptionsModel := new(ibmcloudlogsroutingv0.CreateTenantOptions)
 				createTenantOptionsModel.TargetType = core.StringPtr("logdna")
 				createTenantOptionsModel.TargetHost = core.StringPtr("www.example.com")
 				createTenantOptionsModel.TargetPort = core.Int64Ptr(int64(38))
@@ -559,22 +559,22 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				createTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = ibmLogsRouterOpenApi30Service.CreateTenant(createTenantOptionsModel)
+				result, response, operationErr = ibmCloudLogsRoutingService.CreateTenant(createTenantOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
 
 			})
 			It(`Invoke CreateTenant with error: Operation validation and request error`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Construct an instance of the CreateTenantOptions model
-				createTenantOptionsModel := new(ibmlogsrouteropenapi30v0.CreateTenantOptions)
+				createTenantOptionsModel := new(ibmcloudlogsroutingv0.CreateTenantOptions)
 				createTenantOptionsModel.TargetType = core.StringPtr("logdna")
 				createTenantOptionsModel.TargetHost = core.StringPtr("www.example.com")
 				createTenantOptionsModel.TargetPort = core.Int64Ptr(int64(38))
@@ -582,17 +582,17 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				createTenantOptionsModel.TargetInstanceCrn = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
 				createTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
-				err := ibmLogsRouterOpenApi30Service.SetServiceURL("")
+				err := ibmCloudLogsRoutingService.SetServiceURL("")
 				Expect(err).To(BeNil())
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.CreateTenant(createTenantOptionsModel)
+				result, response, operationErr := ibmCloudLogsRoutingService.CreateTenant(createTenantOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 				// Construct a second instance of the CreateTenantOptions model with no property values
-				createTenantOptionsModelNew := new(ibmlogsrouteropenapi30v0.CreateTenantOptions)
+				createTenantOptionsModelNew := new(ibmcloudlogsroutingv0.CreateTenantOptions)
 				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = ibmLogsRouterOpenApi30Service.CreateTenant(createTenantOptionsModelNew)
+				result, response, operationErr = ibmCloudLogsRoutingService.CreateTenant(createTenantOptionsModelNew)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
@@ -611,15 +611,15 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke CreateTenant successfully`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Construct an instance of the CreateTenantOptions model
-				createTenantOptionsModel := new(ibmlogsrouteropenapi30v0.CreateTenantOptions)
+				createTenantOptionsModel := new(ibmcloudlogsroutingv0.CreateTenantOptions)
 				createTenantOptionsModel.TargetType = core.StringPtr("logdna")
 				createTenantOptionsModel.TargetHost = core.StringPtr("www.example.com")
 				createTenantOptionsModel.TargetPort = core.Int64Ptr(int64(38))
@@ -628,7 +628,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				createTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.CreateTenant(createTenantOptionsModel)
+				result, response, operationErr := ibmCloudLogsRoutingService.CreateTenant(createTenantOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 
@@ -656,26 +656,26 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke GetTenantDetail with error: Operation response processing error`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Construct an instance of the GetTenantDetailOptions model
-				getTenantDetailOptionsModel := new(ibmlogsrouteropenapi30v0.GetTenantDetailOptions)
+				getTenantDetailOptionsModel := new(ibmcloudlogsroutingv0.GetTenantDetailOptions)
 				getTenantDetailOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				getTenantDetailOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.GetTenantDetail(getTenantDetailOptionsModel)
+				result, response, operationErr := ibmCloudLogsRoutingService.GetTenantDetail(getTenantDetailOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
 
 				// Enable retries and test again
-				ibmLogsRouterOpenApi30Service.EnableRetries(0, 0)
-				result, response, operationErr = ibmLogsRouterOpenApi30Service.GetTenantDetail(getTenantDetailOptionsModel)
+				ibmCloudLogsRoutingService.EnableRetries(0, 0)
+				result, response, operationErr = ibmCloudLogsRoutingService.GetTenantDetail(getTenantDetailOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
@@ -706,29 +706,29 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke GetTenantDetail successfully with retries`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
-				ibmLogsRouterOpenApi30Service.EnableRetries(0, 0)
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
+				ibmCloudLogsRoutingService.EnableRetries(0, 0)
 
 				// Construct an instance of the GetTenantDetailOptions model
-				getTenantDetailOptionsModel := new(ibmlogsrouteropenapi30v0.GetTenantDetailOptions)
+				getTenantDetailOptionsModel := new(ibmcloudlogsroutingv0.GetTenantDetailOptions)
 				getTenantDetailOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				getTenantDetailOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
 				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc()
-				_, _, operationErr := ibmLogsRouterOpenApi30Service.GetTenantDetailWithContext(ctx, getTenantDetailOptionsModel)
+				_, _, operationErr := ibmCloudLogsRoutingService.GetTenantDetailWithContext(ctx, getTenantDetailOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 
 				// Disable retries and test again
-				ibmLogsRouterOpenApi30Service.DisableRetries()
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.GetTenantDetail(getTenantDetailOptionsModel)
+				ibmCloudLogsRoutingService.DisableRetries()
+				result, response, operationErr := ibmCloudLogsRoutingService.GetTenantDetail(getTenantDetailOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
@@ -736,7 +736,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				// Re-test the timeout error with retries disabled
 				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc2()
-				_, _, operationErr = ibmLogsRouterOpenApi30Service.GetTenantDetailWithContext(ctx, getTenantDetailOptionsModel)
+				_, _, operationErr = ibmCloudLogsRoutingService.GetTenantDetailWithContext(ctx, getTenantDetailOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 			})
@@ -760,55 +760,55 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke GetTenantDetail successfully`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.GetTenantDetail(nil)
+				result, response, operationErr := ibmCloudLogsRoutingService.GetTenantDetail(nil)
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
 				// Construct an instance of the GetTenantDetailOptions model
-				getTenantDetailOptionsModel := new(ibmlogsrouteropenapi30v0.GetTenantDetailOptions)
+				getTenantDetailOptionsModel := new(ibmcloudlogsroutingv0.GetTenantDetailOptions)
 				getTenantDetailOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				getTenantDetailOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = ibmLogsRouterOpenApi30Service.GetTenantDetail(getTenantDetailOptionsModel)
+				result, response, operationErr = ibmCloudLogsRoutingService.GetTenantDetail(getTenantDetailOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
 
 			})
 			It(`Invoke GetTenantDetail with error: Operation validation and request error`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Construct an instance of the GetTenantDetailOptions model
-				getTenantDetailOptionsModel := new(ibmlogsrouteropenapi30v0.GetTenantDetailOptions)
+				getTenantDetailOptionsModel := new(ibmcloudlogsroutingv0.GetTenantDetailOptions)
 				getTenantDetailOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				getTenantDetailOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
-				err := ibmLogsRouterOpenApi30Service.SetServiceURL("")
+				err := ibmCloudLogsRoutingService.SetServiceURL("")
 				Expect(err).To(BeNil())
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.GetTenantDetail(getTenantDetailOptionsModel)
+				result, response, operationErr := ibmCloudLogsRoutingService.GetTenantDetail(getTenantDetailOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 				// Construct a second instance of the GetTenantDetailOptions model with no property values
-				getTenantDetailOptionsModelNew := new(ibmlogsrouteropenapi30v0.GetTenantDetailOptions)
+				getTenantDetailOptionsModelNew := new(ibmcloudlogsroutingv0.GetTenantDetailOptions)
 				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = ibmLogsRouterOpenApi30Service.GetTenantDetail(getTenantDetailOptionsModelNew)
+				result, response, operationErr = ibmCloudLogsRoutingService.GetTenantDetail(getTenantDetailOptionsModelNew)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
@@ -827,20 +827,20 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke GetTenantDetail successfully`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Construct an instance of the GetTenantDetailOptions model
-				getTenantDetailOptionsModel := new(ibmlogsrouteropenapi30v0.GetTenantDetailOptions)
+				getTenantDetailOptionsModel := new(ibmcloudlogsroutingv0.GetTenantDetailOptions)
 				getTenantDetailOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				getTenantDetailOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.GetTenantDetail(getTenantDetailOptionsModel)
+				result, response, operationErr := ibmCloudLogsRoutingService.GetTenantDetail(getTenantDetailOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 
@@ -868,26 +868,26 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke DeleteTenant with error: Operation response processing error`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Construct an instance of the DeleteTenantOptions model
-				deleteTenantOptionsModel := new(ibmlogsrouteropenapi30v0.DeleteTenantOptions)
+				deleteTenantOptionsModel := new(ibmcloudlogsroutingv0.DeleteTenantOptions)
 				deleteTenantOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				deleteTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.DeleteTenant(deleteTenantOptionsModel)
+				result, response, operationErr := ibmCloudLogsRoutingService.DeleteTenant(deleteTenantOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
 
 				// Enable retries and test again
-				ibmLogsRouterOpenApi30Service.EnableRetries(0, 0)
-				result, response, operationErr = ibmLogsRouterOpenApi30Service.DeleteTenant(deleteTenantOptionsModel)
+				ibmCloudLogsRoutingService.EnableRetries(0, 0)
+				result, response, operationErr = ibmCloudLogsRoutingService.DeleteTenant(deleteTenantOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
@@ -918,29 +918,29 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke DeleteTenant successfully with retries`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
-				ibmLogsRouterOpenApi30Service.EnableRetries(0, 0)
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
+				ibmCloudLogsRoutingService.EnableRetries(0, 0)
 
 				// Construct an instance of the DeleteTenantOptions model
-				deleteTenantOptionsModel := new(ibmlogsrouteropenapi30v0.DeleteTenantOptions)
+				deleteTenantOptionsModel := new(ibmcloudlogsroutingv0.DeleteTenantOptions)
 				deleteTenantOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				deleteTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
 				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc()
-				_, _, operationErr := ibmLogsRouterOpenApi30Service.DeleteTenantWithContext(ctx, deleteTenantOptionsModel)
+				_, _, operationErr := ibmCloudLogsRoutingService.DeleteTenantWithContext(ctx, deleteTenantOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 
 				// Disable retries and test again
-				ibmLogsRouterOpenApi30Service.DisableRetries()
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.DeleteTenant(deleteTenantOptionsModel)
+				ibmCloudLogsRoutingService.DisableRetries()
+				result, response, operationErr := ibmCloudLogsRoutingService.DeleteTenant(deleteTenantOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
@@ -948,7 +948,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				// Re-test the timeout error with retries disabled
 				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc2()
-				_, _, operationErr = ibmLogsRouterOpenApi30Service.DeleteTenantWithContext(ctx, deleteTenantOptionsModel)
+				_, _, operationErr = ibmCloudLogsRoutingService.DeleteTenantWithContext(ctx, deleteTenantOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 			})
@@ -972,55 +972,55 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke DeleteTenant successfully`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.DeleteTenant(nil)
+				result, response, operationErr := ibmCloudLogsRoutingService.DeleteTenant(nil)
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
 				// Construct an instance of the DeleteTenantOptions model
-				deleteTenantOptionsModel := new(ibmlogsrouteropenapi30v0.DeleteTenantOptions)
+				deleteTenantOptionsModel := new(ibmcloudlogsroutingv0.DeleteTenantOptions)
 				deleteTenantOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				deleteTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = ibmLogsRouterOpenApi30Service.DeleteTenant(deleteTenantOptionsModel)
+				result, response, operationErr = ibmCloudLogsRoutingService.DeleteTenant(deleteTenantOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
 
 			})
 			It(`Invoke DeleteTenant with error: Operation validation and request error`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Construct an instance of the DeleteTenantOptions model
-				deleteTenantOptionsModel := new(ibmlogsrouteropenapi30v0.DeleteTenantOptions)
+				deleteTenantOptionsModel := new(ibmcloudlogsroutingv0.DeleteTenantOptions)
 				deleteTenantOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				deleteTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
-				err := ibmLogsRouterOpenApi30Service.SetServiceURL("")
+				err := ibmCloudLogsRoutingService.SetServiceURL("")
 				Expect(err).To(BeNil())
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.DeleteTenant(deleteTenantOptionsModel)
+				result, response, operationErr := ibmCloudLogsRoutingService.DeleteTenant(deleteTenantOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 				// Construct a second instance of the DeleteTenantOptions model with no property values
-				deleteTenantOptionsModelNew := new(ibmlogsrouteropenapi30v0.DeleteTenantOptions)
+				deleteTenantOptionsModelNew := new(ibmcloudlogsroutingv0.DeleteTenantOptions)
 				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = ibmLogsRouterOpenApi30Service.DeleteTenant(deleteTenantOptionsModelNew)
+				result, response, operationErr = ibmCloudLogsRoutingService.DeleteTenant(deleteTenantOptionsModelNew)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
@@ -1039,20 +1039,20 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke DeleteTenant successfully`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Construct an instance of the DeleteTenantOptions model
-				deleteTenantOptionsModel := new(ibmlogsrouteropenapi30v0.DeleteTenantOptions)
+				deleteTenantOptionsModel := new(ibmcloudlogsroutingv0.DeleteTenantOptions)
 				deleteTenantOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				deleteTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.DeleteTenant(deleteTenantOptionsModel)
+				result, response, operationErr := ibmCloudLogsRoutingService.DeleteTenant(deleteTenantOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 
@@ -1080,36 +1080,36 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke UpdateTarget with error: Operation response processing error`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
-				// Construct an instance of the TenantDetailsResponsePatch model
-				tenantDetailsResponsePatchModel := new(ibmlogsrouteropenapi30v0.TenantDetailsResponsePatch)
-				tenantDetailsResponsePatchModel.TargetHost = core.StringPtr("www.example.com")
-				tenantDetailsResponsePatchModel.TargetPort = core.Int64Ptr(int64(38))
-				tenantDetailsResponsePatchModel.AccessCredential = core.StringPtr("testString")
-				tenantDetailsResponsePatchModel.TargetInstanceCrn = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				tenantDetailsResponsePatchModelAsPatch, asPatchErr := tenantDetailsResponsePatchModel.AsPatch()
+				// Construct an instance of the TenantPatch model
+				tenantPatchModel := new(ibmcloudlogsroutingv0.TenantPatch)
+				tenantPatchModel.TargetHost = core.StringPtr("www.example.com")
+				tenantPatchModel.TargetPort = core.Int64Ptr(int64(38))
+				tenantPatchModel.AccessCredential = core.StringPtr("testString")
+				tenantPatchModel.TargetInstanceCrn = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				tenantPatchModelAsPatch, asPatchErr := tenantPatchModel.AsPatch()
 				Expect(asPatchErr).To(BeNil())
 
 				// Construct an instance of the UpdateTargetOptions model
-				updateTargetOptionsModel := new(ibmlogsrouteropenapi30v0.UpdateTargetOptions)
+				updateTargetOptionsModel := new(ibmcloudlogsroutingv0.UpdateTargetOptions)
 				updateTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
-				updateTargetOptionsModel.TenantDetailsResponsePatch = tenantDetailsResponsePatchModelAsPatch
+				updateTargetOptionsModel.TenantPatch = tenantPatchModelAsPatch
 				updateTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.UpdateTarget(updateTargetOptionsModel)
+				result, response, operationErr := ibmCloudLogsRoutingService.UpdateTarget(updateTargetOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
 
 				// Enable retries and test again
-				ibmLogsRouterOpenApi30Service.EnableRetries(0, 0)
-				result, response, operationErr = ibmLogsRouterOpenApi30Service.UpdateTarget(updateTargetOptionsModel)
+				ibmCloudLogsRoutingService.EnableRetries(0, 0)
+				result, response, operationErr = ibmCloudLogsRoutingService.UpdateTarget(updateTargetOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
@@ -1156,39 +1156,39 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke UpdateTarget successfully with retries`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
-				ibmLogsRouterOpenApi30Service.EnableRetries(0, 0)
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
+				ibmCloudLogsRoutingService.EnableRetries(0, 0)
 
-				// Construct an instance of the TenantDetailsResponsePatch model
-				tenantDetailsResponsePatchModel := new(ibmlogsrouteropenapi30v0.TenantDetailsResponsePatch)
-				tenantDetailsResponsePatchModel.TargetHost = core.StringPtr("www.example.com")
-				tenantDetailsResponsePatchModel.TargetPort = core.Int64Ptr(int64(38))
-				tenantDetailsResponsePatchModel.AccessCredential = core.StringPtr("testString")
-				tenantDetailsResponsePatchModel.TargetInstanceCrn = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				tenantDetailsResponsePatchModelAsPatch, asPatchErr := tenantDetailsResponsePatchModel.AsPatch()
+				// Construct an instance of the TenantPatch model
+				tenantPatchModel := new(ibmcloudlogsroutingv0.TenantPatch)
+				tenantPatchModel.TargetHost = core.StringPtr("www.example.com")
+				tenantPatchModel.TargetPort = core.Int64Ptr(int64(38))
+				tenantPatchModel.AccessCredential = core.StringPtr("testString")
+				tenantPatchModel.TargetInstanceCrn = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				tenantPatchModelAsPatch, asPatchErr := tenantPatchModel.AsPatch()
 				Expect(asPatchErr).To(BeNil())
 
 				// Construct an instance of the UpdateTargetOptions model
-				updateTargetOptionsModel := new(ibmlogsrouteropenapi30v0.UpdateTargetOptions)
+				updateTargetOptionsModel := new(ibmcloudlogsroutingv0.UpdateTargetOptions)
 				updateTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
-				updateTargetOptionsModel.TenantDetailsResponsePatch = tenantDetailsResponsePatchModelAsPatch
+				updateTargetOptionsModel.TenantPatch = tenantPatchModelAsPatch
 				updateTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
 				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc()
-				_, _, operationErr := ibmLogsRouterOpenApi30Service.UpdateTargetWithContext(ctx, updateTargetOptionsModel)
+				_, _, operationErr := ibmCloudLogsRoutingService.UpdateTargetWithContext(ctx, updateTargetOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 
 				// Disable retries and test again
-				ibmLogsRouterOpenApi30Service.DisableRetries()
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.UpdateTarget(updateTargetOptionsModel)
+				ibmCloudLogsRoutingService.DisableRetries()
+				result, response, operationErr := ibmCloudLogsRoutingService.UpdateTarget(updateTargetOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
@@ -1196,7 +1196,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				// Re-test the timeout error with retries disabled
 				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc2()
-				_, _, operationErr = ibmLogsRouterOpenApi30Service.UpdateTargetWithContext(ctx, updateTargetOptionsModel)
+				_, _, operationErr = ibmCloudLogsRoutingService.UpdateTargetWithContext(ctx, updateTargetOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 			})
@@ -1236,75 +1236,75 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke UpdateTarget successfully`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
 				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.UpdateTarget(nil)
+				result, response, operationErr := ibmCloudLogsRoutingService.UpdateTarget(nil)
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
-				// Construct an instance of the TenantDetailsResponsePatch model
-				tenantDetailsResponsePatchModel := new(ibmlogsrouteropenapi30v0.TenantDetailsResponsePatch)
-				tenantDetailsResponsePatchModel.TargetHost = core.StringPtr("www.example.com")
-				tenantDetailsResponsePatchModel.TargetPort = core.Int64Ptr(int64(38))
-				tenantDetailsResponsePatchModel.AccessCredential = core.StringPtr("testString")
-				tenantDetailsResponsePatchModel.TargetInstanceCrn = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				tenantDetailsResponsePatchModelAsPatch, asPatchErr := tenantDetailsResponsePatchModel.AsPatch()
+				// Construct an instance of the TenantPatch model
+				tenantPatchModel := new(ibmcloudlogsroutingv0.TenantPatch)
+				tenantPatchModel.TargetHost = core.StringPtr("www.example.com")
+				tenantPatchModel.TargetPort = core.Int64Ptr(int64(38))
+				tenantPatchModel.AccessCredential = core.StringPtr("testString")
+				tenantPatchModel.TargetInstanceCrn = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				tenantPatchModelAsPatch, asPatchErr := tenantPatchModel.AsPatch()
 				Expect(asPatchErr).To(BeNil())
 
 				// Construct an instance of the UpdateTargetOptions model
-				updateTargetOptionsModel := new(ibmlogsrouteropenapi30v0.UpdateTargetOptions)
+				updateTargetOptionsModel := new(ibmcloudlogsroutingv0.UpdateTargetOptions)
 				updateTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
-				updateTargetOptionsModel.TenantDetailsResponsePatch = tenantDetailsResponsePatchModelAsPatch
+				updateTargetOptionsModel.TenantPatch = tenantPatchModelAsPatch
 				updateTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = ibmLogsRouterOpenApi30Service.UpdateTarget(updateTargetOptionsModel)
+				result, response, operationErr = ibmCloudLogsRoutingService.UpdateTarget(updateTargetOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
 
 			})
 			It(`Invoke UpdateTarget with error: Operation validation and request error`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
-				// Construct an instance of the TenantDetailsResponsePatch model
-				tenantDetailsResponsePatchModel := new(ibmlogsrouteropenapi30v0.TenantDetailsResponsePatch)
-				tenantDetailsResponsePatchModel.TargetHost = core.StringPtr("www.example.com")
-				tenantDetailsResponsePatchModel.TargetPort = core.Int64Ptr(int64(38))
-				tenantDetailsResponsePatchModel.AccessCredential = core.StringPtr("testString")
-				tenantDetailsResponsePatchModel.TargetInstanceCrn = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				tenantDetailsResponsePatchModelAsPatch, asPatchErr := tenantDetailsResponsePatchModel.AsPatch()
+				// Construct an instance of the TenantPatch model
+				tenantPatchModel := new(ibmcloudlogsroutingv0.TenantPatch)
+				tenantPatchModel.TargetHost = core.StringPtr("www.example.com")
+				tenantPatchModel.TargetPort = core.Int64Ptr(int64(38))
+				tenantPatchModel.AccessCredential = core.StringPtr("testString")
+				tenantPatchModel.TargetInstanceCrn = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				tenantPatchModelAsPatch, asPatchErr := tenantPatchModel.AsPatch()
 				Expect(asPatchErr).To(BeNil())
 
 				// Construct an instance of the UpdateTargetOptions model
-				updateTargetOptionsModel := new(ibmlogsrouteropenapi30v0.UpdateTargetOptions)
+				updateTargetOptionsModel := new(ibmcloudlogsroutingv0.UpdateTargetOptions)
 				updateTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
-				updateTargetOptionsModel.TenantDetailsResponsePatch = tenantDetailsResponsePatchModelAsPatch
+				updateTargetOptionsModel.TenantPatch = tenantPatchModelAsPatch
 				updateTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
-				err := ibmLogsRouterOpenApi30Service.SetServiceURL("")
+				err := ibmCloudLogsRoutingService.SetServiceURL("")
 				Expect(err).To(BeNil())
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.UpdateTarget(updateTargetOptionsModel)
+				result, response, operationErr := ibmCloudLogsRoutingService.UpdateTarget(updateTargetOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 				// Construct a second instance of the UpdateTargetOptions model with no property values
-				updateTargetOptionsModelNew := new(ibmlogsrouteropenapi30v0.UpdateTargetOptions)
+				updateTargetOptionsModelNew := new(ibmcloudlogsroutingv0.UpdateTargetOptions)
 				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = ibmLogsRouterOpenApi30Service.UpdateTarget(updateTargetOptionsModelNew)
+				result, response, operationErr = ibmCloudLogsRoutingService.UpdateTarget(updateTargetOptionsModelNew)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
@@ -1323,30 +1323,30 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				}))
 			})
 			It(`Invoke UpdateTarget successfully`, func() {
-				ibmLogsRouterOpenApi30Service, serviceErr := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
 				})
 				Expect(serviceErr).To(BeNil())
-				Expect(ibmLogsRouterOpenApi30Service).ToNot(BeNil())
+				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
-				// Construct an instance of the TenantDetailsResponsePatch model
-				tenantDetailsResponsePatchModel := new(ibmlogsrouteropenapi30v0.TenantDetailsResponsePatch)
-				tenantDetailsResponsePatchModel.TargetHost = core.StringPtr("www.example.com")
-				tenantDetailsResponsePatchModel.TargetPort = core.Int64Ptr(int64(38))
-				tenantDetailsResponsePatchModel.AccessCredential = core.StringPtr("testString")
-				tenantDetailsResponsePatchModel.TargetInstanceCrn = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				tenantDetailsResponsePatchModelAsPatch, asPatchErr := tenantDetailsResponsePatchModel.AsPatch()
+				// Construct an instance of the TenantPatch model
+				tenantPatchModel := new(ibmcloudlogsroutingv0.TenantPatch)
+				tenantPatchModel.TargetHost = core.StringPtr("www.example.com")
+				tenantPatchModel.TargetPort = core.Int64Ptr(int64(38))
+				tenantPatchModel.AccessCredential = core.StringPtr("testString")
+				tenantPatchModel.TargetInstanceCrn = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				tenantPatchModelAsPatch, asPatchErr := tenantPatchModel.AsPatch()
 				Expect(asPatchErr).To(BeNil())
 
 				// Construct an instance of the UpdateTargetOptions model
-				updateTargetOptionsModel := new(ibmlogsrouteropenapi30v0.UpdateTargetOptions)
+				updateTargetOptionsModel := new(ibmcloudlogsroutingv0.UpdateTargetOptions)
 				updateTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
-				updateTargetOptionsModel.TenantDetailsResponsePatch = tenantDetailsResponsePatchModelAsPatch
+				updateTargetOptionsModel.TenantPatch = tenantPatchModelAsPatch
 				updateTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
-				result, response, operationErr := ibmLogsRouterOpenApi30Service.UpdateTarget(updateTargetOptionsModel)
+				result, response, operationErr := ibmCloudLogsRoutingService.UpdateTarget(updateTargetOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 
@@ -1360,8 +1360,8 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 	})
 	Describe(`Model constructor tests`, func() {
 		Context(`Using a service client instance`, func() {
-			ibmLogsRouterOpenApi30Service, _ := ibmlogsrouteropenapi30v0.NewIbmLogsRouterOpenApi30V0(&ibmlogsrouteropenapi30v0.IbmLogsRouterOpenApi30V0Options{
-				URL:           "http://ibmlogsrouteropenapi30v0modelgenerator.com",
+			ibmCloudLogsRoutingService, _ := ibmcloudlogsroutingv0.NewIbmCloudLogsRoutingV0(&ibmcloudlogsroutingv0.IbmCloudLogsRoutingV0Options{
+				URL:           "http://ibmcloudlogsroutingv0modelgenerator.com",
 				Authenticator: &core.NoAuthAuthenticator{},
 			})
 			It(`Invoke NewCreateTenantOptions successfully`, func() {
@@ -1371,7 +1371,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 				createTenantOptionsTargetPort := int64(38)
 				createTenantOptionsAccessCredential := "testString"
 				createTenantOptionsTargetInstanceCrn := "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::"
-				createTenantOptionsModel := ibmLogsRouterOpenApi30Service.NewCreateTenantOptions(createTenantOptionsTargetType, createTenantOptionsTargetHost, createTenantOptionsTargetPort, createTenantOptionsAccessCredential, createTenantOptionsTargetInstanceCrn)
+				createTenantOptionsModel := ibmCloudLogsRoutingService.NewCreateTenantOptions(createTenantOptionsTargetType, createTenantOptionsTargetHost, createTenantOptionsTargetPort, createTenantOptionsAccessCredential, createTenantOptionsTargetInstanceCrn)
 				createTenantOptionsModel.SetTargetType("logdna")
 				createTenantOptionsModel.SetTargetHost("www.example.com")
 				createTenantOptionsModel.SetTargetPort(int64(38))
@@ -1389,7 +1389,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 			It(`Invoke NewDeleteTenantOptions successfully`, func() {
 				// Construct an instance of the DeleteTenantOptions model
 				tenantID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
-				deleteTenantOptionsModel := ibmLogsRouterOpenApi30Service.NewDeleteTenantOptions(tenantID)
+				deleteTenantOptionsModel := ibmCloudLogsRoutingService.NewDeleteTenantOptions(tenantID)
 				deleteTenantOptionsModel.SetTenantID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				deleteTenantOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(deleteTenantOptionsModel).ToNot(BeNil())
@@ -1399,7 +1399,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 			It(`Invoke NewGetTenantDetailOptions successfully`, func() {
 				// Construct an instance of the GetTenantDetailOptions model
 				tenantID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
-				getTenantDetailOptionsModel := ibmLogsRouterOpenApi30Service.NewGetTenantDetailOptions(tenantID)
+				getTenantDetailOptionsModel := ibmCloudLogsRoutingService.NewGetTenantDetailOptions(tenantID)
 				getTenantDetailOptionsModel.SetTenantID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				getTenantDetailOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(getTenantDetailOptionsModel).ToNot(BeNil())
@@ -1408,7 +1408,7 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 			})
 			It(`Invoke NewListTenantsOptions successfully`, func() {
 				// Construct an instance of the ListTenantsOptions model
-				listTenantsOptionsModel := ibmLogsRouterOpenApi30Service.NewListTenantsOptions()
+				listTenantsOptionsModel := ibmCloudLogsRoutingService.NewListTenantsOptions()
 				listTenantsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(listTenantsOptionsModel).ToNot(BeNil())
 				Expect(listTenantsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
@@ -1416,14 +1416,14 @@ var _ = Describe(`IbmLogsRouterOpenApi30V0`, func() {
 			It(`Invoke NewUpdateTargetOptions successfully`, func() {
 				// Construct an instance of the UpdateTargetOptions model
 				tenantID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
-				tenantDetailsResponsePatch := map[string]interface{}{"anyKey": "anyValue"}
-				updateTargetOptionsModel := ibmLogsRouterOpenApi30Service.NewUpdateTargetOptions(tenantID, tenantDetailsResponsePatch)
+				tenantPatch := map[string]interface{}{"anyKey": "anyValue"}
+				updateTargetOptionsModel := ibmCloudLogsRoutingService.NewUpdateTargetOptions(tenantID, tenantPatch)
 				updateTargetOptionsModel.SetTenantID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
-				updateTargetOptionsModel.SetTenantDetailsResponsePatch(map[string]interface{}{"anyKey": "anyValue"})
+				updateTargetOptionsModel.SetTenantPatch(map[string]interface{}{"anyKey": "anyValue"})
 				updateTargetOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(updateTargetOptionsModel).ToNot(BeNil())
 				Expect(updateTargetOptionsModel.TenantID).To(Equal(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")))
-				Expect(updateTargetOptionsModel.TenantDetailsResponsePatch).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
+				Expect(updateTargetOptionsModel.TenantPatch).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
 				Expect(updateTargetOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 		})

@@ -44,7 +44,12 @@ Service Name | Package name
 --- | --- 
 <!-- [Example Service](https://cloud.ibm.com/apidocs/example-service) | exampleservicev1 -->
 
-## Prerequisites
+## Authentication
+
+Follow the instructions provided in the Prerequisites section in order to get credentials you will need to authenticate
+with the `Logs-Router-Go-SDK`
+
+### Prerequisites
 
 [ibm-cloud-onboarding]: https://cloud.ibm.com/registration
 
@@ -62,7 +67,7 @@ Here is an example:
 
 ```go
 import (
-	"github.com/IBM/logs-router-go-sdk/exampleservicev1"
+	"github.com/IBM/logs-router-go-sdk/ibmlogsrouteropenapiv0"
 )
 ```
 Next, run `go build` or `go mod tidy` to download and install the new dependencies and update your application's
@@ -75,7 +80,7 @@ See the service table above to find the approprate package name for the services
 ### `go get` command  
 Alternatively, you can use the `go get` command to download and install the appropriate packages needed by your application:
 ```
-go get -u github.com/IBM/logs-router-go-sdk/exampleservicev1
+go get -u github.com/IBM/logs-router-go-sdk/ibmlogsrouteropenapiv0
 ```
 Be sure to use the appropriate package name from the service table above for the services used by your application.
 
@@ -87,6 +92,11 @@ For general SDK usage information, please see [this link](https://github.com/IBM
 If you are having difficulties using this SDK or have a question about the IBM Cloud services,
 please ask a question at 
 [Stack Overflow](http://stackoverflow.com/questions/ask?tags=ibm-cloud).
+
+## Error Handling
+If you encounter any errors with the project, you are welcome to submit a
+[bug report](github.com/IBM/logs-router-go-sdk/issues).
+Before that, please search for similar issues. It's possible that someone has already reported the problem.
 
 ## Issues
 If you encounter an issue with the project, you are welcome to submit a

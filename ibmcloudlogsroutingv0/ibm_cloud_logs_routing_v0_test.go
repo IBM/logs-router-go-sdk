@@ -163,7 +163,7 @@ var _ = Describe(`IbmCloudLogsRoutingV0`, func() {
 	Describe(`Parameterized URL tests`, func() {
 		It(`Format parameterized URL with all default values`, func() {
 			constructedURL, err := ibmcloudlogsroutingv0.ConstructServiceURL(nil)
-			Expect(constructedURL).To(Equal("https://management.private.eu-gb.logs-router.test.cloud.ibm.com/v1"))
+			Expect(constructedURL).To(Equal("https://management.us-east.logs-router.cloud.ibm.com/v1"))
 			Expect(constructedURL).ToNot(BeNil())
 			Expect(err).To(BeNil())
 		})

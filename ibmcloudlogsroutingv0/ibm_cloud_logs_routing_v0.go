@@ -44,15 +44,15 @@ type IbmCloudLogsRoutingV0 struct {
 }
 
 // DefaultServiceURL is the default URL to make service requests to.
-const DefaultServiceURL = "https://management.private.eu-gb.logs-router.test.cloud.ibm.com/v1"
+const DefaultServiceURL = "https://management.us-east.logs-router.cloud.ibm.com/v1"
 
 // DefaultServiceName is the default key used to find external configuration information.
 const DefaultServiceName = "ibm_cloud_logs_routing"
 
-const ParameterizedServiceURL = "https://management.private.{region}.logs-router.test.cloud.ibm.com/v1"
+const ParameterizedServiceURL = "https://management.{region}.logs-router.cloud.ibm.com/v1"
 
 var defaultUrlVariables = map[string]string{
-	"region": "eu-gb",
+	"region": "us-east",
 }
 
 // IbmCloudLogsRoutingV0Options : Service options

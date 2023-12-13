@@ -342,6 +342,7 @@ func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) GetTenantDetailWithContext(ctx
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
 
 	request, err := builder.Build()
 	if err != nil {
@@ -466,7 +467,7 @@ func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) UpdateTargetWithContext(ctx co
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/merge-patch+json")
+	builder.AddHeader("Content-Type", "application/json")
 
 	_, err = builder.SetBodyContentJSON(updateTargetOptions.TenantPatch)
 	if err != nil {

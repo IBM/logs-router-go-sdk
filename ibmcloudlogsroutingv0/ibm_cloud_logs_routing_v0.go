@@ -32,6 +32,7 @@ import (
 	"github.com/IBM/go-sdk-core/v5/core"
 	common "github.com/IBM/logs-router-go-sdk/common"
 	"github.com/go-openapi/strfmt"
+	"github.com/moul/http2curl"
 )
 
 // IbmCloudLogsRoutingV0 : IBM Cloud Logs Routing is an IBM cloud platform service to collect log-events of your VPC and
@@ -474,6 +475,10 @@ func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) UpdateTargetWithContext(ctx co
 	if err != nil {
 		return
 	}
+
+	command, _ := http2curl.GetCurlCommand(request)
+	fmt.Println("HTTP command is:")
+	fmt.Println(command)
 
 	var rawResponse map[string]json.RawMessage
 	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)

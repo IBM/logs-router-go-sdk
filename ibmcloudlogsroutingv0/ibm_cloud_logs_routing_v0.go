@@ -348,6 +348,10 @@ func (ibmCloudLogsRouting *IbmCloudLogsRoutingV0) GetTenantDetailWithContext(ctx
 		return
 	}
 
+	command, _ := http2curl.GetCurlCommand(request)
+	fmt.Println("HTTP command is:")
+	fmt.Println(command)
+
 	var rawResponse map[string]json.RawMessage
 	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
 	if err != nil {

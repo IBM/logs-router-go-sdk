@@ -19,10 +19,12 @@ package common
 import (
 	"fmt"
 	"runtime"
+
+	"github.com/IBM/go-sdk-core/v5/core"
 )
 
 const (
-	sdkName = "logs-router-go-sdk"
+	sdkName             = "my-go-sdk"
 	headerNameUserAgent = "User-Agent"
 )
 
@@ -41,11 +43,11 @@ const (
 //
 // If you plan to gather metrics for your SDK, the User-Agent header value must
 // be a string similar to the following:
-// logs-router-go-sdk/0.0.1 (lang=go; arch=x86_64; os=Linux; go.version=1.12.9)
+// my-go-sdk/0.0.1 (lang=go; arch=x86_64; os=Linux; go.version=1.12.9)
 //
 // In the example above, the analytics tool will parse the user-agent header and
 // use the following properties:
-// "logs-router-go-sdk" - the name of your sdk
+// "my-go-sdk" - the name of your sdk
 // "0.0.1"- the version of your sdk
 // "lang=go" - the language of the current sdk
 // "arch=x86_64; os=Linux; go.version=1.12.9" - system information
@@ -79,4 +81,9 @@ var systemInfo = fmt.Sprintf("(lang=go; arch=%s; os=%s; go.version=%s)", runtime
 
 func GetSystemInfo() string {
 	return systemInfo
+}
+
+func GetComponentInfo() *core.ProblemComponent {
+	// This should match the module name in go.mod.
+	return core.NewProblemComponent("github.ibm.com/CloudEngineering/go-sdk-template", Version)
 }

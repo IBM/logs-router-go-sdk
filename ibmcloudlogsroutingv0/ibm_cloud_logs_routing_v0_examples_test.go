@@ -127,7 +127,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0 Examples Tests`, func() {
 			fmt.Println("\nCreateTenant() result:")
 			// begin-create_tenant
 
-			targetPrototypeModel := &ibmcloudlogsroutingv0.TargetPrototype{
+			targetTypePrototypeModel := &ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype{
 				LogSinkCRN: core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::"),
 				Name: core.StringPtr("my-log-sink"),
 			}
@@ -135,7 +135,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0 Examples Tests`, func() {
 			createTenantOptions := ibmCloudLogsRoutingService.NewCreateTenantOptions(
 				"testString",
 				"my-logging-tenant",
-				[]ibmcloudlogsroutingv0.TargetPrototype{*targetPrototypeModel},
+				[]ibmcloudlogsroutingv0.TargetTypePrototypeIntf{targetTypePrototypeModel},
 			)
 
 			tenant, response, err := ibmCloudLogsRoutingService.CreateTenant(createTenantOptions)
@@ -211,42 +211,46 @@ var _ = Describe(`IBMCloudLogsRoutingV0 Examples Tests`, func() {
 				CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"),
 			)
 
-			targetCollection, response, err := ibmCloudLogsRoutingService.ListTenantTargets(listTenantTargetsOptions)
+			targetTypeCollection, response, err := ibmCloudLogsRoutingService.ListTenantTargets(listTenantTargetsOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(targetCollection, "", "  ")
+			b, _ := json.MarshalIndent(targetTypeCollection, "", "  ")
 			fmt.Println(string(b))
 
 			// end-list_tenant_targets
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(targetCollection).ToNot(BeNil())
+			Expect(targetTypeCollection).ToNot(BeNil())
 		})
 		It(`CreateTarget request example`, func() {
 			fmt.Println("\nCreateTarget() result:")
 			// begin-create_target
 
+			targetTypePrototypeModel := &ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype{
+				LogSinkCRN: core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::"),
+				Name: core.StringPtr("my-log-sink"),
+			}
+
 			createTargetOptions := ibmCloudLogsRoutingService.NewCreateTargetOptions(
 				CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"),
 				"testString",
-				"crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::",
-				"my-log-sink",
+				targetTypePrototypeModel,
 			)
 
-			target, response, err := ibmCloudLogsRoutingService.CreateTarget(createTargetOptions)
+			targetType, response, err := ibmCloudLogsRoutingService.CreateTarget(createTargetOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(target, "", "  ")
+			b, _ := json.MarshalIndent(targetType, "", "  ")
 			fmt.Println(string(b))
 
 			// end-create_target
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(target).ToNot(BeNil())
+			Expect(targetType).ToNot(BeNil())
 		})
 		It(`GetTenantTargetDetails request example`, func() {
 			fmt.Println("\nGetTenantTargetDetails() result:")
@@ -258,26 +262,26 @@ var _ = Describe(`IBMCloudLogsRoutingV0 Examples Tests`, func() {
 				CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"),
 			)
 
-			target, response, err := ibmCloudLogsRoutingService.GetTenantTargetDetails(getTenantTargetDetailsOptions)
+			targetType, response, err := ibmCloudLogsRoutingService.GetTenantTargetDetails(getTenantTargetDetailsOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(target, "", "  ")
+			b, _ := json.MarshalIndent(targetType, "", "  ")
 			fmt.Println(string(b))
 
 			// end-get_tenant_target_details
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(target).ToNot(BeNil())
+			Expect(targetType).ToNot(BeNil())
 		})
 		It(`UpdateTarget request example`, func() {
 			fmt.Println("\nUpdateTarget() result:")
 			// begin-update_target
 
-			targetPatchModel := &ibmcloudlogsroutingv0.TargetPatch{
+			targetTypePatchModel := &ibmcloudlogsroutingv0.TargetTypePatchLogDna{
 			}
-			targetPatchModelAsPatch, asPatchErr := targetPatchModel.AsPatch()
+			targetTypePatchModelAsPatch, asPatchErr := targetTypePatchModel.AsPatch()
 			Expect(asPatchErr).To(BeNil())
 
 			updateTargetOptions := ibmCloudLogsRoutingService.NewUpdateTargetOptions(
@@ -285,21 +289,21 @@ var _ = Describe(`IBMCloudLogsRoutingV0 Examples Tests`, func() {
 				CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"),
 				CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"),
 				"testString",
-				targetPatchModelAsPatch,
+				targetTypePatchModelAsPatch,
 			)
 
-			target, response, err := ibmCloudLogsRoutingService.UpdateTarget(updateTargetOptions)
+			targetType, response, err := ibmCloudLogsRoutingService.UpdateTarget(updateTargetOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(target, "", "  ")
+			b, _ := json.MarshalIndent(targetType, "", "  ")
 			fmt.Println(string(b))
 
 			// end-update_target
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(target).ToNot(BeNil())
+			Expect(targetType).ToNot(BeNil())
 		})
 		It(`DeleteTenant request example`, func() {
 			// begin-delete_tenant

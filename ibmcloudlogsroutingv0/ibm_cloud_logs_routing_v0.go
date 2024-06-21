@@ -22,11 +22,14 @@
 package ibmcloudlogsroutingv0
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"reflect"
+	"strings"
 	"time"
 
 	"github.com/IBM/go-sdk-core/v5/core"
@@ -44,15 +47,15 @@ type IBMCloudLogsRoutingV0 struct {
 }
 
 // DefaultServiceURL is the default URL to make service requests to.
-const DefaultServiceURL = "https://management.private.us-east.logs-router.cloud.ibm.com/v1"
+const DefaultServiceURL = "https://management.eu-gb.logs-router.cloud.ibm.com/v1"
 
 // DefaultServiceName is the default key used to find external configuration information.
 const DefaultServiceName = "ibm_cloud_logs_routing"
 
-const ParameterizedServiceURL = "https://management.private.{region}.logs-router.cloud.ibm.com/v1"
+const ParameterizedServiceURL = "https://management.{region}.logs-router.cloud.ibm.com/v1"
 
 var defaultUrlVariables = map[string]string{
-	"region": "us-east",
+	"region": "eu-gb",
 }
 
 // IBMCloudLogsRoutingV0Options : Service options
@@ -265,6 +268,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTenant(createTenantOptio
 
 // CreateTenantWithContext is an alternate form of the CreateTenant method which supports a Context parameter
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTenantWithContext(ctx context.Context, createTenantOptions *CreateTenantOptions) (result *Tenant, response *core.DetailedResponse, err error) {
+	fmt.Println("==================== CreateTenantWithContext() ====================")
 	err = core.ValidateNotNil(createTenantOptions, "createTenantOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -318,6 +322,27 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTenantWithContext(ctx co
 		return
 	}
 
+	var curlCmd []string
+	curlCmd = append(curlCmd, "curl")
+	if request.Method != "" {
+		curlCmd = append(curlCmd, "-X", request.Method)
+	}
+	for key, values := range request.Header {
+		for _, value := range values {
+			curlCmd = append(curlCmd, "-H", fmt.Sprintf("'%s: %s'", key, value))
+		}
+	}
+	bodyBytes, err := io.ReadAll(request.Body)
+	if err == nil {
+		request.Body = io.NopCloser(bytes.NewBuffer(bodyBytes)) // Restore the body
+		body := string(bodyBytes)
+		if body != "" {
+			curlCmd = append(curlCmd, "--data", fmt.Sprintf("'%s'", body))
+		}
+	}
+	curlCmd = append(curlCmd, fmt.Sprintf("'%s'", request.URL.String()))
+	fmt.Println("\nCommand\n", strings.Join(curlCmd, " "))
+
 	var rawResponse map[string]json.RawMessage
 	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
 	if err != nil {
@@ -347,6 +372,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantDetail(getTenantDetai
 
 // GetTenantDetailWithContext is an alternate form of the GetTenantDetail method which supports a Context parameter
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantDetailWithContext(ctx context.Context, getTenantDetailOptions *GetTenantDetailOptions) (result *Tenant, response *core.DetailedResponse, err error) {
+	fmt.Println("====== sdk ======== GetTenantDetailWithContext() ====================")
 	err = core.ValidateNotNil(getTenantDetailOptions, "getTenantDetailOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -390,6 +416,19 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantDetailWithContext(ctx
 		return
 	}
 
+	var curlCmd []string
+	curlCmd = append(curlCmd, "curl")
+	if request.Method != "" {
+		curlCmd = append(curlCmd, "-X", request.Method)
+	}
+	for key, values := range request.Header {
+		for _, value := range values {
+			curlCmd = append(curlCmd, "-H", fmt.Sprintf("'%s: %s'", key, value))
+		}
+	}
+	curlCmd = append(curlCmd, fmt.Sprintf("'%s'", request.URL.String()))
+	fmt.Println("\nCommand\n", strings.Join(curlCmd, " "))
+
 	var rawResponse map[string]json.RawMessage
 	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
 	if err != nil {
@@ -405,6 +444,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantDetailWithContext(ctx
 		}
 		response.Result = result
 	}
+	fmt.Println("====== sdk ======== GetTenantDetailWithContext(end) etag", *result.Etag, " ====================")
 
 	return
 }
@@ -419,6 +459,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTenant(deleteTenantOptio
 
 // DeleteTenantWithContext is an alternate form of the DeleteTenant method which supports a Context parameter
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTenantWithContext(ctx context.Context, deleteTenantOptions *DeleteTenantOptions) (response *core.DetailedResponse, err error) {
+	fmt.Println("==================== DeleteTenantWithContext() ====================")
 	err = core.ValidateNotNil(deleteTenantOptions, "deleteTenantOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -461,6 +502,19 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTenantWithContext(ctx co
 		return
 	}
 
+	var curlCmd []string
+	curlCmd = append(curlCmd, "curl")
+	if request.Method != "" {
+		curlCmd = append(curlCmd, "-X", request.Method)
+	}
+	for key, values := range request.Header {
+		for _, value := range values {
+			curlCmd = append(curlCmd, "-H", fmt.Sprintf("'%s: %s'", key, value))
+		}
+	}
+	curlCmd = append(curlCmd, fmt.Sprintf("'%s'", request.URL.String()))
+	fmt.Println("\nCommand\n", strings.Join(curlCmd, " "))
+
 	response, err = ibmCloudLogsRouting.Service.Request(request, nil)
 	if err != nil {
 		core.EnrichHTTPProblem(err, "delete_tenant", getServiceComponentInfo())
@@ -481,6 +535,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTenant(updateTenantOptio
 
 // UpdateTenantWithContext is an alternate form of the UpdateTenant method which supports a Context parameter
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTenantWithContext(ctx context.Context, updateTenantOptions *UpdateTenantOptions) (result *Tenant, response *core.DetailedResponse, err error) {
+	fmt.Println("==================== UpdateTenantWithContext() ====================")
 	err = core.ValidateNotNil(updateTenantOptions, "updateTenantOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -534,6 +589,27 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTenantWithContext(ctx co
 		return
 	}
 
+	var curlCmd []string
+	curlCmd = append(curlCmd, "curl")
+	if request.Method != "" {
+		curlCmd = append(curlCmd, "-X", request.Method)
+	}
+	for key, values := range request.Header {
+		for _, value := range values {
+			curlCmd = append(curlCmd, "-H", fmt.Sprintf("'%s: %s'", key, value))
+		}
+	}
+	bodyBytes, err := io.ReadAll(request.Body)
+	if err == nil {
+		request.Body = io.NopCloser(bytes.NewBuffer(bodyBytes)) // Restore the body
+		body := string(bodyBytes)
+		if body != "" {
+			curlCmd = append(curlCmd, "--data", fmt.Sprintf("'%s'", body))
+		}
+	}
+	curlCmd = append(curlCmd, fmt.Sprintf("'%s'", request.URL.String()))
+	fmt.Println("\nCommand\n", strings.Join(curlCmd, " "))
+
 	var rawResponse map[string]json.RawMessage
 	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
 	if err != nil {
@@ -555,14 +631,15 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTenantWithContext(ctx co
 
 // ListTenantTargets : List targets for a tenant
 // List targets for a tenant.
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantTargets(listTenantTargetsOptions *ListTenantTargetsOptions) (result *TargetCollection, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantTargets(listTenantTargetsOptions *ListTenantTargetsOptions) (result *TargetTypeCollection, response *core.DetailedResponse, err error) {
 	result, response, err = ibmCloudLogsRouting.ListTenantTargetsWithContext(context.Background(), listTenantTargetsOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
 // ListTenantTargetsWithContext is an alternate form of the ListTenantTargets method which supports a Context parameter
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantTargetsWithContext(ctx context.Context, listTenantTargetsOptions *ListTenantTargetsOptions) (result *TargetCollection, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantTargetsWithContext(ctx context.Context, listTenantTargetsOptions *ListTenantTargetsOptions) (result *TargetTypeCollection, response *core.DetailedResponse, err error) {
+	fmt.Println("==================== ListTenantTargetsWithContext() ====================")
 	err = core.ValidateNotNil(listTenantTargetsOptions, "listTenantTargetsOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -618,7 +695,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantTargetsWithContext(c
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTargetCollection)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTargetTypeCollection)
 		if err != nil {
 			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
 			return
@@ -629,17 +706,18 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantTargetsWithContext(c
 	return
 }
 
-// CreateTarget : Create a second target
-// Create a second target.<br><b>Note:</b> It is only supported to create a second target of a different type. If the
-// tenant already has a target of type <b>logdna</b> only a target of type <b>logs</b> and vice versa can be added.
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTarget(createTargetOptions *CreateTargetOptions) (result *Target, response *core.DetailedResponse, err error) {
+// CreateTarget : Create a target
+// Create a new target for a tenant.<br><b>Note:</b> The tenant must not already have a target of the specified type.
+// Supported target types are <b>logdna</b> (IBM Log Analysis) and <b>logs</b> (IBM Cloud Logs).
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTarget(createTargetOptions *CreateTargetOptions) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
 	result, response, err = ibmCloudLogsRouting.CreateTargetWithContext(context.Background(), createTargetOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
 // CreateTargetWithContext is an alternate form of the CreateTarget method which supports a Context parameter
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContext(ctx context.Context, createTargetOptions *CreateTargetOptions) (result *Target, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContext(ctx context.Context, createTargetOptions *CreateTargetOptions) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
+	fmt.Println("==================== CreateTargetWithContext() ====================")
 	err = core.ValidateNotNil(createTargetOptions, "createTargetOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -678,17 +756,11 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContext(ctx co
 		builder.AddHeader("IBM-API-Version", fmt.Sprint(*createTargetOptions.IBMAPIVersion))
 	}
 
-	body := make(map[string]interface{})
-	if createTargetOptions.LogSinkCRN != nil {
-		body["log_sink_crn"] = createTargetOptions.LogSinkCRN
-	}
-	if createTargetOptions.Name != nil {
-		body["name"] = createTargetOptions.Name
-	}
-	if createTargetOptions.Parameters != nil {
-		body["parameters"] = createTargetOptions.Parameters
-	}
-	_, err = builder.SetBodyContentJSON(body)
+	// workaround for isito rules preventing multiple tenant creation by POST to /tenants/*/targets
+	fmt.Println("==================== CreateTargetWithContext(), adding account ID ====================")
+	builder.AddHeader("Bss-Account-Id", fmt.Sprint("36ff82794a734d7580b90c97b0327d28"))
+
+	_, err = builder.SetBodyContentJSON(createTargetOptions.TargetTypePrototype)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
 		return
@@ -700,6 +772,27 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContext(ctx co
 		return
 	}
 
+	var curlCmd []string
+	curlCmd = append(curlCmd, "curl")
+	if request.Method != "" {
+		curlCmd = append(curlCmd, "-X", request.Method)
+	}
+	for key, values := range request.Header {
+		for _, value := range values {
+			curlCmd = append(curlCmd, "-H", fmt.Sprintf("'%s: %s'", key, value))
+		}
+	}
+	bodyBytes, err := io.ReadAll(request.Body)
+	if err == nil {
+		request.Body = io.NopCloser(bytes.NewBuffer(bodyBytes)) // Restore the body
+		body := string(bodyBytes)
+		if body != "" {
+			curlCmd = append(curlCmd, "--data", fmt.Sprintf("'%s'", body))
+		}
+	}
+	curlCmd = append(curlCmd, fmt.Sprintf("'%s'", request.URL.String()))
+	fmt.Println("\nCommand\n", strings.Join(curlCmd, " "))
+
 	var rawResponse map[string]json.RawMessage
 	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
 	if err != nil {
@@ -708,7 +801,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContext(ctx co
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTarget)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTargetType)
 		if err != nil {
 			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
 			return
@@ -721,14 +814,15 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContext(ctx co
 
 // GetTenantTargetDetails : Retrieve a target
 // Retrieve a target.
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantTargetDetails(getTenantTargetDetailsOptions *GetTenantTargetDetailsOptions) (result *Target, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantTargetDetails(getTenantTargetDetailsOptions *GetTenantTargetDetailsOptions) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
 	result, response, err = ibmCloudLogsRouting.GetTenantTargetDetailsWithContext(context.Background(), getTenantTargetDetailsOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
 // GetTenantTargetDetailsWithContext is an alternate form of the GetTenantTargetDetails method which supports a Context parameter
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantTargetDetailsWithContext(ctx context.Context, getTenantTargetDetailsOptions *GetTenantTargetDetailsOptions) (result *Target, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantTargetDetailsWithContext(ctx context.Context, getTenantTargetDetailsOptions *GetTenantTargetDetailsOptions) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
+	fmt.Println("==================== GetTenantTargetDetailsWithContext() ====================")
 	err = core.ValidateNotNil(getTenantTargetDetailsOptions, "getTenantTargetDetailsOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -764,7 +858,11 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantTargetDetailsWithCont
 	}
 	builder.AddHeader("Accept", "application/json")
 	if getTenantTargetDetailsOptions.IBMAPIVersion != nil {
-		builder.AddHeader("IBM-API-Version", fmt.Sprint(*getTenantTargetDetailsOptions.IBMAPIVersion))
+		if fmt.Sprint(*getTenantTargetDetailsOptions.IBMAPIVersion) != "" {
+			builder.AddHeader("IBM-API-Version", fmt.Sprint(*getTenantTargetDetailsOptions.IBMAPIVersion))
+		} else {
+			builder.AddHeader("IBM-API-Version", "2024-06-15")
+		}
 	}
 
 	request, err := builder.Build()
@@ -772,6 +870,19 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantTargetDetailsWithCont
 		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
 		return
 	}
+
+	var curlCmd []string
+	curlCmd = append(curlCmd, "curl")
+	if request.Method != "" {
+		curlCmd = append(curlCmd, "-X", request.Method)
+	}
+	for key, values := range request.Header {
+		for _, value := range values {
+			curlCmd = append(curlCmd, "-H", fmt.Sprintf("'%s: %s'", key, value))
+		}
+	}
+	curlCmd = append(curlCmd, fmt.Sprintf("'%s'", request.URL.String()))
+	fmt.Println("\nCommand\n", strings.Join(curlCmd, " "))
 
 	var rawResponse map[string]json.RawMessage
 	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
@@ -781,7 +892,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantTargetDetailsWithCont
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTarget)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTargetType)
 		if err != nil {
 			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
 			return
@@ -794,14 +905,15 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantTargetDetailsWithCont
 
 // UpdateTarget : Update a target
 // Update a target.<br><b>Note:</b>A change of the target type is only supported for tenants with a single target.
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTarget(updateTargetOptions *UpdateTargetOptions) (result *Target, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTarget(updateTargetOptions *UpdateTargetOptions) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
 	result, response, err = ibmCloudLogsRouting.UpdateTargetWithContext(context.Background(), updateTargetOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
 // UpdateTargetWithContext is an alternate form of the UpdateTarget method which supports a Context parameter
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTargetWithContext(ctx context.Context, updateTargetOptions *UpdateTargetOptions) (result *Target, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTargetWithContext(ctx context.Context, updateTargetOptions *UpdateTargetOptions) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
+	fmt.Println("==================== UpdateTargetWithContext() ====================")
 	err = core.ValidateNotNil(updateTargetOptions, "updateTargetOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -844,7 +956,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTargetWithContext(ctx co
 		builder.AddHeader("If-Match", fmt.Sprint(*updateTargetOptions.IfMatch))
 	}
 
-	_, err = builder.SetBodyContentJSON(updateTargetOptions.TargetPatch)
+	_, err = builder.SetBodyContentJSON(updateTargetOptions.TargetTypePatch)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
 		return
@@ -864,7 +976,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTargetWithContext(ctx co
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTarget)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTargetType)
 		if err != nil {
 			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
 			return
@@ -876,7 +988,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTargetWithContext(ctx co
 }
 
 // DeleteTarget : Delete a target
-// Delete a target.<br><b>Note:</b> Only one out of two targets can be deleted.
+// Delete a target.<br><b>Note:</b> The last target is not allowed to be deleted.
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTarget(deleteTargetOptions *DeleteTargetOptions) (response *core.DetailedResponse, err error) {
 	response, err = ibmCloudLogsRouting.DeleteTargetWithContext(context.Background(), deleteTargetOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -885,6 +997,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTarget(deleteTargetOptio
 
 // DeleteTargetWithContext is an alternate form of the DeleteTarget method which supports a Context parameter
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTargetWithContext(ctx context.Context, deleteTargetOptions *DeleteTargetOptions) (response *core.DetailedResponse, err error) {
+	fmt.Println("==================== DeleteTargetWithContext() ====================")
 	err = core.ValidateNotNil(deleteTargetOptions, "deleteTargetOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -950,27 +1063,19 @@ type CreateTargetOptions struct {
 	// provided. Specify the current date to request the latest version.
 	IBMAPIVersion *string `json:"IBM-API-Version" validate:"required"`
 
-	// Cloud resource name of the log-sink target instance.<br>Supported log-sinks are:<br><ul><li>IBM Cloud Logs
-	// (logs)</li><li>Mezmo (logdna)</li></ul>.
-	LogSinkCRN *string `json:"log_sink_crn" validate:"required"`
-
-	// The name for this tenant target. The name must be unique across all targets for this tenant.
-	Name *string `json:"name" validate:"required"`
-
-	// Parameter sets describing a particular type of log-sink.
-	Parameters ParametersPrototypeIntf `json:"parameters,omitempty"`
+	// log-sink endpoint and authentication.
+	TargetTypePrototype TargetTypePrototypeIntf `json:"TargetTypePrototype" validate:"required"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewCreateTargetOptions : Instantiate CreateTargetOptions
-func (*IBMCloudLogsRoutingV0) NewCreateTargetOptions(tenantID *strfmt.UUID, ibmAPIVersion string, logSinkCRN string, name string) *CreateTargetOptions {
+func (*IBMCloudLogsRoutingV0) NewCreateTargetOptions(tenantID *strfmt.UUID, ibmAPIVersion string, targetTypePrototype TargetTypePrototypeIntf) *CreateTargetOptions {
 	return &CreateTargetOptions{
-		TenantID: tenantID,
-		IBMAPIVersion: core.StringPtr(ibmAPIVersion),
-		LogSinkCRN: core.StringPtr(logSinkCRN),
-		Name: core.StringPtr(name),
+		TenantID:            tenantID,
+		IBMAPIVersion:       core.StringPtr(ibmAPIVersion),
+		TargetTypePrototype: targetTypePrototype,
 	}
 }
 
@@ -986,21 +1091,9 @@ func (_options *CreateTargetOptions) SetIBMAPIVersion(ibmAPIVersion string) *Cre
 	return _options
 }
 
-// SetLogSinkCRN : Allow user to set LogSinkCRN
-func (_options *CreateTargetOptions) SetLogSinkCRN(logSinkCRN string) *CreateTargetOptions {
-	_options.LogSinkCRN = core.StringPtr(logSinkCRN)
-	return _options
-}
-
-// SetName : Allow user to set Name
-func (_options *CreateTargetOptions) SetName(name string) *CreateTargetOptions {
-	_options.Name = core.StringPtr(name)
-	return _options
-}
-
-// SetParameters : Allow user to set Parameters
-func (_options *CreateTargetOptions) SetParameters(parameters ParametersPrototypeIntf) *CreateTargetOptions {
-	_options.Parameters = parameters
+// SetTargetTypePrototype : Allow user to set TargetTypePrototype
+func (_options *CreateTargetOptions) SetTargetTypePrototype(targetTypePrototype TargetTypePrototypeIntf) *CreateTargetOptions {
+	_options.TargetTypePrototype = targetTypePrototype
 	return _options
 }
 
@@ -1019,20 +1112,20 @@ type CreateTenantOptions struct {
 	// The name for this tenant. The name must be regionally unique across all tenants in the account.
 	Name *string `json:"name" validate:"required"`
 
-	// List of targets.<br>Two targets are supported for a combination of type <b>logdna</b> and type <b>logs</b>. Two
-	// targets of the same type are rejected.
-	Targets []TargetPrototype `json:"targets" validate:"required"`
+	// List of targets.<br>Two targets must not be of the same type. Supported target types are <b>logdna</b> (IBM Log
+	// Analysis) and <b>logs</b> (IBM Cloud Logs).
+	Targets []TargetTypePrototypeIntf `json:"targets" validate:"required"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewCreateTenantOptions : Instantiate CreateTenantOptions
-func (*IBMCloudLogsRoutingV0) NewCreateTenantOptions(ibmAPIVersion string, name string, targets []TargetPrototype) *CreateTenantOptions {
+func (*IBMCloudLogsRoutingV0) NewCreateTenantOptions(ibmAPIVersion string, name string, targets []TargetTypePrototypeIntf) *CreateTenantOptions {
 	return &CreateTenantOptions{
 		IBMAPIVersion: core.StringPtr(ibmAPIVersion),
-		Name: core.StringPtr(name),
-		Targets: targets,
+		Name:          core.StringPtr(name),
+		Targets:       targets,
 	}
 }
 
@@ -1049,7 +1142,7 @@ func (_options *CreateTenantOptions) SetName(name string) *CreateTenantOptions {
 }
 
 // SetTargets : Allow user to set Targets
-func (_options *CreateTenantOptions) SetTargets(targets []TargetPrototype) *CreateTenantOptions {
+func (_options *CreateTenantOptions) SetTargets(targets []TargetTypePrototypeIntf) *CreateTenantOptions {
 	_options.Targets = targets
 	return _options
 }
@@ -1080,8 +1173,8 @@ type DeleteTargetOptions struct {
 func (*IBMCloudLogsRoutingV0) NewDeleteTargetOptions(ibmAPIVersion string, tenantID *strfmt.UUID, targetID *strfmt.UUID) *DeleteTargetOptions {
 	return &DeleteTargetOptions{
 		IBMAPIVersion: core.StringPtr(ibmAPIVersion),
-		TenantID: tenantID,
-		TargetID: targetID,
+		TenantID:      tenantID,
+		TargetID:      targetID,
 	}
 }
 
@@ -1126,7 +1219,7 @@ type DeleteTenantOptions struct {
 func (*IBMCloudLogsRoutingV0) NewDeleteTenantOptions(ibmAPIVersion string, tenantID *strfmt.UUID) *DeleteTenantOptions {
 	return &DeleteTenantOptions{
 		IBMAPIVersion: core.StringPtr(ibmAPIVersion),
-		TenantID: tenantID,
+		TenantID:      tenantID,
 	}
 }
 
@@ -1165,7 +1258,7 @@ type GetTenantDetailOptions struct {
 func (*IBMCloudLogsRoutingV0) NewGetTenantDetailOptions(ibmAPIVersion string, tenantID *strfmt.UUID) *GetTenantDetailOptions {
 	return &GetTenantDetailOptions{
 		IBMAPIVersion: core.StringPtr(ibmAPIVersion),
-		TenantID: tenantID,
+		TenantID:      tenantID,
 	}
 }
 
@@ -1207,8 +1300,8 @@ type GetTenantTargetDetailsOptions struct {
 func (*IBMCloudLogsRoutingV0) NewGetTenantTargetDetailsOptions(ibmAPIVersion string, tenantID *strfmt.UUID, targetID *strfmt.UUID) *GetTenantTargetDetailsOptions {
 	return &GetTenantTargetDetailsOptions{
 		IBMAPIVersion: core.StringPtr(ibmAPIVersion),
-		TenantID: tenantID,
-		TargetID: targetID,
+		TenantID:      tenantID,
+		TargetID:      targetID,
 	}
 }
 
@@ -1256,7 +1349,7 @@ type ListTenantTargetsOptions struct {
 func (*IBMCloudLogsRoutingV0) NewListTenantTargetsOptions(ibmAPIVersion string, tenantID *strfmt.UUID) *ListTenantTargetsOptions {
 	return &ListTenantTargetsOptions{
 		IBMAPIVersion: core.StringPtr(ibmAPIVersion),
-		TenantID: tenantID,
+		TenantID:      tenantID,
 	}
 }
 
@@ -1322,28 +1415,18 @@ func (options *ListTenantsOptions) SetHeaders(param map[string]string) *ListTena
 	return options
 }
 
-// Parameters : Parameter sets describing a particular type of log-sink.
-// Models which "extend" this model:
-// - ParametersTargetParametersTypeLogs
-// - ParametersTargetParametersTypeLogDna
-type Parameters struct {
+// TargetParametersTypeLogDna : List of properties returned from a successful list operation for a log-sink of type IBM Log Analysis (logdna).
+type TargetParametersTypeLogDna struct {
 	// Host name of the log-sink.
-	Host *string `json:"host,omitempty"`
+	Host *string `json:"host" validate:"required"`
 
 	// Network port of the log-sink.
-	Port *int64 `json:"port,omitempty"`
-}
-func (*Parameters) isaParameters() bool {
-	return true
+	Port *int64 `json:"port" validate:"required"`
 }
 
-type ParametersIntf interface {
-	isaParameters() bool
-}
-
-// UnmarshalParameters unmarshals an instance of Parameters from the specified map of raw messages.
-func UnmarshalParameters(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(Parameters)
+// UnmarshalTargetParametersTypeLogDna unmarshals an instance of TargetParametersTypeLogDna from the specified map of raw messages.
+func UnmarshalTargetParametersTypeLogDna(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TargetParametersTypeLogDna)
 	err = core.UnmarshalPrimitive(m, "host", &obj.Host)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "host-error", common.GetComponentInfo())
@@ -1358,31 +1441,35 @@ func UnmarshalParameters(m map[string]json.RawMessage, result interface{}) (err 
 	return
 }
 
-// ParametersPrototype : Parameter sets describing a particular type of log-sink.
-// Models which "extend" this model:
-// - ParametersPrototypeTargetParametersTypeLogsPrototype
-// - ParametersPrototypeTargetParametersTypeLogDnaPrototype
-type ParametersPrototype struct {
+// TargetParametersTypeLogDnaPrototype : List of properties to create or update a log-sink of type <b>logdna</b> (IBM Log Analysis).
+type TargetParametersTypeLogDnaPrototype struct {
 	// Host name of the log-sink.
-	Host *string `json:"host,omitempty"`
+	Host *string `json:"host" validate:"required"`
 
 	// Network port of the log-sink.
-	Port *int64 `json:"port,omitempty"`
+	Port *int64 `json:"port" validate:"required"`
 
 	// Secret to connect to the log-sink.
-	AccessCredential *string `json:"access_credential,omitempty"`
-}
-func (*ParametersPrototype) isaParametersPrototype() bool {
-	return true
+	AccessCredential *string `json:"access_credential" validate:"required"`
 }
 
-type ParametersPrototypeIntf interface {
-	isaParametersPrototype() bool
+// NewTargetParametersTypeLogDnaPrototype : Instantiate TargetParametersTypeLogDnaPrototype (Generic Model Constructor)
+func (*IBMCloudLogsRoutingV0) NewTargetParametersTypeLogDnaPrototype(host string, port int64, accessCredential string) (_model *TargetParametersTypeLogDnaPrototype, err error) {
+	_model = &TargetParametersTypeLogDnaPrototype{
+		Host:             core.StringPtr(host),
+		Port:             core.Int64Ptr(port),
+		AccessCredential: core.StringPtr(accessCredential),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
 }
 
-// UnmarshalParametersPrototype unmarshals an instance of ParametersPrototype from the specified map of raw messages.
-func UnmarshalParametersPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ParametersPrototype)
+// UnmarshalTargetParametersTypeLogDnaPrototype unmarshals an instance of TargetParametersTypeLogDnaPrototype from the specified map of raw messages.
+func UnmarshalTargetParametersTypeLogDnaPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TargetParametersTypeLogDnaPrototype)
 	err = core.UnmarshalPrimitive(m, "host", &obj.Host)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "host-error", common.GetComponentInfo())
@@ -1402,36 +1489,118 @@ func UnmarshalParametersPrototype(m map[string]json.RawMessage, result interface
 	return
 }
 
-// Target : Full target description.
-type Target struct {
-	// Unique ID of the target.
-	ID *strfmt.UUID `json:"id" validate:"required"`
+// TargetParametersTypeLogs : List of properties returned from a successful list operation for a log-sink of type <b>logs</b> (IBM Cloud Logs).
+type TargetParametersTypeLogs struct {
+	// Host name of the log-sink.
+	Host *string `json:"host" validate:"required"`
 
-	// Cloud resource name of the log-sink target instance.
-	LogSinkCRN *string `json:"log_sink_crn" validate:"required"`
-
-	// The name for this tenant target. The name is unique across all targets for this tenant.
-	Name *string `json:"name" validate:"required"`
-
-	// Resource version identifier.
-	Etag *string `json:"etag" validate:"required"`
-
-	// Type of log-sink. Identical to the <code>service-name</code> segment of <code>log_sink_crn</code>.
-	Type *string `json:"type" validate:"required"`
-
-	// Time stamp the tenant was originally created.
-	CreatedAt *string `json:"created_at" validate:"required"`
-
-	// Time stamp the tenant was last updated.
-	UpdatedAt *string `json:"updated_at" validate:"required"`
-
-	// Parameter sets describing a particular type of log-sink.
-	Parameters ParametersIntf `json:"parameters,omitempty"`
+	// Network port of the log-sink.
+	Port *int64 `json:"port" validate:"required"`
 }
 
-// UnmarshalTarget unmarshals an instance of Target from the specified map of raw messages.
-func UnmarshalTarget(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(Target)
+// UnmarshalTargetParametersTypeLogs unmarshals an instance of TargetParametersTypeLogs from the specified map of raw messages.
+func UnmarshalTargetParametersTypeLogs(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TargetParametersTypeLogs)
+	err = core.UnmarshalPrimitive(m, "host", &obj.Host)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "host-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "port", &obj.Port)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "port-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// TargetParametersTypeLogsPrototype : List of properties to create or update a log-sink of type <b>logs</b> (IBM Cloud Logs).
+type TargetParametersTypeLogsPrototype struct {
+	// Host name of the log-sink.
+	Host *string `json:"host" validate:"required"`
+
+	// Network port of the log-sink.
+	Port *int64 `json:"port" validate:"required"`
+}
+
+// NewTargetParametersTypeLogsPrototype : Instantiate TargetParametersTypeLogsPrototype (Generic Model Constructor)
+func (*IBMCloudLogsRoutingV0) NewTargetParametersTypeLogsPrototype(host string, port int64) (_model *TargetParametersTypeLogsPrototype, err error) {
+	_model = &TargetParametersTypeLogsPrototype{
+		Host: core.StringPtr(host),
+		Port: core.Int64Ptr(port),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalTargetParametersTypeLogsPrototype unmarshals an instance of TargetParametersTypeLogsPrototype from the specified map of raw messages.
+func UnmarshalTargetParametersTypeLogsPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TargetParametersTypeLogsPrototype)
+	err = core.UnmarshalPrimitive(m, "host", &obj.Host)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "host-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "port", &obj.Port)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "port-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// TargetType : Parameter set describing a particular type of target.
+// Models which "extend" this model:
+// - TargetTypeLogDna
+// - TargetTypeLogs
+type TargetType struct {
+	// Unique ID of the target.
+	ID *strfmt.UUID `json:"id,omitempty"`
+
+	// Cloud resource name of the log-sink target instance.
+	LogSinkCRN *string `json:"log_sink_crn,omitempty"`
+
+	// The name for this tenant target. The name is unique across all targets for this tenant.
+	Name *string `json:"name,omitempty"`
+
+	// Resource version identifier.
+	Etag *string `json:"etag,omitempty"`
+
+	// Type of log-sink. Identical to the <code>service-name</code> segment of <code>log_sink_crn</code>.
+	Type *string `json:"type,omitempty"`
+
+	// Time stamp the target was originally created.
+	CreatedAt *string `json:"created_at,omitempty"`
+
+	// Time stamp the target was last updated.
+	UpdatedAt *string `json:"updated_at,omitempty"`
+
+	// List of properties returned from a successful list operation for a log-sink of type IBM Log Analysis (logdna).
+	Parameters *TargetParametersTypeLogDna `json:"parameters,omitempty"`
+}
+
+// Constants associated with the TargetType.Type property.
+// Type of log-sink. Identical to the <code>service-name</code> segment of <code>log_sink_crn</code>.
+const (
+	TargetTypeTypeLogdnaConst = "logdna"
+)
+
+func (*TargetType) isaTargetType() bool {
+	return true
+}
+
+type TargetTypeIntf interface {
+	isaTargetType() bool
+}
+
+// UnmarshalTargetType unmarshals an instance of TargetType from the specified map of raw messages.
+func UnmarshalTargetType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TargetType)
 	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
@@ -1467,7 +1636,7 @@ func UnmarshalTarget(m map[string]json.RawMessage, result interface{}) (err erro
 		err = core.SDKErrorf(err, "", "updated_at-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "parameters", &obj.Parameters, UnmarshalParameters)
+	err = core.UnmarshalModel(m, "parameters", &obj.Parameters, UnmarshalTargetParametersTypeLogDna)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "parameters-error", common.GetComponentInfo())
 		return
@@ -1476,16 +1645,16 @@ func UnmarshalTarget(m map[string]json.RawMessage, result interface{}) (err erro
 	return
 }
 
-// TargetCollection : Response body from a successful list targets operation.
-type TargetCollection struct {
-	// List of targets of a tenant.
-	Targets []Target `json:"targets,omitempty"`
+// TargetTypeCollection : Response body from a successful list targets operation.
+type TargetTypeCollection struct {
+	// List of target of a tenant.
+	Targets []TargetTypeIntf `json:"targets,omitempty"`
 }
 
-// UnmarshalTargetCollection unmarshals an instance of TargetCollection from the specified map of raw messages.
-func UnmarshalTargetCollection(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(TargetCollection)
-	err = core.UnmarshalModel(m, "targets", &obj.Targets, UnmarshalTarget)
+// UnmarshalTargetTypeCollection unmarshals an instance of TargetTypeCollection from the specified map of raw messages.
+func UnmarshalTargetTypeCollection(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TargetTypeCollection)
+	err = core.UnmarshalModel(m, "targets", &obj.Targets, UnmarshalTargetType)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "targets-error", common.GetComponentInfo())
 		return
@@ -1494,22 +1663,33 @@ func UnmarshalTargetCollection(m map[string]json.RawMessage, result interface{})
 	return
 }
 
-// TargetPatch : The request body used when updating the target of a tenant. At least one other value is required.
-type TargetPatch struct {
-	// Cloud resource name of the log-sink target instance.<br>Supported log-sinks are:<br><ul><li>IBM Cloud Logs
-	// (logs)</li><li>Mezmo (logdna)</li></ul>.
+// TargetTypePatch : Parameter set describing a particular type of target.
+// Models which "extend" this model:
+// - TargetTypePatchLogDna
+// - TargetTypePatchLogs
+type TargetTypePatch struct {
+	// Cloud resource name of the log-sink target instance.<br>Supported log-sinks are:<br><ul><li>IBM Log Analysis
+	// (logdna)</li></ul>.
 	LogSinkCRN *string `json:"log_sink_crn,omitempty"`
 
 	// The name for this tenant target. The name must be unique across all targets for this tenant.
 	Name *string `json:"name,omitempty"`
 
-	// Parameter sets describing a particular type of log-sink.
-	Parameters ParametersPrototypeIntf `json:"parameters,omitempty"`
+	// List of properties to create or update a log-sink of type <b>logdna</b> (IBM Log Analysis).
+	Parameters *TargetParametersTypeLogDnaPrototype `json:"parameters,omitempty"`
 }
 
-// UnmarshalTargetPatch unmarshals an instance of TargetPatch from the specified map of raw messages.
-func UnmarshalTargetPatch(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(TargetPatch)
+func (*TargetTypePatch) isaTargetTypePatch() bool {
+	return true
+}
+
+type TargetTypePatchIntf interface {
+	isaTargetTypePatch() bool
+}
+
+// UnmarshalTargetTypePatch unmarshals an instance of TargetTypePatch from the specified map of raw messages.
+func UnmarshalTargetTypePatch(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TargetTypePatch)
 	err = core.UnmarshalPrimitive(m, "log_sink_crn", &obj.LogSinkCRN)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "log_sink_crn-error", common.GetComponentInfo())
@@ -1520,7 +1700,7 @@ func UnmarshalTargetPatch(m map[string]json.RawMessage, result interface{}) (err
 		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "parameters", &obj.Parameters, UnmarshalParametersPrototype)
+	err = core.UnmarshalModel(m, "parameters", &obj.Parameters, UnmarshalTargetParametersTypeLogDnaPrototype)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "parameters-error", common.GetComponentInfo())
 		return
@@ -1529,10 +1709,10 @@ func UnmarshalTargetPatch(m map[string]json.RawMessage, result interface{}) (err
 	return
 }
 
-// AsPatch returns a generic map representation of the TargetPatch
-func (targetPatch *TargetPatch) AsPatch() (_patch map[string]interface{}, err error) {
+// AsPatch returns a generic map representation of the TargetTypePatch
+func (targetTypePatch *TargetTypePatch) AsPatch() (_patch map[string]interface{}, err error) {
 	var jsonData []byte
-	jsonData, err = json.Marshal(targetPatch)
+	jsonData, err = json.Marshal(targetTypePatch)
 	if err == nil {
 		err = json.Unmarshal(jsonData, &_patch)
 	}
@@ -1542,35 +1722,33 @@ func (targetPatch *TargetPatch) AsPatch() (_patch map[string]interface{}, err er
 	return
 }
 
-// TargetPrototype : Full target description.
-type TargetPrototype struct {
-	// Cloud resource name of the log-sink target instance.<br>Supported log-sinks are:<br><ul><li>IBM Cloud Logs
-	// (logs)</li><li>Mezmo (logdna)</li></ul>.
-	LogSinkCRN *string `json:"log_sink_crn" validate:"required"`
+// TargetTypePrototype : Parameter set describing a particular type of target.
+// Models which "extend" this model:
+// - TargetTypePrototypeTargetTypeLogDnaPrototype
+// - TargetTypePrototypeTargetTypeLogsPrototype
+type TargetTypePrototype struct {
+	// Cloud resource name of the log-sink target instance.<br>Supported log-sink is:<br><ul><li><b>logdna</b> (IBM Log
+	// Analysis)</li></ul>.
+	LogSinkCRN *string `json:"log_sink_crn,omitempty"`
 
 	// The name for this tenant target. The name must be unique across all targets for this tenant.
-	Name *string `json:"name" validate:"required"`
+	Name *string `json:"name,omitempty"`
 
-	// Parameter sets describing a particular type of log-sink.
-	Parameters ParametersPrototypeIntf `json:"parameters,omitempty"`
+	// List of properties to create or update a log-sink of type <b>logdna</b> (IBM Log Analysis).
+	Parameters *TargetParametersTypeLogDnaPrototype `json:"parameters,omitempty"`
 }
 
-// NewTargetPrototype : Instantiate TargetPrototype (Generic Model Constructor)
-func (*IBMCloudLogsRoutingV0) NewTargetPrototype(logSinkCRN string, name string) (_model *TargetPrototype, err error) {
-	_model = &TargetPrototype{
-		LogSinkCRN: core.StringPtr(logSinkCRN),
-		Name: core.StringPtr(name),
-	}
-	err = core.ValidateStruct(_model, "required parameters")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
-	}
-	return
+func (*TargetTypePrototype) isaTargetTypePrototype() bool {
+	return true
 }
 
-// UnmarshalTargetPrototype unmarshals an instance of TargetPrototype from the specified map of raw messages.
-func UnmarshalTargetPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(TargetPrototype)
+type TargetTypePrototypeIntf interface {
+	isaTargetTypePrototype() bool
+}
+
+// UnmarshalTargetTypePrototype unmarshals an instance of TargetTypePrototype from the specified map of raw messages.
+func UnmarshalTargetTypePrototype(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TargetTypePrototype)
 	err = core.UnmarshalPrimitive(m, "log_sink_crn", &obj.LogSinkCRN)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "log_sink_crn-error", common.GetComponentInfo())
@@ -1581,7 +1759,7 @@ func UnmarshalTargetPrototype(m map[string]json.RawMessage, result interface{}) 
 		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "parameters", &obj.Parameters, UnmarshalParametersPrototype)
+	err = core.UnmarshalModel(m, "parameters", &obj.Parameters, UnmarshalTargetParametersTypeLogDnaPrototype)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "parameters-error", common.GetComponentInfo())
 		return
@@ -1611,7 +1789,7 @@ type Tenant struct {
 	Etag *string `json:"etag" validate:"required"`
 
 	// List of targets.
-	Targets []Target `json:"targets" validate:"required"`
+	Targets []TargetTypeIntf `json:"targets" validate:"required"`
 }
 
 // UnmarshalTenant unmarshals an instance of Tenant from the specified map of raw messages.
@@ -1647,7 +1825,7 @@ func UnmarshalTenant(m map[string]json.RawMessage, result interface{}) (err erro
 		err = core.SDKErrorf(err, "", "etag-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "targets", &obj.Targets, UnmarshalTarget)
+	err = core.UnmarshalModel(m, "targets", &obj.Targets, UnmarshalTargetType)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "targets-error", common.GetComponentInfo())
 		return
@@ -1721,20 +1899,20 @@ type UpdateTargetOptions struct {
 	IfMatch *string `json:"If-Match" validate:"required"`
 
 	// Updates a target of a tenant.
-	TargetPatch map[string]interface{} `json:"Target_patch" validate:"required"`
+	TargetTypePatch map[string]interface{} `json:"TargetTypePatch" validate:"required"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewUpdateTargetOptions : Instantiate UpdateTargetOptions
-func (*IBMCloudLogsRoutingV0) NewUpdateTargetOptions(ibmAPIVersion string, tenantID *strfmt.UUID, targetID *strfmt.UUID, ifMatch string, targetPatch map[string]interface{}) *UpdateTargetOptions {
+func (*IBMCloudLogsRoutingV0) NewUpdateTargetOptions(ibmAPIVersion string, tenantID *strfmt.UUID, targetID *strfmt.UUID, ifMatch string, targetTypePatch map[string]interface{}) *UpdateTargetOptions {
 	return &UpdateTargetOptions{
-		IBMAPIVersion: core.StringPtr(ibmAPIVersion),
-		TenantID: tenantID,
-		TargetID: targetID,
-		IfMatch: core.StringPtr(ifMatch),
-		TargetPatch: targetPatch,
+		IBMAPIVersion:   core.StringPtr(ibmAPIVersion),
+		TenantID:        tenantID,
+		TargetID:        targetID,
+		IfMatch:         core.StringPtr(ifMatch),
+		TargetTypePatch: targetTypePatch,
 	}
 }
 
@@ -1762,9 +1940,9 @@ func (_options *UpdateTargetOptions) SetIfMatch(ifMatch string) *UpdateTargetOpt
 	return _options
 }
 
-// SetTargetPatch : Allow user to set TargetPatch
-func (_options *UpdateTargetOptions) SetTargetPatch(targetPatch map[string]interface{}) *UpdateTargetOptions {
-	_options.TargetPatch = targetPatch
+// SetTargetTypePatch : Allow user to set TargetTypePatch
+func (_options *UpdateTargetOptions) SetTargetTypePatch(targetTypePatch map[string]interface{}) *UpdateTargetOptions {
+	_options.TargetTypePatch = targetTypePatch
 	return _options
 }
 
@@ -1797,9 +1975,9 @@ type UpdateTenantOptions struct {
 func (*IBMCloudLogsRoutingV0) NewUpdateTenantOptions(ibmAPIVersion string, tenantID *strfmt.UUID, ifMatch string, tenantPatch map[string]interface{}) *UpdateTenantOptions {
 	return &UpdateTenantOptions{
 		IBMAPIVersion: core.StringPtr(ibmAPIVersion),
-		TenantID: tenantID,
-		IfMatch: core.StringPtr(ifMatch),
-		TenantPatch: tenantPatch,
+		TenantID:      tenantID,
+		IfMatch:       core.StringPtr(ifMatch),
+		TenantPatch:   tenantPatch,
 	}
 }
 
@@ -1833,132 +2011,382 @@ func (options *UpdateTenantOptions) SetHeaders(param map[string]string) *UpdateT
 	return options
 }
 
-// ParametersPrototypeTargetParametersTypeLogDnaPrototype : List of properties to create or update a log-sink of type Mezmo (logdna).
-// This model "extends" ParametersPrototype
-type ParametersPrototypeTargetParametersTypeLogDnaPrototype struct {
-	// Host name of the log-sink.
-	Host *string `json:"host,omitempty"`
+// TargetTypeLogDna : Full target description.
+// This model "extends" TargetType
+type TargetTypeLogDna struct {
+	// Unique ID of the target.
+	ID *strfmt.UUID `json:"id" validate:"required"`
 
-	// Network port of the log-sink.
-	Port *int64 `json:"port,omitempty"`
+	// Cloud resource name of the log-sink target instance.
+	LogSinkCRN *string `json:"log_sink_crn" validate:"required"`
 
-	// Secret to connect to the log-sink.
-	AccessCredential *string `json:"access_credential,omitempty"`
+	// The name for this tenant target. The name is unique across all targets for this tenant.
+	Name *string `json:"name" validate:"required"`
+
+	// Resource version identifier.
+	Etag *string `json:"etag" validate:"required"`
+
+	// Type of log-sink. Identical to the <code>service-name</code> segment of <code>log_sink_crn</code>.
+	Type *string `json:"type" validate:"required"`
+
+	// Time stamp the target was originally created.
+	CreatedAt *string `json:"created_at" validate:"required"`
+
+	// Time stamp the target was last updated.
+	UpdatedAt *string `json:"updated_at" validate:"required"`
+
+	// List of properties returned from a successful list operation for a log-sink of type IBM Log Analysis (logdna).
+	Parameters *TargetParametersTypeLogDna `json:"parameters,omitempty"`
 }
 
-func (*ParametersPrototypeTargetParametersTypeLogDnaPrototype) isaParametersPrototype() bool {
+// Constants associated with the TargetTypeLogDna.Type property.
+// Type of log-sink. Identical to the <code>service-name</code> segment of <code>log_sink_crn</code>.
+const (
+	TargetTypeLogDnaTypeLogdnaConst = "logdna"
+)
+
+func (*TargetTypeLogDna) isaTargetType() bool {
 	return true
 }
 
-// UnmarshalParametersPrototypeTargetParametersTypeLogDnaPrototype unmarshals an instance of ParametersPrototypeTargetParametersTypeLogDnaPrototype from the specified map of raw messages.
-func UnmarshalParametersPrototypeTargetParametersTypeLogDnaPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ParametersPrototypeTargetParametersTypeLogDnaPrototype)
-	err = core.UnmarshalPrimitive(m, "host", &obj.Host)
+// UnmarshalTargetTypeLogDna unmarshals an instance of TargetTypeLogDna from the specified map of raw messages.
+func UnmarshalTargetTypeLogDna(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TargetTypeLogDna)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "host-error", common.GetComponentInfo())
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "port", &obj.Port)
+	err = core.UnmarshalPrimitive(m, "log_sink_crn", &obj.LogSinkCRN)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "port-error", common.GetComponentInfo())
+		err = core.SDKErrorf(err, "", "log_sink_crn-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "access_credential", &obj.AccessCredential)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "access_credential-error", common.GetComponentInfo())
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "etag", &obj.Etag)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "etag-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "created_at-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_at", &obj.UpdatedAt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "updated_at-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "parameters", &obj.Parameters, UnmarshalTargetParametersTypeLogDna)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "parameters-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
 }
 
-// ParametersPrototypeTargetParametersTypeLogsPrototype : List of properties to create or update a log-sink of type IBM Cloud Logs (logs).
-// This model "extends" ParametersPrototype
-type ParametersPrototypeTargetParametersTypeLogsPrototype struct {
-	// Host name of the log-sink.
-	Host *string `json:"host,omitempty"`
+// TargetTypeLogs : Full target description.
+// This model "extends" TargetType
+type TargetTypeLogs struct {
+	// Unique ID of the target.
+	ID *strfmt.UUID `json:"id" validate:"required"`
 
-	// Network port of the log-sink.
-	Port *int64 `json:"port,omitempty"`
+	// Cloud resource name of the log-sink target instance.
+	LogSinkCRN *string `json:"log_sink_crn" validate:"required"`
+
+	// The name for this tenant target. The name is unique across all targets for this tenant.
+	Name *string `json:"name" validate:"required"`
+
+	// Resource version identifier.
+	Etag *string `json:"etag" validate:"required"`
+
+	// Type of log-sink. Identical to the <code>service-name</code> segment of <code>log_sink_crn</code>.
+	Type *string `json:"type" validate:"required"`
+
+	// Time stamp the target was originally created.
+	CreatedAt *string `json:"created_at" validate:"required"`
+
+	// Time stamp the target was last updated.
+	UpdatedAt *string `json:"updated_at" validate:"required"`
+
+	// List of properties returned from a successful list operation for a log-sink of type <b>logs</b> (IBM Cloud Logs).
+	Parameters *TargetParametersTypeLogs `json:"parameters,omitempty"`
 }
 
-func (*ParametersPrototypeTargetParametersTypeLogsPrototype) isaParametersPrototype() bool {
+// Constants associated with the TargetTypeLogs.Type property.
+// Type of log-sink. Identical to the <code>service-name</code> segment of <code>log_sink_crn</code>.
+const (
+	TargetTypeLogsTypeLogsConst = "logs"
+)
+
+func (*TargetTypeLogs) isaTargetType() bool {
 	return true
 }
 
-// UnmarshalParametersPrototypeTargetParametersTypeLogsPrototype unmarshals an instance of ParametersPrototypeTargetParametersTypeLogsPrototype from the specified map of raw messages.
-func UnmarshalParametersPrototypeTargetParametersTypeLogsPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ParametersPrototypeTargetParametersTypeLogsPrototype)
-	err = core.UnmarshalPrimitive(m, "host", &obj.Host)
+// UnmarshalTargetTypeLogs unmarshals an instance of TargetTypeLogs from the specified map of raw messages.
+func UnmarshalTargetTypeLogs(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TargetTypeLogs)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "host-error", common.GetComponentInfo())
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "port", &obj.Port)
+	err = core.UnmarshalPrimitive(m, "log_sink_crn", &obj.LogSinkCRN)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "port-error", common.GetComponentInfo())
+		err = core.SDKErrorf(err, "", "log_sink_crn-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "etag", &obj.Etag)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "etag-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "created_at-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_at", &obj.UpdatedAt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "updated_at-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "parameters", &obj.Parameters, UnmarshalTargetParametersTypeLogs)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "parameters-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
 }
 
-// ParametersTargetParametersTypeLogDna : List of properties returned from a successful list operation for a log-sink of type Mezmo (logdna).
-// This model "extends" Parameters
-type ParametersTargetParametersTypeLogDna struct {
-	// Host name of the log-sink.
-	Host *string `json:"host,omitempty"`
+// TargetTypePatchLogDna : The request body used when updating the target of a tenant. At least one other value is required.
+// This model "extends" TargetTypePatch
+type TargetTypePatchLogDna struct {
+	// Cloud resource name of the log-sink target instance.<br>Supported log-sinks are:<br><ul><li>IBM Log Analysis
+	// (logdna)</li></ul>.
+	LogSinkCRN *string `json:"log_sink_crn,omitempty"`
 
-	// Network port of the log-sink.
-	Port *int64 `json:"port,omitempty"`
+	// The name for this tenant target. The name must be unique across all targets for this tenant.
+	Name *string `json:"name,omitempty"`
+
+	// List of properties to create or update a log-sink of type <b>logdna</b> (IBM Log Analysis).
+	Parameters *TargetParametersTypeLogDnaPrototype `json:"parameters,omitempty"`
 }
 
-func (*ParametersTargetParametersTypeLogDna) isaParameters() bool {
+func (*TargetTypePatchLogDna) isaTargetTypePatch() bool {
 	return true
 }
 
-// UnmarshalParametersTargetParametersTypeLogDna unmarshals an instance of ParametersTargetParametersTypeLogDna from the specified map of raw messages.
-func UnmarshalParametersTargetParametersTypeLogDna(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ParametersTargetParametersTypeLogDna)
-	err = core.UnmarshalPrimitive(m, "host", &obj.Host)
+// UnmarshalTargetTypePatchLogDna unmarshals an instance of TargetTypePatchLogDna from the specified map of raw messages.
+func UnmarshalTargetTypePatchLogDna(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TargetTypePatchLogDna)
+	err = core.UnmarshalPrimitive(m, "log_sink_crn", &obj.LogSinkCRN)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "host-error", common.GetComponentInfo())
+		err = core.SDKErrorf(err, "", "log_sink_crn-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "port", &obj.Port)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "port-error", common.GetComponentInfo())
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "parameters", &obj.Parameters, UnmarshalTargetParametersTypeLogDnaPrototype)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "parameters-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
 }
 
-// ParametersTargetParametersTypeLogs : List of properties returned from a successful list operation for a log-sink of type IBM Cloud Logs (logs).
-// This model "extends" Parameters
-type ParametersTargetParametersTypeLogs struct {
-	// Host name of the log-sink.
-	Host *string `json:"host,omitempty"`
-
-	// Network port of the log-sink.
-	Port *int64 `json:"port,omitempty"`
+// AsPatch returns a generic map representation of the TargetTypePatchLogDna
+func (targetTypePatchLogDna *TargetTypePatchLogDna) AsPatch() (_patch map[string]interface{}, err error) {
+	var jsonData []byte
+	jsonData, err = json.Marshal(targetTypePatchLogDna)
+	if err == nil {
+		err = json.Unmarshal(jsonData, &_patch)
+	}
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unmarshal-patch-data-error", common.GetComponentInfo())
+	}
+	return
 }
 
-func (*ParametersTargetParametersTypeLogs) isaParameters() bool {
+// TargetTypePatchLogs : The request body used when updating the target of a tenant. At least one other value is required.
+// This model "extends" TargetTypePatch
+type TargetTypePatchLogs struct {
+	// Cloud resource name of the log-sink target instance.<br>Supported log-sinks are:<br><ul><li><b>logs</b> (IBM Cloud
+	// Logs)</li></ul>.
+	LogSinkCRN *string `json:"log_sink_crn,omitempty"`
+
+	// The name for this tenant target. The name must be unique across all targets for this tenant.
+	Name *string `json:"name,omitempty"`
+
+	// List of properties to create or update a log-sink of type <b>logs</b> (IBM Cloud Logs).
+	Parameters *TargetParametersTypeLogsPrototype `json:"parameters,omitempty"`
+}
+
+func (*TargetTypePatchLogs) isaTargetTypePatch() bool {
 	return true
 }
 
-// UnmarshalParametersTargetParametersTypeLogs unmarshals an instance of ParametersTargetParametersTypeLogs from the specified map of raw messages.
-func UnmarshalParametersTargetParametersTypeLogs(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ParametersTargetParametersTypeLogs)
-	err = core.UnmarshalPrimitive(m, "host", &obj.Host)
+// UnmarshalTargetTypePatchLogs unmarshals an instance of TargetTypePatchLogs from the specified map of raw messages.
+func UnmarshalTargetTypePatchLogs(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TargetTypePatchLogs)
+	err = core.UnmarshalPrimitive(m, "log_sink_crn", &obj.LogSinkCRN)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "host-error", common.GetComponentInfo())
+		err = core.SDKErrorf(err, "", "log_sink_crn-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "port", &obj.Port)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "port-error", common.GetComponentInfo())
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "parameters", &obj.Parameters, UnmarshalTargetParametersTypeLogsPrototype)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "parameters-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AsPatch returns a generic map representation of the TargetTypePatchLogs
+func (targetTypePatchLogs *TargetTypePatchLogs) AsPatch() (_patch map[string]interface{}, err error) {
+	var jsonData []byte
+	jsonData, err = json.Marshal(targetTypePatchLogs)
+	if err == nil {
+		err = json.Unmarshal(jsonData, &_patch)
+	}
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unmarshal-patch-data-error", common.GetComponentInfo())
+	}
+	return
+}
+
+// TargetTypePrototypeTargetTypeLogDnaPrototype : Full target description.
+// This model "extends" TargetTypePrototype
+type TargetTypePrototypeTargetTypeLogDnaPrototype struct {
+	// Cloud resource name of the log-sink target instance.<br>Supported log-sink is:<br><ul><li><b>logdna</b> (IBM Log
+	// Analysis)</li></ul>.
+	LogSinkCRN *string `json:"log_sink_crn" validate:"required"`
+
+	// The name for this tenant target. The name must be unique across all targets for this tenant.
+	Name *string `json:"name" validate:"required"`
+
+	// List of properties to create or update a log-sink of type <b>logdna</b> (IBM Log Analysis).
+	Parameters *TargetParametersTypeLogDnaPrototype `json:"parameters,omitempty"`
+}
+
+// NewTargetTypePrototypeTargetTypeLogDnaPrototype : Instantiate TargetTypePrototypeTargetTypeLogDnaPrototype (Generic Model Constructor)
+func (*IBMCloudLogsRoutingV0) NewTargetTypePrototypeTargetTypeLogDnaPrototype(logSinkCRN string, name string) (_model *TargetTypePrototypeTargetTypeLogDnaPrototype, err error) {
+	_model = &TargetTypePrototypeTargetTypeLogDnaPrototype{
+		LogSinkCRN: core.StringPtr(logSinkCRN),
+		Name:       core.StringPtr(name),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+func (*TargetTypePrototypeTargetTypeLogDnaPrototype) isaTargetTypePrototype() bool {
+	return true
+}
+
+// UnmarshalTargetTypePrototypeTargetTypeLogDnaPrototype unmarshals an instance of TargetTypePrototypeTargetTypeLogDnaPrototype from the specified map of raw messages.
+func UnmarshalTargetTypePrototypeTargetTypeLogDnaPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TargetTypePrototypeTargetTypeLogDnaPrototype)
+	err = core.UnmarshalPrimitive(m, "log_sink_crn", &obj.LogSinkCRN)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "log_sink_crn-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "parameters", &obj.Parameters, UnmarshalTargetParametersTypeLogDnaPrototype)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "parameters-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// TargetTypePrototypeTargetTypeLogsPrototype : Full target description.
+// This model "extends" TargetTypePrototype
+type TargetTypePrototypeTargetTypeLogsPrototype struct {
+	// Cloud resource name of the log-sink target instance.<br>Supported log-sink is:<br><ul><li><b>logs</b> (IBM Cloud
+	// Logs)</li></ul>.
+	LogSinkCRN *string `json:"log_sink_crn" validate:"required"`
+
+	// The name for this tenant target. The name must be unique across all targets for this tenant.
+	Name *string `json:"name" validate:"required"`
+
+	// List of properties to create or update a log-sink of type <b>logs</b> (IBM Cloud Logs).
+	Parameters *TargetParametersTypeLogsPrototype `json:"parameters,omitempty"`
+}
+
+// NewTargetTypePrototypeTargetTypeLogsPrototype : Instantiate TargetTypePrototypeTargetTypeLogsPrototype (Generic Model Constructor)
+func (*IBMCloudLogsRoutingV0) NewTargetTypePrototypeTargetTypeLogsPrototype(logSinkCRN string, name string) (_model *TargetTypePrototypeTargetTypeLogsPrototype, err error) {
+	_model = &TargetTypePrototypeTargetTypeLogsPrototype{
+		LogSinkCRN: core.StringPtr(logSinkCRN),
+		Name:       core.StringPtr(name),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+func (*TargetTypePrototypeTargetTypeLogsPrototype) isaTargetTypePrototype() bool {
+	return true
+}
+
+// UnmarshalTargetTypePrototypeTargetTypeLogsPrototype unmarshals an instance of TargetTypePrototypeTargetTypeLogsPrototype from the specified map of raw messages.
+func UnmarshalTargetTypePrototypeTargetTypeLogsPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TargetTypePrototypeTargetTypeLogsPrototype)
+	err = core.UnmarshalPrimitive(m, "log_sink_crn", &obj.LogSinkCRN)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "log_sink_crn-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "parameters", &obj.Parameters, UnmarshalTargetParametersTypeLogsPrototype)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "parameters-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))

@@ -68,14 +68,13 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 		Context(`Using external config, construct service client instances`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"IBM_CLOUD_LOGS_ROUTING_URL": "https://ibmcloudlogsroutingv0/api",
+				"IBM_CLOUD_LOGS_ROUTING_URL":       "https://ibmcloudlogsroutingv0/api",
 				"IBM_CLOUD_LOGS_ROUTING_AUTH_TYPE": "noauth",
 			}
 
 			It(`Create service client using external config successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIBMCloudLogsRoutingV0UsingExternalConfig(&ibmcloudlogsroutingv0.IBMCloudLogsRoutingV0Options{
-				})
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIBMCloudLogsRoutingV0UsingExternalConfig(&ibmcloudlogsroutingv0.IBMCloudLogsRoutingV0Options{})
 				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 				Expect(serviceErr).To(BeNil())
 				ClearTestEnvironment(testEnvironment)
@@ -104,8 +103,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 			})
 			It(`Create service client using external config and set url programatically successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIBMCloudLogsRoutingV0UsingExternalConfig(&ibmcloudlogsroutingv0.IBMCloudLogsRoutingV0Options{
-				})
+				ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIBMCloudLogsRoutingV0UsingExternalConfig(&ibmcloudlogsroutingv0.IBMCloudLogsRoutingV0Options{})
 				err := ibmCloudLogsRoutingService.SetServiceURL("https://testService/api")
 				Expect(err).To(BeNil())
 				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
@@ -123,13 +121,12 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid Auth`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"IBM_CLOUD_LOGS_ROUTING_URL": "https://ibmcloudlogsroutingv0/api",
+				"IBM_CLOUD_LOGS_ROUTING_URL":       "https://ibmcloudlogsroutingv0/api",
 				"IBM_CLOUD_LOGS_ROUTING_AUTH_TYPE": "someOtherAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
-			ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIBMCloudLogsRoutingV0UsingExternalConfig(&ibmcloudlogsroutingv0.IBMCloudLogsRoutingV0Options{
-			})
+			ibmCloudLogsRoutingService, serviceErr := ibmcloudlogsroutingv0.NewIBMCloudLogsRoutingV0UsingExternalConfig(&ibmcloudlogsroutingv0.IBMCloudLogsRoutingV0Options{})
 
 			It(`Instantiate service client with error`, func() {
 				Expect(ibmCloudLogsRoutingService).To(BeNil())
@@ -140,7 +137,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid URL`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"IBM_CLOUD_LOGS_ROUTING_AUTH_TYPE":   "NOAuth",
+				"IBM_CLOUD_LOGS_ROUTING_AUTH_TYPE": "NOAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
@@ -168,7 +165,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 	Describe(`Parameterized URL tests`, func() {
 		It(`Format parameterized URL with all default values`, func() {
 			constructedURL, err := ibmcloudlogsroutingv0.ConstructServiceURL(nil)
-			Expect(constructedURL).To(Equal("https://management.private.us-east.logs-router.cloud.ibm.com/v1"))
+			Expect(constructedURL).To(Equal("https://management.eu-gb.logs-router.cloud.ibm.com/v1"))
 			Expect(constructedURL).ToNot(BeNil())
 			Expect(err).To(BeNil())
 		})
@@ -250,7 +247,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"tenants": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "crn": "crn:v1:bluemix:public:logs-router:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-logging-tenant", "etag": "\"822b4b5423e225206c1d75666595714a11925cd0f82b229839864443d6c3c049\"", "targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}]}`)
+					fmt.Fprintf(res, "%s", `{"tenants": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "crn": "crn:v1:bluemix:public:logs-router:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-logging-tenant", "etag": "\"822b4b5423e225206c1d75666595714a11925cd0f82b229839864443d6c3c049\"", "targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}]}`)
 				}))
 			})
 			It(`Invoke ListTenants successfully with retries`, func() {
@@ -308,7 +305,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"tenants": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "crn": "crn:v1:bluemix:public:logs-router:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-logging-tenant", "etag": "\"822b4b5423e225206c1d75666595714a11925cd0f82b229839864443d6c3c049\"", "targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}]}`)
+					fmt.Fprintf(res, "%s", `{"tenants": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "crn": "crn:v1:bluemix:public:logs-router:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-logging-tenant", "etag": "\"822b4b5423e225206c1d75666595714a11925cd0f82b229839864443d6c3c049\"", "targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}]}`)
 				}))
 			})
 			It(`Invoke ListTenants successfully`, func() {
@@ -432,22 +429,23 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
-				// Construct an instance of the TargetPrototype model
-				targetPrototypeModel := new(ibmcloudlogsroutingv0.TargetPrototype)
-				targetPrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				targetPrototypeModel.Name = core.StringPtr("my-log-sink")
-				targetPrototypeModel.Parameters = parametersPrototypeModel
+				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
+				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
+				targetTypePrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePrototypeModel.Name = core.StringPtr("my-log-sink")
+				targetTypePrototypeModel.Parameters = targetParametersTypeLogDnaPrototypeModel
 
 				// Construct an instance of the CreateTenantOptions model
 				createTenantOptionsModel := new(ibmcloudlogsroutingv0.CreateTenantOptions)
 				createTenantOptionsModel.IBMAPIVersion = core.StringPtr("testString")
 				createTenantOptionsModel.Name = core.StringPtr("my-logging-tenant")
-				createTenantOptionsModel.Targets = []ibmcloudlogsroutingv0.TargetPrototype{*targetPrototypeModel}
+				createTenantOptionsModel.Targets = []ibmcloudlogsroutingv0.TargetTypePrototypeIntf{targetTypePrototypeModel}
 				createTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := ibmCloudLogsRoutingService.CreateTenant(createTenantOptionsModel)
@@ -502,7 +500,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "crn": "crn:v1:bluemix:public:logs-router:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-logging-tenant", "etag": "\"822b4b5423e225206c1d75666595714a11925cd0f82b229839864443d6c3c049\"", "targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "crn": "crn:v1:bluemix:public:logs-router:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-logging-tenant", "etag": "\"822b4b5423e225206c1d75666595714a11925cd0f82b229839864443d6c3c049\"", "targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}`)
 				}))
 			})
 			It(`Invoke CreateTenant successfully with retries`, func() {
@@ -514,22 +512,23 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 				ibmCloudLogsRoutingService.EnableRetries(0, 0)
 
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
-				// Construct an instance of the TargetPrototype model
-				targetPrototypeModel := new(ibmcloudlogsroutingv0.TargetPrototype)
-				targetPrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				targetPrototypeModel.Name = core.StringPtr("my-log-sink")
-				targetPrototypeModel.Parameters = parametersPrototypeModel
+				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
+				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
+				targetTypePrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePrototypeModel.Name = core.StringPtr("my-log-sink")
+				targetTypePrototypeModel.Parameters = targetParametersTypeLogDnaPrototypeModel
 
 				// Construct an instance of the CreateTenantOptions model
 				createTenantOptionsModel := new(ibmcloudlogsroutingv0.CreateTenantOptions)
 				createTenantOptionsModel.IBMAPIVersion = core.StringPtr("testString")
 				createTenantOptionsModel.Name = core.StringPtr("my-logging-tenant")
-				createTenantOptionsModel.Targets = []ibmcloudlogsroutingv0.TargetPrototype{*targetPrototypeModel}
+				createTenantOptionsModel.Targets = []ibmcloudlogsroutingv0.TargetTypePrototypeIntf{targetTypePrototypeModel}
 				createTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -587,7 +586,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "crn": "crn:v1:bluemix:public:logs-router:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-logging-tenant", "etag": "\"822b4b5423e225206c1d75666595714a11925cd0f82b229839864443d6c3c049\"", "targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "crn": "crn:v1:bluemix:public:logs-router:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-logging-tenant", "etag": "\"822b4b5423e225206c1d75666595714a11925cd0f82b229839864443d6c3c049\"", "targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}`)
 				}))
 			})
 			It(`Invoke CreateTenant successfully`, func() {
@@ -604,22 +603,23 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
-				// Construct an instance of the TargetPrototype model
-				targetPrototypeModel := new(ibmcloudlogsroutingv0.TargetPrototype)
-				targetPrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				targetPrototypeModel.Name = core.StringPtr("my-log-sink")
-				targetPrototypeModel.Parameters = parametersPrototypeModel
+				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
+				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
+				targetTypePrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePrototypeModel.Name = core.StringPtr("my-log-sink")
+				targetTypePrototypeModel.Parameters = targetParametersTypeLogDnaPrototypeModel
 
 				// Construct an instance of the CreateTenantOptions model
 				createTenantOptionsModel := new(ibmcloudlogsroutingv0.CreateTenantOptions)
 				createTenantOptionsModel.IBMAPIVersion = core.StringPtr("testString")
 				createTenantOptionsModel.Name = core.StringPtr("my-logging-tenant")
-				createTenantOptionsModel.Targets = []ibmcloudlogsroutingv0.TargetPrototype{*targetPrototypeModel}
+				createTenantOptionsModel.Targets = []ibmcloudlogsroutingv0.TargetTypePrototypeIntf{targetTypePrototypeModel}
 				createTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -637,22 +637,23 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
-				// Construct an instance of the TargetPrototype model
-				targetPrototypeModel := new(ibmcloudlogsroutingv0.TargetPrototype)
-				targetPrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				targetPrototypeModel.Name = core.StringPtr("my-log-sink")
-				targetPrototypeModel.Parameters = parametersPrototypeModel
+				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
+				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
+				targetTypePrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePrototypeModel.Name = core.StringPtr("my-log-sink")
+				targetTypePrototypeModel.Parameters = targetParametersTypeLogDnaPrototypeModel
 
 				// Construct an instance of the CreateTenantOptions model
 				createTenantOptionsModel := new(ibmcloudlogsroutingv0.CreateTenantOptions)
 				createTenantOptionsModel.IBMAPIVersion = core.StringPtr("testString")
 				createTenantOptionsModel.Name = core.StringPtr("my-logging-tenant")
-				createTenantOptionsModel.Targets = []ibmcloudlogsroutingv0.TargetPrototype{*targetPrototypeModel}
+				createTenantOptionsModel.Targets = []ibmcloudlogsroutingv0.TargetTypePrototypeIntf{targetTypePrototypeModel}
 				createTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := ibmCloudLogsRoutingService.SetServiceURL("")
@@ -691,22 +692,23 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
-				// Construct an instance of the TargetPrototype model
-				targetPrototypeModel := new(ibmcloudlogsroutingv0.TargetPrototype)
-				targetPrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				targetPrototypeModel.Name = core.StringPtr("my-log-sink")
-				targetPrototypeModel.Parameters = parametersPrototypeModel
+				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
+				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
+				targetTypePrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePrototypeModel.Name = core.StringPtr("my-log-sink")
+				targetTypePrototypeModel.Parameters = targetParametersTypeLogDnaPrototypeModel
 
 				// Construct an instance of the CreateTenantOptions model
 				createTenantOptionsModel := new(ibmcloudlogsroutingv0.CreateTenantOptions)
 				createTenantOptionsModel.IBMAPIVersion = core.StringPtr("testString")
 				createTenantOptionsModel.Name = core.StringPtr("my-logging-tenant")
-				createTenantOptionsModel.Targets = []ibmcloudlogsroutingv0.TargetPrototype{*targetPrototypeModel}
+				createTenantOptionsModel.Targets = []ibmcloudlogsroutingv0.TargetTypePrototypeIntf{targetTypePrototypeModel}
 				createTenantOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -789,7 +791,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "crn": "crn:v1:bluemix:public:logs-router:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-logging-tenant", "etag": "\"822b4b5423e225206c1d75666595714a11925cd0f82b229839864443d6c3c049\"", "targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "crn": "crn:v1:bluemix:public:logs-router:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-logging-tenant", "etag": "\"822b4b5423e225206c1d75666595714a11925cd0f82b229839864443d6c3c049\"", "targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}`)
 				}))
 			})
 			It(`Invoke GetTenantDetail successfully with retries`, func() {
@@ -846,7 +848,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "crn": "crn:v1:bluemix:public:logs-router:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-logging-tenant", "etag": "\"822b4b5423e225206c1d75666595714a11925cd0f82b229839864443d6c3c049\"", "targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "crn": "crn:v1:bluemix:public:logs-router:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-logging-tenant", "etag": "\"822b4b5423e225206c1d75666595714a11925cd0f82b229839864443d6c3c049\"", "targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}`)
 				}))
 			})
 			It(`Invoke GetTenantDetail successfully`, func() {
@@ -1112,7 +1114,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "crn": "crn:v1:bluemix:public:logs-router:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-logging-tenant", "etag": "\"822b4b5423e225206c1d75666595714a11925cd0f82b229839864443d6c3c049\"", "targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "crn": "crn:v1:bluemix:public:logs-router:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-logging-tenant", "etag": "\"822b4b5423e225206c1d75666595714a11925cd0f82b229839864443d6c3c049\"", "targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}`)
 				}))
 			})
 			It(`Invoke UpdateTenant successfully with retries`, func() {
@@ -1195,7 +1197,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "crn": "crn:v1:bluemix:public:logs-router:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-logging-tenant", "etag": "\"822b4b5423e225206c1d75666595714a11925cd0f82b229839864443d6c3c049\"", "targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "crn": "crn:v1:bluemix:public:logs-router:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-logging-tenant", "etag": "\"822b4b5423e225206c1d75666595714a11925cd0f82b229839864443d6c3c049\"", "targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}`)
 				}))
 			})
 			It(`Invoke UpdateTenant successfully`, func() {
@@ -1388,7 +1390,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}`)
+					fmt.Fprintf(res, "%s", `{"targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}`)
 				}))
 			})
 			It(`Invoke ListTenantTargets successfully with retries`, func() {
@@ -1447,7 +1449,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}`)
+					fmt.Fprintf(res, "%s", `{"targets": [{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}]}`)
 				}))
 			})
 			It(`Invoke ListTenantTargets successfully`, func() {
@@ -1574,18 +1576,23 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
+
+				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
+				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
+				targetTypePrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePrototypeModel.Name = core.StringPtr("my-log-sink")
+				targetTypePrototypeModel.Parameters = targetParametersTypeLogDnaPrototypeModel
 
 				// Construct an instance of the CreateTargetOptions model
 				createTargetOptionsModel := new(ibmcloudlogsroutingv0.CreateTargetOptions)
 				createTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				createTargetOptionsModel.IBMAPIVersion = core.StringPtr("testString")
-				createTargetOptionsModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				createTargetOptionsModel.Name = core.StringPtr("my-log-sink")
-				createTargetOptionsModel.Parameters = parametersPrototypeModel
+				createTargetOptionsModel.TargetTypePrototype = targetTypePrototypeModel
 				createTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := ibmCloudLogsRoutingService.CreateTarget(createTargetOptionsModel)
@@ -1640,7 +1647,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}`)
+					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}`)
 				}))
 			})
 			It(`Invoke CreateTarget successfully with retries`, func() {
@@ -1652,18 +1659,23 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 				ibmCloudLogsRoutingService.EnableRetries(0, 0)
 
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
+
+				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
+				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
+				targetTypePrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePrototypeModel.Name = core.StringPtr("my-log-sink")
+				targetTypePrototypeModel.Parameters = targetParametersTypeLogDnaPrototypeModel
 
 				// Construct an instance of the CreateTargetOptions model
 				createTargetOptionsModel := new(ibmcloudlogsroutingv0.CreateTargetOptions)
 				createTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				createTargetOptionsModel.IBMAPIVersion = core.StringPtr("testString")
-				createTargetOptionsModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				createTargetOptionsModel.Name = core.StringPtr("my-log-sink")
-				createTargetOptionsModel.Parameters = parametersPrototypeModel
+				createTargetOptionsModel.TargetTypePrototype = targetTypePrototypeModel
 				createTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -1721,7 +1733,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}`)
+					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}`)
 				}))
 			})
 			It(`Invoke CreateTarget successfully`, func() {
@@ -1738,18 +1750,23 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
+
+				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
+				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
+				targetTypePrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePrototypeModel.Name = core.StringPtr("my-log-sink")
+				targetTypePrototypeModel.Parameters = targetParametersTypeLogDnaPrototypeModel
 
 				// Construct an instance of the CreateTargetOptions model
 				createTargetOptionsModel := new(ibmcloudlogsroutingv0.CreateTargetOptions)
 				createTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				createTargetOptionsModel.IBMAPIVersion = core.StringPtr("testString")
-				createTargetOptionsModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				createTargetOptionsModel.Name = core.StringPtr("my-log-sink")
-				createTargetOptionsModel.Parameters = parametersPrototypeModel
+				createTargetOptionsModel.TargetTypePrototype = targetTypePrototypeModel
 				createTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -1767,18 +1784,23 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
+
+				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
+				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
+				targetTypePrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePrototypeModel.Name = core.StringPtr("my-log-sink")
+				targetTypePrototypeModel.Parameters = targetParametersTypeLogDnaPrototypeModel
 
 				// Construct an instance of the CreateTargetOptions model
 				createTargetOptionsModel := new(ibmcloudlogsroutingv0.CreateTargetOptions)
 				createTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				createTargetOptionsModel.IBMAPIVersion = core.StringPtr("testString")
-				createTargetOptionsModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				createTargetOptionsModel.Name = core.StringPtr("my-log-sink")
-				createTargetOptionsModel.Parameters = parametersPrototypeModel
+				createTargetOptionsModel.TargetTypePrototype = targetTypePrototypeModel
 				createTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := ibmCloudLogsRoutingService.SetServiceURL("")
@@ -1817,18 +1839,23 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
+
+				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
+				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
+				targetTypePrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePrototypeModel.Name = core.StringPtr("my-log-sink")
+				targetTypePrototypeModel.Parameters = targetParametersTypeLogDnaPrototypeModel
 
 				// Construct an instance of the CreateTargetOptions model
 				createTargetOptionsModel := new(ibmcloudlogsroutingv0.CreateTargetOptions)
 				createTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				createTargetOptionsModel.IBMAPIVersion = core.StringPtr("testString")
-				createTargetOptionsModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				createTargetOptionsModel.Name = core.StringPtr("my-log-sink")
-				createTargetOptionsModel.Parameters = parametersPrototypeModel
+				createTargetOptionsModel.TargetTypePrototype = targetTypePrototypeModel
 				createTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -1912,7 +1939,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}`)
+					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}`)
 				}))
 			})
 			It(`Invoke GetTenantTargetDetails successfully with retries`, func() {
@@ -1970,7 +1997,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}`)
+					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}`)
 				}))
 			})
 			It(`Invoke GetTenantTargetDetails successfully`, func() {
@@ -2099,17 +2126,18 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
-				// Construct an instance of the TargetPatch model
-				targetPatchModel := new(ibmcloudlogsroutingv0.TargetPatch)
-				targetPatchModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				targetPatchModel.Name = core.StringPtr("my-log-sink")
-				targetPatchModel.Parameters = parametersPrototypeModel
-				targetPatchModelAsPatch, asPatchErr := targetPatchModel.AsPatch()
+				// Construct an instance of the TargetTypePatchLogDna model
+				targetTypePatchModel := new(ibmcloudlogsroutingv0.TargetTypePatchLogDna)
+				targetTypePatchModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePatchModel.Name = core.StringPtr("my-log-sink")
+				targetTypePatchModel.Parameters = targetParametersTypeLogDnaPrototypeModel
+				targetTypePatchModelAsPatch, asPatchErr := targetTypePatchModel.AsPatch()
 				Expect(asPatchErr).To(BeNil())
 
 				// Construct an instance of the UpdateTargetOptions model
@@ -2118,7 +2146,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				updateTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				updateTargetOptionsModel.TargetID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				updateTargetOptionsModel.IfMatch = core.StringPtr("testString")
-				updateTargetOptionsModel.TargetPatch = targetPatchModelAsPatch
+				updateTargetOptionsModel.TargetTypePatch = targetTypePatchModelAsPatch
 				updateTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := ibmCloudLogsRoutingService.UpdateTarget(updateTargetOptionsModel)
@@ -2175,7 +2203,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}`)
+					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}`)
 				}))
 			})
 			It(`Invoke UpdateTarget successfully with retries`, func() {
@@ -2187,17 +2215,18 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 				ibmCloudLogsRoutingService.EnableRetries(0, 0)
 
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
-				// Construct an instance of the TargetPatch model
-				targetPatchModel := new(ibmcloudlogsroutingv0.TargetPatch)
-				targetPatchModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				targetPatchModel.Name = core.StringPtr("my-log-sink")
-				targetPatchModel.Parameters = parametersPrototypeModel
-				targetPatchModelAsPatch, asPatchErr := targetPatchModel.AsPatch()
+				// Construct an instance of the TargetTypePatchLogDna model
+				targetTypePatchModel := new(ibmcloudlogsroutingv0.TargetTypePatchLogDna)
+				targetTypePatchModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePatchModel.Name = core.StringPtr("my-log-sink")
+				targetTypePatchModel.Parameters = targetParametersTypeLogDnaPrototypeModel
+				targetTypePatchModelAsPatch, asPatchErr := targetTypePatchModel.AsPatch()
 				Expect(asPatchErr).To(BeNil())
 
 				// Construct an instance of the UpdateTargetOptions model
@@ -2206,7 +2235,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				updateTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				updateTargetOptionsModel.TargetID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				updateTargetOptionsModel.IfMatch = core.StringPtr("testString")
-				updateTargetOptionsModel.TargetPatch = targetPatchModelAsPatch
+				updateTargetOptionsModel.TargetTypePatch = targetTypePatchModelAsPatch
 				updateTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -2266,7 +2295,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2023-10-20T18:30:00.143156Z", "updated_at": "2023-10-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}`)
+					fmt.Fprintf(res, "%s", `{"id": "8717db99-2cfb-4ba6-a033-89c994c2e9f0", "log_sink_crn": "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::", "name": "my-log-sink", "etag": "\"c3a43545a7f2675970671ac3a57b8db067a1866b2222e1b950ee8da612e347c6\"", "type": "logdna", "created_at": "2024-06-20T18:30:00.143156Z", "updated_at": "2024-06-20T18:30:00.143156Z", "parameters": {"host": "www.example.com", "port": 1}}`)
 				}))
 			})
 			It(`Invoke UpdateTarget successfully`, func() {
@@ -2283,17 +2312,18 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
-				// Construct an instance of the TargetPatch model
-				targetPatchModel := new(ibmcloudlogsroutingv0.TargetPatch)
-				targetPatchModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				targetPatchModel.Name = core.StringPtr("my-log-sink")
-				targetPatchModel.Parameters = parametersPrototypeModel
-				targetPatchModelAsPatch, asPatchErr := targetPatchModel.AsPatch()
+				// Construct an instance of the TargetTypePatchLogDna model
+				targetTypePatchModel := new(ibmcloudlogsroutingv0.TargetTypePatchLogDna)
+				targetTypePatchModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePatchModel.Name = core.StringPtr("my-log-sink")
+				targetTypePatchModel.Parameters = targetParametersTypeLogDnaPrototypeModel
+				targetTypePatchModelAsPatch, asPatchErr := targetTypePatchModel.AsPatch()
 				Expect(asPatchErr).To(BeNil())
 
 				// Construct an instance of the UpdateTargetOptions model
@@ -2302,7 +2332,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				updateTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				updateTargetOptionsModel.TargetID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				updateTargetOptionsModel.IfMatch = core.StringPtr("testString")
-				updateTargetOptionsModel.TargetPatch = targetPatchModelAsPatch
+				updateTargetOptionsModel.TargetTypePatch = targetTypePatchModelAsPatch
 				updateTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -2320,17 +2350,18 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
-				// Construct an instance of the TargetPatch model
-				targetPatchModel := new(ibmcloudlogsroutingv0.TargetPatch)
-				targetPatchModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				targetPatchModel.Name = core.StringPtr("my-log-sink")
-				targetPatchModel.Parameters = parametersPrototypeModel
-				targetPatchModelAsPatch, asPatchErr := targetPatchModel.AsPatch()
+				// Construct an instance of the TargetTypePatchLogDna model
+				targetTypePatchModel := new(ibmcloudlogsroutingv0.TargetTypePatchLogDna)
+				targetTypePatchModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePatchModel.Name = core.StringPtr("my-log-sink")
+				targetTypePatchModel.Parameters = targetParametersTypeLogDnaPrototypeModel
+				targetTypePatchModelAsPatch, asPatchErr := targetTypePatchModel.AsPatch()
 				Expect(asPatchErr).To(BeNil())
 
 				// Construct an instance of the UpdateTargetOptions model
@@ -2339,7 +2370,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				updateTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				updateTargetOptionsModel.TargetID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				updateTargetOptionsModel.IfMatch = core.StringPtr("testString")
-				updateTargetOptionsModel.TargetPatch = targetPatchModelAsPatch
+				updateTargetOptionsModel.TargetTypePatch = targetTypePatchModelAsPatch
 				updateTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := ibmCloudLogsRoutingService.SetServiceURL("")
@@ -2378,17 +2409,18 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(ibmCloudLogsRoutingService).ToNot(BeNil())
 
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
-				// Construct an instance of the TargetPatch model
-				targetPatchModel := new(ibmcloudlogsroutingv0.TargetPatch)
-				targetPatchModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				targetPatchModel.Name = core.StringPtr("my-log-sink")
-				targetPatchModel.Parameters = parametersPrototypeModel
-				targetPatchModelAsPatch, asPatchErr := targetPatchModel.AsPatch()
+				// Construct an instance of the TargetTypePatchLogDna model
+				targetTypePatchModel := new(ibmcloudlogsroutingv0.TargetTypePatchLogDna)
+				targetTypePatchModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePatchModel.Name = core.StringPtr("my-log-sink")
+				targetTypePatchModel.Parameters = targetParametersTypeLogDnaPrototypeModel
+				targetTypePatchModelAsPatch, asPatchErr := targetTypePatchModel.AsPatch()
 				Expect(asPatchErr).To(BeNil())
 
 				// Construct an instance of the UpdateTargetOptions model
@@ -2397,7 +2429,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				updateTargetOptionsModel.TenantID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				updateTargetOptionsModel.TargetID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				updateTargetOptionsModel.IfMatch = core.StringPtr("testString")
-				updateTargetOptionsModel.TargetPatch = targetPatchModelAsPatch
+				updateTargetOptionsModel.TargetTypePatch = targetTypePatchModelAsPatch
 				updateTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -2494,66 +2526,75 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Authenticator: &core.NoAuthAuthenticator{},
 			})
 			It(`Invoke NewCreateTargetOptions successfully`, func() {
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				Expect(parametersPrototypeModel).ToNot(BeNil())
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
-				Expect(parametersPrototypeModel.Host).To(Equal(core.StringPtr("www.example.com")))
-				Expect(parametersPrototypeModel.Port).To(Equal(core.Int64Ptr(int64(1))))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				Expect(targetParametersTypeLogDnaPrototypeModel).ToNot(BeNil())
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
+				Expect(targetParametersTypeLogDnaPrototypeModel.Host).To(Equal(core.StringPtr("www.example.com")))
+				Expect(targetParametersTypeLogDnaPrototypeModel.Port).To(Equal(core.Int64Ptr(int64(1))))
+				Expect(targetParametersTypeLogDnaPrototypeModel.AccessCredential).To(Equal(core.StringPtr("ingestion-secret")))
+
+				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
+				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
+				Expect(targetTypePrototypeModel).ToNot(BeNil())
+				targetTypePrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePrototypeModel.Name = core.StringPtr("my-log-sink")
+				targetTypePrototypeModel.Parameters = targetParametersTypeLogDnaPrototypeModel
+				Expect(targetTypePrototypeModel.LogSinkCRN).To(Equal(core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")))
+				Expect(targetTypePrototypeModel.Name).To(Equal(core.StringPtr("my-log-sink")))
+				Expect(targetTypePrototypeModel.Parameters).To(Equal(targetParametersTypeLogDnaPrototypeModel))
 
 				// Construct an instance of the CreateTargetOptions model
 				tenantID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				ibmAPIVersion := "testString"
-				createTargetOptionsLogSinkCRN := "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::"
-				createTargetOptionsName := "my-log-sink"
-				createTargetOptionsModel := ibmCloudLogsRoutingService.NewCreateTargetOptions(tenantID, ibmAPIVersion, createTargetOptionsLogSinkCRN, createTargetOptionsName)
+				var targetTypePrototype ibmcloudlogsroutingv0.TargetTypePrototypeIntf = nil
+				createTargetOptionsModel := ibmCloudLogsRoutingService.NewCreateTargetOptions(tenantID, ibmAPIVersion, targetTypePrototype)
 				createTargetOptionsModel.SetTenantID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				createTargetOptionsModel.SetIBMAPIVersion("testString")
-				createTargetOptionsModel.SetLogSinkCRN("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				createTargetOptionsModel.SetName("my-log-sink")
-				createTargetOptionsModel.SetParameters(parametersPrototypeModel)
+				createTargetOptionsModel.SetTargetTypePrototype(targetTypePrototypeModel)
 				createTargetOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createTargetOptionsModel).ToNot(BeNil())
 				Expect(createTargetOptionsModel.TenantID).To(Equal(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")))
 				Expect(createTargetOptionsModel.IBMAPIVersion).To(Equal(core.StringPtr("testString")))
-				Expect(createTargetOptionsModel.LogSinkCRN).To(Equal(core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")))
-				Expect(createTargetOptionsModel.Name).To(Equal(core.StringPtr("my-log-sink")))
-				Expect(createTargetOptionsModel.Parameters).To(Equal(parametersPrototypeModel))
+				Expect(createTargetOptionsModel.TargetTypePrototype).To(Equal(targetTypePrototypeModel))
 				Expect(createTargetOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateTenantOptions successfully`, func() {
-				// Construct an instance of the ParametersPrototypeTargetParametersTypeLogsPrototype model
-				parametersPrototypeModel := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-				Expect(parametersPrototypeModel).ToNot(BeNil())
-				parametersPrototypeModel.Host = core.StringPtr("www.example.com")
-				parametersPrototypeModel.Port = core.Int64Ptr(int64(1))
-				Expect(parametersPrototypeModel.Host).To(Equal(core.StringPtr("www.example.com")))
-				Expect(parametersPrototypeModel.Port).To(Equal(core.Int64Ptr(int64(1))))
+				// Construct an instance of the TargetParametersTypeLogDnaPrototype model
+				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
+				Expect(targetParametersTypeLogDnaPrototypeModel).ToNot(BeNil())
+				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
+				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
+				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
+				Expect(targetParametersTypeLogDnaPrototypeModel.Host).To(Equal(core.StringPtr("www.example.com")))
+				Expect(targetParametersTypeLogDnaPrototypeModel.Port).To(Equal(core.Int64Ptr(int64(1))))
+				Expect(targetParametersTypeLogDnaPrototypeModel.AccessCredential).To(Equal(core.StringPtr("ingestion-secret")))
 
-				// Construct an instance of the TargetPrototype model
-				targetPrototypeModel := new(ibmcloudlogsroutingv0.TargetPrototype)
-				Expect(targetPrototypeModel).ToNot(BeNil())
-				targetPrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
-				targetPrototypeModel.Name = core.StringPtr("my-log-sink")
-				targetPrototypeModel.Parameters = parametersPrototypeModel
-				Expect(targetPrototypeModel.LogSinkCRN).To(Equal(core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")))
-				Expect(targetPrototypeModel.Name).To(Equal(core.StringPtr("my-log-sink")))
-				Expect(targetPrototypeModel.Parameters).To(Equal(parametersPrototypeModel))
+				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
+				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
+				Expect(targetTypePrototypeModel).ToNot(BeNil())
+				targetTypePrototypeModel.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+				targetTypePrototypeModel.Name = core.StringPtr("my-log-sink")
+				targetTypePrototypeModel.Parameters = targetParametersTypeLogDnaPrototypeModel
+				Expect(targetTypePrototypeModel.LogSinkCRN).To(Equal(core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")))
+				Expect(targetTypePrototypeModel.Name).To(Equal(core.StringPtr("my-log-sink")))
+				Expect(targetTypePrototypeModel.Parameters).To(Equal(targetParametersTypeLogDnaPrototypeModel))
 
 				// Construct an instance of the CreateTenantOptions model
 				ibmAPIVersion := "testString"
 				createTenantOptionsName := "my-logging-tenant"
-				createTenantOptionsTargets := []ibmcloudlogsroutingv0.TargetPrototype{}
+				createTenantOptionsTargets := []ibmcloudlogsroutingv0.TargetTypePrototypeIntf{}
 				createTenantOptionsModel := ibmCloudLogsRoutingService.NewCreateTenantOptions(ibmAPIVersion, createTenantOptionsName, createTenantOptionsTargets)
 				createTenantOptionsModel.SetIBMAPIVersion("testString")
 				createTenantOptionsModel.SetName("my-logging-tenant")
-				createTenantOptionsModel.SetTargets([]ibmcloudlogsroutingv0.TargetPrototype{*targetPrototypeModel})
+				createTenantOptionsModel.SetTargets([]ibmcloudlogsroutingv0.TargetTypePrototypeIntf{targetTypePrototypeModel})
 				createTenantOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createTenantOptionsModel).ToNot(BeNil())
 				Expect(createTenantOptionsModel.IBMAPIVersion).To(Equal(core.StringPtr("testString")))
 				Expect(createTenantOptionsModel.Name).To(Equal(core.StringPtr("my-logging-tenant")))
-				Expect(createTenantOptionsModel.Targets).To(Equal([]ibmcloudlogsroutingv0.TargetPrototype{*targetPrototypeModel}))
+				Expect(createTenantOptionsModel.Targets).To(Equal([]ibmcloudlogsroutingv0.TargetTypePrototypeIntf{targetTypePrototypeModel}))
 				Expect(createTenantOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDeleteTargetOptions successfully`, func() {
@@ -2641,10 +2682,18 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(listTenantsOptionsModel.Name).To(Equal(core.StringPtr("testString")))
 				Expect(listTenantsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
-			It(`Invoke NewTargetPrototype successfully`, func() {
-				logSinkCRN := "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::"
-				name := "my-log-sink"
-				_model, err := ibmCloudLogsRoutingService.NewTargetPrototype(logSinkCRN, name)
+			It(`Invoke NewTargetParametersTypeLogDnaPrototype successfully`, func() {
+				host := "www.example.com"
+				port := int64(1)
+				accessCredential := "ingestion-secret"
+				_model, err := ibmCloudLogsRoutingService.NewTargetParametersTypeLogDnaPrototype(host, port, accessCredential)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewTargetParametersTypeLogsPrototype successfully`, func() {
+				host := "www.example.com"
+				port := int64(1)
+				_model, err := ibmCloudLogsRoutingService.NewTargetParametersTypeLogsPrototype(host, port)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
@@ -2654,20 +2703,20 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				tenantID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				targetID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				ifMatch := "testString"
-				targetPatch := map[string]interface{}{"anyKey": "anyValue"}
-				updateTargetOptionsModel := ibmCloudLogsRoutingService.NewUpdateTargetOptions(ibmAPIVersion, tenantID, targetID, ifMatch, targetPatch)
+				targetTypePatch := map[string]interface{}{"anyKey": "anyValue"}
+				updateTargetOptionsModel := ibmCloudLogsRoutingService.NewUpdateTargetOptions(ibmAPIVersion, tenantID, targetID, ifMatch, targetTypePatch)
 				updateTargetOptionsModel.SetIBMAPIVersion("testString")
 				updateTargetOptionsModel.SetTenantID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				updateTargetOptionsModel.SetTargetID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				updateTargetOptionsModel.SetIfMatch("testString")
-				updateTargetOptionsModel.SetTargetPatch(map[string]interface{}{"anyKey": "anyValue"})
+				updateTargetOptionsModel.SetTargetTypePatch(map[string]interface{}{"anyKey": "anyValue"})
 				updateTargetOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(updateTargetOptionsModel).ToNot(BeNil())
 				Expect(updateTargetOptionsModel.IBMAPIVersion).To(Equal(core.StringPtr("testString")))
 				Expect(updateTargetOptionsModel.TenantID).To(Equal(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")))
 				Expect(updateTargetOptionsModel.TargetID).To(Equal(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")))
 				Expect(updateTargetOptionsModel.IfMatch).To(Equal(core.StringPtr("testString")))
-				Expect(updateTargetOptionsModel.TargetPatch).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
+				Expect(updateTargetOptionsModel.TargetTypePatch).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
 				Expect(updateTargetOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUpdateTenantOptions successfully`, func() {
@@ -2689,12 +2738,26 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(updateTenantOptionsModel.TenantPatch).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
 				Expect(updateTenantOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewTargetTypePrototypeTargetTypeLogDnaPrototype successfully`, func() {
+				logSinkCRN := "crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::"
+				name := "my-log-sink"
+				_model, err := ibmCloudLogsRoutingService.NewTargetTypePrototypeTargetTypeLogDnaPrototype(logSinkCRN, name)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewTargetTypePrototypeTargetTypeLogsPrototype successfully`, func() {
+				logSinkCRN := "crn:v1:bluemix:public:logs:eu-de:a/4516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::"
+				name := "my-log-sink"
+				_model, err := ibmCloudLogsRoutingService.NewTargetTypePrototypeTargetTypeLogsPrototype(logSinkCRN, name)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
 		})
 	})
 	Describe(`Model unmarshaling tests`, func() {
-		It(`Invoke UnmarshalParametersPrototype successfully`, func() {
+		It(`Invoke UnmarshalTargetParametersTypeLogDnaPrototype successfully`, func() {
 			// Construct an instance of the model.
-			model := new(ibmcloudlogsroutingv0.ParametersPrototype)
+			model := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 			model.Host = core.StringPtr("www.example.com")
 			model.Port = core.Int64Ptr(int64(1))
 			model.AccessCredential = core.StringPtr("ingestion-secret")
@@ -2706,15 +2769,34 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *ibmcloudlogsroutingv0.ParametersPrototype
-			err = ibmcloudlogsroutingv0.UnmarshalParametersPrototype(raw, &result)
+			var result *ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype
+			err = ibmcloudlogsroutingv0.UnmarshalTargetParametersTypeLogDnaPrototype(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalTargetPatch successfully`, func() {
+		It(`Invoke UnmarshalTargetParametersTypeLogsPrototype successfully`, func() {
 			// Construct an instance of the model.
-			model := new(ibmcloudlogsroutingv0.TargetPatch)
+			model := new(ibmcloudlogsroutingv0.TargetParametersTypeLogsPrototype)
+			model.Host = core.StringPtr("www.example.com")
+			model.Port = core.Int64Ptr(int64(1))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *ibmcloudlogsroutingv0.TargetParametersTypeLogsPrototype
+			err = ibmcloudlogsroutingv0.UnmarshalTargetParametersTypeLogsPrototype(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalTargetTypePatch successfully`, func() {
+			// Construct an instance of the model.
+			model := new(ibmcloudlogsroutingv0.TargetTypePatch)
 			model.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
 			model.Name = core.StringPtr("my-log-sink")
 			model.Parameters = nil
@@ -2726,15 +2808,15 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *ibmcloudlogsroutingv0.TargetPatch
-			err = ibmcloudlogsroutingv0.UnmarshalTargetPatch(raw, &result)
+			var result *ibmcloudlogsroutingv0.TargetTypePatch
+			err = ibmcloudlogsroutingv0.UnmarshalTargetTypePatch(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalTargetPrototype successfully`, func() {
+		It(`Invoke UnmarshalTargetTypePrototype successfully`, func() {
 			// Construct an instance of the model.
-			model := new(ibmcloudlogsroutingv0.TargetPrototype)
+			model := new(ibmcloudlogsroutingv0.TargetTypePrototype)
 			model.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
 			model.Name = core.StringPtr("my-log-sink")
 			model.Parameters = nil
@@ -2746,8 +2828,8 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *ibmcloudlogsroutingv0.TargetPrototype
-			err = ibmcloudlogsroutingv0.UnmarshalTargetPrototype(raw, &result)
+			var result *ibmcloudlogsroutingv0.TargetTypePrototype
+			err = ibmcloudlogsroutingv0.UnmarshalTargetTypePrototype(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -2770,12 +2852,12 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalParametersPrototypeTargetParametersTypeLogDnaPrototype successfully`, func() {
+		It(`Invoke UnmarshalTargetTypePatchLogDna successfully`, func() {
 			// Construct an instance of the model.
-			model := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogDnaPrototype)
-			model.Host = core.StringPtr("www.example.com")
-			model.Port = core.Int64Ptr(int64(1))
-			model.AccessCredential = core.StringPtr("ingestion-secret")
+			model := new(ibmcloudlogsroutingv0.TargetTypePatchLogDna)
+			model.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+			model.Name = core.StringPtr("my-log-sink")
+			model.Parameters = nil
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -2784,17 +2866,18 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogDnaPrototype
-			err = ibmcloudlogsroutingv0.UnmarshalParametersPrototypeTargetParametersTypeLogDnaPrototype(raw, &result)
+			var result *ibmcloudlogsroutingv0.TargetTypePatchLogDna
+			err = ibmcloudlogsroutingv0.UnmarshalTargetTypePatchLogDna(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalParametersPrototypeTargetParametersTypeLogsPrototype successfully`, func() {
+		It(`Invoke UnmarshalTargetTypePatchLogs successfully`, func() {
 			// Construct an instance of the model.
-			model := new(ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype)
-			model.Host = core.StringPtr("www.example.com")
-			model.Port = core.Int64Ptr(int64(1))
+			model := new(ibmcloudlogsroutingv0.TargetTypePatchLogs)
+			model.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logs:eu-de:a/4516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+			model.Name = core.StringPtr("my-log-sink")
+			model.Parameters = nil
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -2803,8 +2886,48 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *ibmcloudlogsroutingv0.ParametersPrototypeTargetParametersTypeLogsPrototype
-			err = ibmcloudlogsroutingv0.UnmarshalParametersPrototypeTargetParametersTypeLogsPrototype(raw, &result)
+			var result *ibmcloudlogsroutingv0.TargetTypePatchLogs
+			err = ibmcloudlogsroutingv0.UnmarshalTargetTypePatchLogs(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalTargetTypePrototypeTargetTypeLogDnaPrototype successfully`, func() {
+			// Construct an instance of the model.
+			model := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
+			model.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+			model.Name = core.StringPtr("my-log-sink")
+			model.Parameters = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype
+			err = ibmcloudlogsroutingv0.UnmarshalTargetTypePrototypeTargetTypeLogDnaPrototype(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalTargetTypePrototypeTargetTypeLogsPrototype successfully`, func() {
+			// Construct an instance of the model.
+			model := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogsPrototype)
+			model.LogSinkCRN = core.StringPtr("crn:v1:bluemix:public:logs:eu-de:a/4516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::")
+			model.Name = core.StringPtr("my-log-sink")
+			model.Parameters = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogsPrototype
+			err = ibmcloudlogsroutingv0.UnmarshalTargetTypePrototypeTargetTypeLogsPrototype(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))

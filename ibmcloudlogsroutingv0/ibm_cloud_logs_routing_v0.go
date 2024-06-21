@@ -44,7 +44,7 @@ type IBMCloudLogsRoutingV0 struct {
 }
 
 // DefaultServiceURL is the default URL to make service requests to.
-const DefaultServiceURL = "https://management.eu-es.logs-router.cloud.ibm.com/v1"
+const DefaultServiceURL = "https://management.eu-gb.logs-router.cloud.ibm.com/v1"
 
 // DefaultServiceName is the default key used to find external configuration information.
 const DefaultServiceName = "ibm_cloud_logs_routing"
@@ -52,7 +52,7 @@ const DefaultServiceName = "ibm_cloud_logs_routing"
 const ParameterizedServiceURL = "https://management.{region}.logs-router.cloud.ibm.com/v1"
 
 var defaultUrlVariables = map[string]string{
-	"region": "us-south",
+	"region": "eu-gb",
 }
 
 // IBMCloudLogsRoutingV0Options : Service options
@@ -127,7 +127,7 @@ func NewIBMCloudLogsRoutingV0(options *IBMCloudLogsRoutingV0Options) (service *I
 func GetServiceURLForRegion(region string) (string, error) {
 	var endpoints = map[string]string{
 		"us-south":         "https://management.us-south.logs-router.cloud.ibm.com/v1",
-		"private.us-south": "https://management.private.eu-es.logs-router.cloud.ibm.com/v1",
+		"private.us-south": "https://management.private.us-south.logs-router.cloud.ibm.com/v1",
 		"us-east":          "https://management.us-east.logs-router.cloud.ibm.com/v1",
 		"private.us-east":  "https://management.private.us-east.logs-router.cloud.ibm.com/v1",
 		"eu-de":            "https://management.eu-de.logs-router.cloud.ibm.com/v1",

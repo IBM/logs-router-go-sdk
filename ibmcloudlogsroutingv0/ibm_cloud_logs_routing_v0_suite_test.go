@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2023.
+ * (C) Copyright IBM Corp. 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ibmlogsrouteropenapi30v0_test
+package ibmcloudlogsroutingv0_test
 
 import (
 	"testing"
@@ -23,7 +23,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-func TestIbmLogsRouterOpenApi30V0(t *testing.T) {
+func TestIBMCloudLogsRoutingV0(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "IbmLogsRouterOpenApi30V0 Suite")
+	RunSpecs(t, "IBMCloudLogsRoutingV0 Suite")
 }

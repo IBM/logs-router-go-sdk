@@ -22,14 +22,11 @@
 package ibmcloudlogsroutingv0
 
 import (
-	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
-	"io"
 	"net/http"
 	"reflect"
-	"strings"
 	"time"
 
 	"github.com/IBM/go-sdk-core/v5/core"
@@ -296,7 +293,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTenant(createTenantOptio
 
 // CreateTenantWithContext is an alternate form of the CreateTenant method which supports a Context parameter
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTenantWithContext(ctx context.Context, createTenantOptions *CreateTenantOptions) (result *Tenant, response *core.DetailedResponse, err error) {
-	fmt.Println("==================== CreateTenantWithContext() ====================")
 	err = core.ValidateNotNil(createTenantOptions, "createTenantOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -350,27 +346,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTenantWithContext(ctx co
 		return
 	}
 
-	var curlCmd []string
-	curlCmd = append(curlCmd, "curl")
-	if request.Method != "" {
-		curlCmd = append(curlCmd, "-X", request.Method)
-	}
-	for key, values := range request.Header {
-		for _, value := range values {
-			curlCmd = append(curlCmd, "-H", fmt.Sprintf("'%s: %s'", key, value))
-		}
-	}
-	bodyBytes, err := io.ReadAll(request.Body)
-	if err == nil {
-		request.Body = io.NopCloser(bytes.NewBuffer(bodyBytes)) // Restore the body
-		body := string(bodyBytes)
-		if body != "" {
-			curlCmd = append(curlCmd, "--data", fmt.Sprintf("'%s'", body))
-		}
-	}
-	curlCmd = append(curlCmd, fmt.Sprintf("'%s'", request.URL.String()))
-	fmt.Println("\nCommand\n", strings.Join(curlCmd, " "))
-
 	var rawResponse map[string]json.RawMessage
 	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
 	if err != nil {
@@ -400,7 +375,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantDetail(getTenantDetai
 
 // GetTenantDetailWithContext is an alternate form of the GetTenantDetail method which supports a Context parameter
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantDetailWithContext(ctx context.Context, getTenantDetailOptions *GetTenantDetailOptions) (result *Tenant, response *core.DetailedResponse, err error) {
-	fmt.Println("====== sdk ======== GetTenantDetailWithContext() ====================")
 	err = core.ValidateNotNil(getTenantDetailOptions, "getTenantDetailOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -444,19 +418,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantDetailWithContext(ctx
 		return
 	}
 
-	var curlCmd []string
-	curlCmd = append(curlCmd, "curl")
-	if request.Method != "" {
-		curlCmd = append(curlCmd, "-X", request.Method)
-	}
-	for key, values := range request.Header {
-		for _, value := range values {
-			curlCmd = append(curlCmd, "-H", fmt.Sprintf("'%s: %s'", key, value))
-		}
-	}
-	curlCmd = append(curlCmd, fmt.Sprintf("'%s'", request.URL.String()))
-	fmt.Println("\nCommand\n", strings.Join(curlCmd, " "))
-
 	var rawResponse map[string]json.RawMessage
 	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
 	if err != nil {
@@ -472,7 +433,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantDetailWithContext(ctx
 		}
 		response.Result = result
 	}
-	fmt.Println("====== sdk ======== GetTenantDetailWithContext(end) etag", *result.Etag, " ====================")
 
 	return
 }
@@ -487,7 +447,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTenant(deleteTenantOptio
 
 // DeleteTenantWithContext is an alternate form of the DeleteTenant method which supports a Context parameter
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTenantWithContext(ctx context.Context, deleteTenantOptions *DeleteTenantOptions) (response *core.DetailedResponse, err error) {
-	fmt.Println("==================== DeleteTenantWithContext() ====================")
 	err = core.ValidateNotNil(deleteTenantOptions, "deleteTenantOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -530,19 +489,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTenantWithContext(ctx co
 		return
 	}
 
-	var curlCmd []string
-	curlCmd = append(curlCmd, "curl")
-	if request.Method != "" {
-		curlCmd = append(curlCmd, "-X", request.Method)
-	}
-	for key, values := range request.Header {
-		for _, value := range values {
-			curlCmd = append(curlCmd, "-H", fmt.Sprintf("'%s: %s'", key, value))
-		}
-	}
-	curlCmd = append(curlCmd, fmt.Sprintf("'%s'", request.URL.String()))
-	fmt.Println("\nCommand\n", strings.Join(curlCmd, " "))
-
 	response, err = ibmCloudLogsRouting.Service.Request(request, nil)
 	if err != nil {
 		core.EnrichHTTPProblem(err, "delete_tenant", getServiceComponentInfo())
@@ -563,7 +509,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTenant(updateTenantOptio
 
 // UpdateTenantWithContext is an alternate form of the UpdateTenant method which supports a Context parameter
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTenantWithContext(ctx context.Context, updateTenantOptions *UpdateTenantOptions) (result *Tenant, response *core.DetailedResponse, err error) {
-	fmt.Println("==================== UpdateTenantWithContext() ====================")
 	err = core.ValidateNotNil(updateTenantOptions, "updateTenantOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -617,27 +562,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTenantWithContext(ctx co
 		return
 	}
 
-	var curlCmd []string
-	curlCmd = append(curlCmd, "curl")
-	if request.Method != "" {
-		curlCmd = append(curlCmd, "-X", request.Method)
-	}
-	for key, values := range request.Header {
-		for _, value := range values {
-			curlCmd = append(curlCmd, "-H", fmt.Sprintf("'%s: %s'", key, value))
-		}
-	}
-	bodyBytes, err := io.ReadAll(request.Body)
-	if err == nil {
-		request.Body = io.NopCloser(bytes.NewBuffer(bodyBytes)) // Restore the body
-		body := string(bodyBytes)
-		if body != "" {
-			curlCmd = append(curlCmd, "--data", fmt.Sprintf("'%s'", body))
-		}
-	}
-	curlCmd = append(curlCmd, fmt.Sprintf("'%s'", request.URL.String()))
-	fmt.Println("\nCommand\n", strings.Join(curlCmd, " "))
-
 	var rawResponse map[string]json.RawMessage
 	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
 	if err != nil {
@@ -667,7 +591,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantTargets(listTenantTa
 
 // ListTenantTargetsWithContext is an alternate form of the ListTenantTargets method which supports a Context parameter
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantTargetsWithContext(ctx context.Context, listTenantTargetsOptions *ListTenantTargetsOptions) (result *TargetTypeCollection, response *core.DetailedResponse, err error) {
-	fmt.Println("==================== ListTenantTargetsWithContext() ====================")
 	err = core.ValidateNotNil(listTenantTargetsOptions, "listTenantTargetsOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -745,7 +668,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTarget(createTargetOptio
 
 // CreateTargetWithContext is an alternate form of the CreateTarget method which supports a Context parameter
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContext(ctx context.Context, createTargetOptions *CreateTargetOptions) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
-	fmt.Println("==================== CreateTargetWithContext() ====================")
 	err = core.ValidateNotNil(createTargetOptions, "createTargetOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -784,10 +706,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContext(ctx co
 		builder.AddHeader("IBM-API-Version", fmt.Sprint(*createTargetOptions.IBMAPIVersion))
 	}
 
-	// workaround for isito rules preventing multiple tenant creation by POST to /tenants/*/targets
-	fmt.Println("==================== CreateTargetWithContext(), adding account ID ====================")
-	//builder.AddHeader("Bss-Account-Id", fmt.Sprint("36ff82794a734d7580b90c97b0327d28"))
-
 	_, err = builder.SetBodyContentJSON(createTargetOptions.TargetTypePrototype)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
@@ -799,27 +717,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContext(ctx co
 		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
 		return
 	}
-
-	var curlCmd []string
-	curlCmd = append(curlCmd, "curl")
-	if request.Method != "" {
-		curlCmd = append(curlCmd, "-X", request.Method)
-	}
-	for key, values := range request.Header {
-		for _, value := range values {
-			curlCmd = append(curlCmd, "-H", fmt.Sprintf("'%s: %s'", key, value))
-		}
-	}
-	bodyBytes, err := io.ReadAll(request.Body)
-	if err == nil {
-		request.Body = io.NopCloser(bytes.NewBuffer(bodyBytes)) // Restore the body
-		body := string(bodyBytes)
-		if body != "" {
-			curlCmd = append(curlCmd, "--data", fmt.Sprintf("'%s'", body))
-		}
-	}
-	curlCmd = append(curlCmd, fmt.Sprintf("'%s'", request.URL.String()))
-	fmt.Println("\nCommand\n", strings.Join(curlCmd, " "))
 
 	var rawResponse map[string]json.RawMessage
 	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
@@ -850,7 +747,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantTargetDetails(getTena
 
 // GetTenantTargetDetailsWithContext is an alternate form of the GetTenantTargetDetails method which supports a Context parameter
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantTargetDetailsWithContext(ctx context.Context, getTenantTargetDetailsOptions *GetTenantTargetDetailsOptions) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
-	fmt.Println("==================== GetTenantTargetDetailsWithContext() ====================")
 	err = core.ValidateNotNil(getTenantTargetDetailsOptions, "getTenantTargetDetailsOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -899,19 +795,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantTargetDetailsWithCont
 		return
 	}
 
-	var curlCmd []string
-	curlCmd = append(curlCmd, "curl")
-	if request.Method != "" {
-		curlCmd = append(curlCmd, "-X", request.Method)
-	}
-	for key, values := range request.Header {
-		for _, value := range values {
-			curlCmd = append(curlCmd, "-H", fmt.Sprintf("'%s: %s'", key, value))
-		}
-	}
-	curlCmd = append(curlCmd, fmt.Sprintf("'%s'", request.URL.String()))
-	fmt.Println("\nCommand\n", strings.Join(curlCmd, " "))
-
 	var rawResponse map[string]json.RawMessage
 	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
 	if err != nil {
@@ -941,7 +824,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTarget(updateTargetOptio
 
 // UpdateTargetWithContext is an alternate form of the UpdateTarget method which supports a Context parameter
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTargetWithContext(ctx context.Context, updateTargetOptions *UpdateTargetOptions) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
-	fmt.Println("==================== UpdateTargetWithContext() ====================")
 	err = core.ValidateNotNil(updateTargetOptions, "updateTargetOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -1025,7 +907,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTarget(deleteTargetOptio
 
 // DeleteTargetWithContext is an alternate form of the DeleteTarget method which supports a Context parameter
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTargetWithContext(ctx context.Context, deleteTargetOptions *DeleteTargetOptions) (response *core.DetailedResponse, err error) {
-	fmt.Println("==================== DeleteTargetWithContext() ====================")
 	err = core.ValidateNotNil(deleteTargetOptions, "deleteTargetOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())

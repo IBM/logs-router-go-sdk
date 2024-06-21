@@ -47,7 +47,7 @@ type IBMCloudLogsRoutingV0 struct {
 }
 
 // DefaultServiceURL is the default URL to make service requests to.
-const DefaultServiceURL = "https://management.eu-gb.logs-router.cloud.ibm.com/v1"
+const DefaultServiceURL = "https://management.eu-es.logs-router.cloud.ibm.com/v1"
 
 // DefaultServiceName is the default key used to find external configuration information.
 const DefaultServiceName = "ibm_cloud_logs_routing"
@@ -55,7 +55,7 @@ const DefaultServiceName = "ibm_cloud_logs_routing"
 const ParameterizedServiceURL = "https://management.{region}.logs-router.cloud.ibm.com/v1"
 
 var defaultUrlVariables = map[string]string{
-	"region": "eu-gb",
+	"region": "us-south",
 }
 
 // IBMCloudLogsRoutingV0Options : Service options
@@ -128,7 +128,35 @@ func NewIBMCloudLogsRoutingV0(options *IBMCloudLogsRoutingV0Options) (service *I
 
 // GetServiceURLForRegion returns the service URL to be used for the specified region
 func GetServiceURLForRegion(region string) (string, error) {
-	return "", core.SDKErrorf(nil, "service does not support regional URLs", "no-regional-support", common.GetComponentInfo())
+	var endpoints = map[string]string{
+		"us-south":         "https://management.us-south.logs-router.cloud.ibm.com/v1",
+		"private.us-south": "https://management.private.eu-es.logs-router.cloud.ibm.com/v1",
+		"us-east":          "https://management.us-east.logs-router.cloud.ibm.com/v1",
+		"private.us-east":  "https://management.private.us-east.logs-router.cloud.ibm.com/v1",
+		"eu-de":            "https://management.eu-de.logs-router.cloud.ibm.com/v1",
+		"private.eu-de":    "https://management.private.eu-de.logs-router.cloud.ibm.com/v1",
+		"eu-gb":            "https://management.eu-gb.logs-router.cloud.ibm.com/v1",
+		"private.eu-gb":    "https://management.private.eu-gb.logs-router.cloud.ibm.com/v1",
+		"eu-es":            "https://management.eu-es.logs-router.cloud.ibm.com/v1",
+		"private.eu-es":    "https://management.private.eu-es.logs-router.cloud.ibm.com/v1",
+		"au-syd":           "https://management.au-syd.logs-router.cloud.ibm.com/v1",
+		"private.au-syd":   "https://management.private.au-syd.logs-router.cloud.ibm.com/v1",
+		"ca-tor":           "https://management.ca-tor.logs-router.cloud.ibm.com/v1",
+		"private.ca-tor":   "https://management.private.ca-tor.logs-router.cloud.ibm.com/v1",
+		"br-sao":           "https://management.br-sao.logs-router.cloud.ibm.com/v1",
+		"private.br-sao":   "https://management.private.br-sao.logs-router.cloud.ibm.com/v1",
+		"eu-fr2":           "https://management.eu-fr2.logs-router.cloud.ibm.com/v1",
+		"private.eu-fr2":   "https://management.private.eu-fr2.logs-router.cloud.ibm.com/v1",
+		"jp-tok":           "https://management.jp-tok.logs-router.cloud.ibm.com/v1",
+		"private.jp-tok":   "https://management.private.jp-tok.logs-router.cloud.ibm.com/v1",
+		"jp-osa":           "https://management.jp-osa.logs-router.cloud.ibm.com/v1",
+		"private.jp-osa":   "https://management.private.jp-osa.logs-router.cloud.ibm.com/v1",
+	}
+
+	if url, ok := endpoints[region]; ok {
+		return url, nil
+	}
+	return "", fmt.Errorf("service URL for region '%s' not found", region)
 }
 
 // Clone makes a copy of "ibmCloudLogsRouting" suitable for processing requests.
@@ -758,7 +786,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContext(ctx co
 
 	// workaround for isito rules preventing multiple tenant creation by POST to /tenants/*/targets
 	fmt.Println("==================== CreateTargetWithContext(), adding account ID ====================")
-	builder.AddHeader("Bss-Account-Id", fmt.Sprint("36ff82794a734d7580b90c97b0327d28"))
+	//builder.AddHeader("Bss-Account-Id", fmt.Sprint("36ff82794a734d7580b90c97b0327d28"))
 
 	_, err = builder.SetBodyContentJSON(createTargetOptions.TargetTypePrototype)
 	if err != nil {

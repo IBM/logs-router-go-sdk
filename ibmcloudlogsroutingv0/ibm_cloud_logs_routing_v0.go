@@ -897,6 +897,83 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTargetWithContext(ctx co
 	return
 }
 
+// UpdateTargetWithContext is an alternate form of the UpdateTarget method which supports a Context parameter
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateLogsTargetWithContext(ctx context.Context, updateTargetOptions *UpdateTargetOptions) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateTargetOptions, "updateTargetOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(updateTargetOptions, "updateTargetOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"tenant_id": fmt.Sprint(*updateTargetOptions.TenantID),
+		"target_id": fmt.Sprint(*updateTargetOptions.TargetID),
+	}
+
+	builder := core.NewRequestBuilder(core.PATCH)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants/{tenant_id}/targets/{target_id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range updateTargetOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("ibm_cloud_logs_routing", "V0", "UpdateTarget")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/merge-patch+json")
+	if updateTargetOptions.IBMAPIVersion != nil {
+		builder.AddHeader("IBM-API-Version", fmt.Sprint(*updateTargetOptions.IBMAPIVersion))
+	}
+	if updateTargetOptions.IfMatch != nil {
+		builder.AddHeader("If-Match", fmt.Sprint(*updateTargetOptions.IfMatch))
+	}
+	if params, ok := updateTargetOptions.TargetTypePatch["parameters"].(map[string]interface{}); ok {
+		delete(params, "access_credential")
+	}
+	_, err = builder.SetBodyContentJSON(updateTargetOptions.TargetTypePatch)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = ibmCloudLogsRouting.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "update_target", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalTargetType)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
 // DeleteTarget : Delete a target
 // Delete a target.<br><b>Note:</b> The last target is not allowed to be deleted.
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTarget(deleteTargetOptions *DeleteTargetOptions) (response *core.DetailedResponse, err error) {

@@ -51,6 +51,8 @@ const DefaultServiceName = "ibm_cloud_logs_routing"
 
 const ParameterizedServiceURL = "https://management.{region}.logs-router.cloud.ibm.com/v1"
 
+const IBM_API_Version = "2024-06-15"
+
 var defaultUrlVariables = map[string]string{
 	"region": "eu-gb",
 }
@@ -250,13 +252,11 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantsWithContext(ctx con
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if listTenantsOptions.IBMAPIVersion != nil {
-		builder.AddHeader("IBM-API-Version", fmt.Sprint(*listTenantsOptions.IBMAPIVersion))
-	}
 
 	if listTenantsOptions.Name != nil {
 		builder.AddQuery("name", fmt.Sprint(*listTenantsOptions.Name))
 	}
+	builder.AddHeader("IBM-API-Version", fmt.Sprint(IBM_API_Version))
 
 	request, err := builder.Build()
 	if err != nil {
@@ -323,9 +323,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTenantWithContext(ctx co
 	}
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/json")
-	if createTenantOptions.IBMAPIVersion != nil {
-		builder.AddHeader("IBM-API-Version", fmt.Sprint(*createTenantOptions.IBMAPIVersion))
-	}
+	builder.AddHeader("IBM-API-Version", fmt.Sprint(IBM_API_Version))
 
 	body := make(map[string]interface{})
 	if createTenantOptions.Name != nil {
@@ -408,9 +406,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantDetailWithContext(ctx
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if getTenantDetailOptions.IBMAPIVersion != nil {
-		builder.AddHeader("IBM-API-Version", fmt.Sprint(*getTenantDetailOptions.IBMAPIVersion))
-	}
+	builder.AddHeader("IBM-API-Version", fmt.Sprint(IBM_API_Version))
 
 	request, err := builder.Build()
 	if err != nil {
@@ -479,9 +475,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTenantWithContext(ctx co
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
-	if deleteTenantOptions.IBMAPIVersion != nil {
-		builder.AddHeader("IBM-API-Version", fmt.Sprint(*deleteTenantOptions.IBMAPIVersion))
-	}
+	builder.AddHeader("IBM-API-Version", fmt.Sprint(IBM_API_Version))
 
 	request, err := builder.Build()
 	if err != nil {
@@ -543,9 +537,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTenantWithContext(ctx co
 	}
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/merge-patch+json")
-	if updateTenantOptions.IBMAPIVersion != nil {
-		builder.AddHeader("IBM-API-Version", fmt.Sprint(*updateTenantOptions.IBMAPIVersion))
-	}
+	builder.AddHeader("IBM-API-Version", fmt.Sprint(IBM_API_Version))
 	if updateTenantOptions.IfMatch != nil {
 		builder.AddHeader("If-Match", fmt.Sprint(*updateTenantOptions.IfMatch))
 	}
@@ -624,9 +616,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantTargetsWithContext(c
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if listTenantTargetsOptions.IBMAPIVersion != nil {
-		builder.AddHeader("IBM-API-Version", fmt.Sprint(*listTenantTargetsOptions.IBMAPIVersion))
-	}
+	builder.AddHeader("IBM-API-Version", fmt.Sprint(IBM_API_Version))
 
 	if listTenantTargetsOptions.Name != nil {
 		builder.AddQuery("name", fmt.Sprint(*listTenantTargetsOptions.Name))
@@ -702,9 +692,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContext(ctx co
 	}
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/json")
-	if createTargetOptions.IBMAPIVersion != nil {
-		builder.AddHeader("IBM-API-Version", fmt.Sprint(*createTargetOptions.IBMAPIVersion))
-	}
+	builder.AddHeader("IBM-API-Version", fmt.Sprint(IBM_API_Version))
 
 	_, err = builder.SetBodyContentJSON(createTargetOptions.TargetTypePrototype)
 	if err != nil {
@@ -781,13 +769,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantTargetDetailsWithCont
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if getTenantTargetDetailsOptions.IBMAPIVersion != nil {
-		if fmt.Sprint(*getTenantTargetDetailsOptions.IBMAPIVersion) != "" {
-			builder.AddHeader("IBM-API-Version", fmt.Sprint(*getTenantTargetDetailsOptions.IBMAPIVersion))
-		} else {
-			builder.AddHeader("IBM-API-Version", "2024-06-15")
-		}
-	}
+	builder.AddHeader("IBM-API-Version", fmt.Sprint(IBM_API_Version))
 
 	request, err := builder.Build()
 	if err != nil {
@@ -859,9 +841,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTargetWithContext(ctx co
 	}
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/merge-patch+json")
-	if updateTargetOptions.IBMAPIVersion != nil {
-		builder.AddHeader("IBM-API-Version", fmt.Sprint(*updateTargetOptions.IBMAPIVersion))
-	}
+	builder.AddHeader("IBM-API-Version", fmt.Sprint(IBM_API_Version))
 	if updateTargetOptions.IfMatch != nil {
 		builder.AddHeader("If-Match", fmt.Sprint(*updateTargetOptions.IfMatch))
 	}
@@ -934,9 +914,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateLogsTargetWithContext(ct
 	}
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/merge-patch+json")
-	if updateTargetOptions.IBMAPIVersion != nil {
-		builder.AddHeader("IBM-API-Version", fmt.Sprint(*updateTargetOptions.IBMAPIVersion))
-	}
+	builder.AddHeader("IBM-API-Version", fmt.Sprint(IBM_API_Version))
 	if updateTargetOptions.IfMatch != nil {
 		builder.AddHeader("If-Match", fmt.Sprint(*updateTargetOptions.IfMatch))
 	}
@@ -1017,9 +995,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTargetWithContext(ctx co
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
-	if deleteTargetOptions.IBMAPIVersion != nil {
-		builder.AddHeader("IBM-API-Version", fmt.Sprint(*deleteTargetOptions.IBMAPIVersion))
-	}
+	builder.AddHeader("IBM-API-Version", fmt.Sprint(IBM_API_Version))
 
 	request, err := builder.Build()
 	if err != nil {
@@ -1047,7 +1023,7 @@ type CreateTargetOptions struct {
 
 	// Requests the version of the API as of a date in the format YYYY-MM-DD. Any date up to the current date can be
 	// provided. Specify the current date to request the latest version.
-	IBMAPIVersion *string `json:"IBM-API-Version" validate:"required"`
+	IBMAPIVersion *string `json:"IBM-API-Version" validate:"-"`
 
 	// log-sink endpoint and authentication.
 	TargetTypePrototype TargetTypePrototypeIntf `json:"TargetTypePrototype" validate:"required"`
@@ -1093,7 +1069,7 @@ func (options *CreateTargetOptions) SetHeaders(param map[string]string) *CreateT
 type CreateTenantOptions struct {
 	// Requests the version of the API as of a date in the format YYYY-MM-DD. Any date up to the current date can be
 	// provided. Specify the current date to request the latest version.
-	IBMAPIVersion *string `json:"IBM-API-Version" validate:"required"`
+	IBMAPIVersion *string `json:"IBM-API-Version" validate:"-"`
 
 	// The name for this tenant. The name must be regionally unique across all tenants in the account.
 	Name *string `json:"name" validate:"required"`
@@ -1143,7 +1119,7 @@ func (options *CreateTenantOptions) SetHeaders(param map[string]string) *CreateT
 type DeleteTargetOptions struct {
 	// Requests the version of the API as of a date in the format YYYY-MM-DD. Any date up to the current date can be
 	// provided. Specify the current date to request the latest version.
-	IBMAPIVersion *string `json:"IBM-API-Version" validate:"required"`
+	IBMAPIVersion *string `json:"IBM-API-Version" validate:"-"`
 
 	// The instance ID of the tenant.
 	TenantID *strfmt.UUID `json:"tenant_id" validate:"required"`
@@ -1192,7 +1168,7 @@ func (options *DeleteTargetOptions) SetHeaders(param map[string]string) *DeleteT
 type DeleteTenantOptions struct {
 	// Requests the version of the API as of a date in the format YYYY-MM-DD. Any date up to the current date can be
 	// provided. Specify the current date to request the latest version.
-	IBMAPIVersion *string `json:"IBM-API-Version" validate:"required"`
+	IBMAPIVersion *string `json:"IBM-API-Version" validate:"-"`
 
 	// The instance ID of the tenant.
 	TenantID *strfmt.UUID `json:"tenant_id" validate:"required"`
@@ -1231,7 +1207,7 @@ func (options *DeleteTenantOptions) SetHeaders(param map[string]string) *DeleteT
 type GetTenantDetailOptions struct {
 	// Requests the version of the API as of a date in the format YYYY-MM-DD. Any date up to the current date can be
 	// provided. Specify the current date to request the latest version.
-	IBMAPIVersion *string `json:"IBM-API-Version" validate:"required"`
+	IBMAPIVersion *string `json:"IBM-API-Version" validate:"-"`
 
 	// The instance ID of the tenant.
 	TenantID *strfmt.UUID `json:"tenant_id" validate:"required"`
@@ -1270,7 +1246,7 @@ func (options *GetTenantDetailOptions) SetHeaders(param map[string]string) *GetT
 type GetTenantTargetDetailsOptions struct {
 	// Requests the version of the API as of a date in the format YYYY-MM-DD. Any date up to the current date can be
 	// provided. Specify the current date to request the latest version.
-	IBMAPIVersion *string `json:"IBM-API-Version" validate:"required"`
+	IBMAPIVersion *string `json:"IBM-API-Version" validate:"-"`
 
 	// The instance ID of the tenant.
 	TenantID *strfmt.UUID `json:"tenant_id" validate:"required"`
@@ -1319,7 +1295,7 @@ func (options *GetTenantTargetDetailsOptions) SetHeaders(param map[string]string
 type ListTenantTargetsOptions struct {
 	// Requests the version of the API as of a date in the format YYYY-MM-DD. Any date up to the current date can be
 	// provided. Specify the current date to request the latest version.
-	IBMAPIVersion *string `json:"IBM-API-Version" validate:"required"`
+	IBMAPIVersion *string `json:"IBM-API-Version" validate:"-"`
 
 	// The instance ID of the tenant.
 	TenantID *strfmt.UUID `json:"tenant_id" validate:"required"`
@@ -1367,7 +1343,7 @@ func (options *ListTenantTargetsOptions) SetHeaders(param map[string]string) *Li
 type ListTenantsOptions struct {
 	// Requests the version of the API as of a date in the format YYYY-MM-DD. Any date up to the current date can be
 	// provided. Specify the current date to request the latest version.
-	IBMAPIVersion *string `json:"IBM-API-Version" validate:"required"`
+	IBMAPIVersion *string `json:"IBM-API-Version" validate:"-"`
 
 	// Optional: The name of a tenant.
 	Name *string `json:"name,omitempty"`
@@ -1873,7 +1849,7 @@ func (tenantPatch *TenantPatch) AsPatch() (_patch map[string]interface{}, err er
 type UpdateTargetOptions struct {
 	// Requests the version of the API as of a date in the format YYYY-MM-DD. Any date up to the current date can be
 	// provided. Specify the current date to request the latest version.
-	IBMAPIVersion *string `json:"IBM-API-Version" validate:"required"`
+	IBMAPIVersion *string `json:"IBM-API-Version" validate:"-"`
 
 	// The instance ID of the tenant.
 	TenantID *strfmt.UUID `json:"tenant_id" validate:"required"`
@@ -1942,7 +1918,7 @@ func (options *UpdateTargetOptions) SetHeaders(param map[string]string) *UpdateT
 type UpdateTenantOptions struct {
 	// Requests the version of the API as of a date in the format YYYY-MM-DD. Any date up to the current date can be
 	// provided. Specify the current date to request the latest version.
-	IBMAPIVersion *string `json:"IBM-API-Version" validate:"required"`
+	IBMAPIVersion *string `json:"IBM-API-Version" validate:"-"`
 
 	// The instance ID of the tenant.
 	TenantID *strfmt.UUID `json:"tenant_id" validate:"required"`

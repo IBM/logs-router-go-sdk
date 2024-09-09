@@ -27,6 +27,7 @@ import (
 	"fmt"
 	"net/http"
 	"reflect"
+	"strings"
 	"time"
 
 	"github.com/IBM/go-sdk-core/v5/core"
@@ -173,6 +174,26 @@ func ConstructServiceURL(providedUrlVariables map[string]string) (string, error)
 	return core.ConstructServiceURL(ParameterizedServiceURL, defaultUrlVariables, providedUrlVariables)
 }
 
+// SetServiceRegion sets the service region
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) SetServiceRegion(region string) error {
+	url := ibmCloudLogsRouting.Service.GetServiceURL()
+	if strings.Contains(url, region) {
+		return nil
+	}
+	newURL := ""
+	var err error
+	if strings.Contains(url, "private") {
+		newURL, err = GetServiceURLForRegion("private." + region)
+	} else {
+		newURL, err = GetServiceURLForRegion(region)
+	}
+	if err != nil {
+		return err
+	}
+	err = ibmCloudLogsRouting.Service.SetServiceURL(newURL)
+	return err
+}
+
 // SetServiceURL sets the service URL
 func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) SetServiceURL(url string) error {
 	err := ibmCloudLogsRouting.Service.SetServiceURL(url)
@@ -232,6 +253,10 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantsWithContext(ctx con
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
+	}
+
+	if listTenantsOptions.Region != nil {
+		ibmCloudLogsRouting.SetServiceRegion(*listTenantsOptions.Region)
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -302,6 +327,10 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTenantWithContext(ctx co
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
+	}
+
+	if createTenantOptions.Region != nil {
+		ibmCloudLogsRouting.SetServiceRegion(*createTenantOptions.Region)
 	}
 
 	builder := core.NewRequestBuilder(core.POST)
@@ -384,6 +413,10 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantDetailWithContext(ctx
 		return
 	}
 
+	if getTenantDetailOptions.Region != nil {
+		ibmCloudLogsRouting.SetServiceRegion(*getTenantDetailOptions.Region)
+	}
+
 	pathParamsMap := map[string]string{
 		"tenant_id": fmt.Sprint(*getTenantDetailOptions.TenantID),
 	}
@@ -454,6 +487,10 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTenantWithContext(ctx co
 		return
 	}
 
+	if deleteTenantOptions.Region != nil {
+		ibmCloudLogsRouting.SetServiceRegion(*deleteTenantOptions.Region)
+	}
+
 	pathParamsMap := map[string]string{
 		"tenant_id": fmt.Sprint(*deleteTenantOptions.TenantID),
 	}
@@ -512,6 +549,10 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTenantWithContext(ctx co
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
+	}
+
+	if updateTenantOptions.Region != nil {
+		ibmCloudLogsRouting.SetServiceRegion(*updateTenantOptions.Region)
 	}
 
 	pathParamsMap := map[string]string{
@@ -594,6 +635,10 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantTargetsWithContext(c
 		return
 	}
 
+	if listTenantTargetsOptions.Region != nil {
+		ibmCloudLogsRouting.SetServiceRegion(*listTenantTargetsOptions.Region)
+	}
+
 	pathParamsMap := map[string]string{
 		"tenant_id": fmt.Sprint(*listTenantTargetsOptions.TenantID),
 	}
@@ -667,6 +712,10 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContext(ctx co
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
+	}
+
+	if createTargetOptions.Region != nil {
+		ibmCloudLogsRouting.SetServiceRegion(*createTargetOptions.Region)
 	}
 
 	pathParamsMap := map[string]string{
@@ -817,6 +866,10 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTargetWithContext(ctx co
 		return
 	}
 
+	if updateTargetOptions.Region != nil {
+		ibmCloudLogsRouting.SetServiceRegion(*updateTargetOptions.Region)
+	}
+
 	pathParamsMap := map[string]string{
 		"tenant_id": fmt.Sprint(*updateTargetOptions.TenantID),
 		"target_id": fmt.Sprint(*updateTargetOptions.TargetID),
@@ -888,6 +941,10 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateLogsTargetWithContext(ct
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
+	}
+
+	if updateTargetOptions.Region != nil {
+		ibmCloudLogsRouting.SetServiceRegion(*updateTargetOptions.Region)
 	}
 
 	pathParamsMap := map[string]string{
@@ -973,6 +1030,10 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTargetWithContext(ctx co
 		return
 	}
 
+	if deleteTargetOptions.Region != nil {
+		ibmCloudLogsRouting.SetServiceRegion(*deleteTargetOptions.Region)
+	}
+
 	pathParamsMap := map[string]string{
 		"tenant_id": fmt.Sprint(*deleteTargetOptions.TenantID),
 		"target_id": fmt.Sprint(*deleteTargetOptions.TargetID),
@@ -1021,6 +1082,9 @@ type CreateTargetOptions struct {
 	// The instance ID of the tenant.
 	TenantID *strfmt.UUID `json:"tenant_id" validate:"required"`
 
+	// Include this optional field if you want to create a target for a tenant in a different region other than the one you are connected.
+	Region *string `json:"region,omitempty"`
+
 	// Requests the version of the API as of a date in the format YYYY-MM-DD. Any date up to the current date can be
 	// provided. Specify the current date to request the latest version.
 	IBMAPIVersion *string `json:"IBM-API-Version" validate:"-"`
@@ -1033,10 +1097,11 @@ type CreateTargetOptions struct {
 }
 
 // NewCreateTargetOptions : Instantiate CreateTargetOptions
-func (*IBMCloudLogsRoutingV0) NewCreateTargetOptions(tenantID *strfmt.UUID, ibmAPIVersion string, targetTypePrototype TargetTypePrototypeIntf) *CreateTargetOptions {
+func (*IBMCloudLogsRoutingV0) NewCreateTargetOptions(tenantID *strfmt.UUID, ibmAPIVersion string, region string, targetTypePrototype TargetTypePrototypeIntf) *CreateTargetOptions {
 	return &CreateTargetOptions{
 		TenantID:            tenantID,
 		IBMAPIVersion:       core.StringPtr(ibmAPIVersion),
+		Region:              core.StringPtr(region),
 		TargetTypePrototype: targetTypePrototype,
 	}
 }
@@ -1050,6 +1115,12 @@ func (_options *CreateTargetOptions) SetTenantID(tenantID *strfmt.UUID) *CreateT
 // SetIBMAPIVersion : Allow user to set IBMAPIVersion
 func (_options *CreateTargetOptions) SetIBMAPIVersion(ibmAPIVersion string) *CreateTargetOptions {
 	_options.IBMAPIVersion = core.StringPtr(ibmAPIVersion)
+	return _options
+}
+
+// SetRegion : Allow user to set Region
+func (_options *CreateTargetOptions) SetRegion(region string) *CreateTargetOptions {
+	_options.Region = core.StringPtr(region)
 	return _options
 }
 
@@ -1074,6 +1145,9 @@ type CreateTenantOptions struct {
 	// The name for this tenant. The name must be regionally unique across all tenants in the account.
 	Name *string `json:"name" validate:"required"`
 
+	// Include this optional field if you want to create a tenant in a different region other than the one you are connected.
+	Region *string `json:"region,omitempty"`
+
 	// List of targets.<br>Two targets must not be of the same type. Supported target types are <b>logdna</b> (IBM Log
 	// Analysis) and <b>logs</b> (IBM Cloud Logs).
 	Targets []TargetTypePrototypeIntf `json:"targets" validate:"required"`
@@ -1083,11 +1157,12 @@ type CreateTenantOptions struct {
 }
 
 // NewCreateTenantOptions : Instantiate CreateTenantOptions
-func (*IBMCloudLogsRoutingV0) NewCreateTenantOptions(ibmAPIVersion string, name string, targets []TargetTypePrototypeIntf) *CreateTenantOptions {
+func (*IBMCloudLogsRoutingV0) NewCreateTenantOptions(ibmAPIVersion string, name string, region string, targets []TargetTypePrototypeIntf) *CreateTenantOptions {
 	return &CreateTenantOptions{
 		IBMAPIVersion: core.StringPtr(ibmAPIVersion),
 		Name:          core.StringPtr(name),
 		Targets:       targets,
+		Region:        core.StringPtr(region),
 	}
 }
 
@@ -1100,6 +1175,12 @@ func (_options *CreateTenantOptions) SetIBMAPIVersion(ibmAPIVersion string) *Cre
 // SetName : Allow user to set Name
 func (_options *CreateTenantOptions) SetName(name string) *CreateTenantOptions {
 	_options.Name = core.StringPtr(name)
+	return _options
+}
+
+// SetRegion : Allow user to set region
+func (_options *CreateTenantOptions) SetRegion(region string) *CreateTenantOptions {
+	_options.Region = core.StringPtr(region)
 	return _options
 }
 
@@ -1121,6 +1202,9 @@ type DeleteTargetOptions struct {
 	// provided. Specify the current date to request the latest version.
 	IBMAPIVersion *string `json:"IBM-API-Version" validate:"-"`
 
+	// Include this optional field if you want to delete a target for a tenant in a different region other than the one you are connected.
+	Region *string `json:"region,omitempty"`
+
 	// The instance ID of the tenant.
 	TenantID *strfmt.UUID `json:"tenant_id" validate:"required"`
 
@@ -1132,9 +1216,10 @@ type DeleteTargetOptions struct {
 }
 
 // NewDeleteTargetOptions : Instantiate DeleteTargetOptions
-func (*IBMCloudLogsRoutingV0) NewDeleteTargetOptions(ibmAPIVersion string, tenantID *strfmt.UUID, targetID *strfmt.UUID) *DeleteTargetOptions {
+func (*IBMCloudLogsRoutingV0) NewDeleteTargetOptions(ibmAPIVersion string, region string, tenantID *strfmt.UUID, targetID *strfmt.UUID) *DeleteTargetOptions {
 	return &DeleteTargetOptions{
 		IBMAPIVersion: core.StringPtr(ibmAPIVersion),
+		Region:        core.StringPtr(region),
 		TenantID:      tenantID,
 		TargetID:      targetID,
 	}
@@ -1143,6 +1228,12 @@ func (*IBMCloudLogsRoutingV0) NewDeleteTargetOptions(ibmAPIVersion string, tenan
 // SetIBMAPIVersion : Allow user to set IBMAPIVersion
 func (_options *DeleteTargetOptions) SetIBMAPIVersion(ibmAPIVersion string) *DeleteTargetOptions {
 	_options.IBMAPIVersion = core.StringPtr(ibmAPIVersion)
+	return _options
+}
+
+// SetRegion : Allow user to set Region
+func (_options *DeleteTargetOptions) SetRegion(region string) *DeleteTargetOptions {
+	_options.Region = core.StringPtr(region)
 	return _options
 }
 
@@ -1170,6 +1261,9 @@ type DeleteTenantOptions struct {
 	// provided. Specify the current date to request the latest version.
 	IBMAPIVersion *string `json:"IBM-API-Version" validate:"-"`
 
+	// Include this optional field if you want to delete a tenant in a different region other than the one you are connected.
+	Region *string `json:"region,omitempty"`
+
 	// The instance ID of the tenant.
 	TenantID *strfmt.UUID `json:"tenant_id" validate:"required"`
 
@@ -1178,16 +1272,23 @@ type DeleteTenantOptions struct {
 }
 
 // NewDeleteTenantOptions : Instantiate DeleteTenantOptions
-func (*IBMCloudLogsRoutingV0) NewDeleteTenantOptions(ibmAPIVersion string, tenantID *strfmt.UUID) *DeleteTenantOptions {
+func (*IBMCloudLogsRoutingV0) NewDeleteTenantOptions(ibmAPIVersion string, region string, tenantID *strfmt.UUID) *DeleteTenantOptions {
 	return &DeleteTenantOptions{
 		IBMAPIVersion: core.StringPtr(ibmAPIVersion),
 		TenantID:      tenantID,
+		Region:        core.StringPtr(region),
 	}
 }
 
 // SetIBMAPIVersion : Allow user to set IBMAPIVersion
 func (_options *DeleteTenantOptions) SetIBMAPIVersion(ibmAPIVersion string) *DeleteTenantOptions {
 	_options.IBMAPIVersion = core.StringPtr(ibmAPIVersion)
+	return _options
+}
+
+// SetRegion : Allow user to set region
+func (_options *DeleteTenantOptions) SetRegion(region string) *DeleteTenantOptions {
+	_options.Region = core.StringPtr(region)
 	return _options
 }
 
@@ -1212,21 +1313,31 @@ type GetTenantDetailOptions struct {
 	// The instance ID of the tenant.
 	TenantID *strfmt.UUID `json:"tenant_id" validate:"required"`
 
+	// Include this optional field if you want to read a tenant in a different region other than the one you are connected.
+	Region *string `json:"region,omitempty"`
+
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewGetTenantDetailOptions : Instantiate GetTenantDetailOptions
-func (*IBMCloudLogsRoutingV0) NewGetTenantDetailOptions(ibmAPIVersion string, tenantID *strfmt.UUID) *GetTenantDetailOptions {
+func (*IBMCloudLogsRoutingV0) NewGetTenantDetailOptions(ibmAPIVersion string, tenantID *strfmt.UUID, region string) *GetTenantDetailOptions {
 	return &GetTenantDetailOptions{
 		IBMAPIVersion: core.StringPtr(ibmAPIVersion),
 		TenantID:      tenantID,
+		Region:        core.StringPtr(region),
 	}
 }
 
 // SetIBMAPIVersion : Allow user to set IBMAPIVersion
 func (_options *GetTenantDetailOptions) SetIBMAPIVersion(ibmAPIVersion string) *GetTenantDetailOptions {
 	_options.IBMAPIVersion = core.StringPtr(ibmAPIVersion)
+	return _options
+}
+
+// SetRegion : Allow user to set Region
+func (_options *GetTenantDetailOptions) SetRegion(region string) *GetTenantDetailOptions {
+	_options.Region = core.StringPtr(region)
 	return _options
 }
 
@@ -1300,6 +1411,9 @@ type ListTenantTargetsOptions struct {
 	// The instance ID of the tenant.
 	TenantID *strfmt.UUID `json:"tenant_id" validate:"required"`
 
+	// Include this optional field if you want to list the targets tenant in a different region other than the one you are connected.
+	Region *string `json:"region,omitempty"`
+
 	// Optional: Name of the tenant target.
 	Name *string `json:"name,omitempty"`
 
@@ -1308,16 +1422,23 @@ type ListTenantTargetsOptions struct {
 }
 
 // NewListTenantTargetsOptions : Instantiate ListTenantTargetsOptions
-func (*IBMCloudLogsRoutingV0) NewListTenantTargetsOptions(ibmAPIVersion string, tenantID *strfmt.UUID) *ListTenantTargetsOptions {
+func (*IBMCloudLogsRoutingV0) NewListTenantTargetsOptions(ibmAPIVersion string, region string, tenantID *strfmt.UUID) *ListTenantTargetsOptions {
 	return &ListTenantTargetsOptions{
 		IBMAPIVersion: core.StringPtr(ibmAPIVersion),
 		TenantID:      tenantID,
+		Region:        core.StringPtr(region),
 	}
 }
 
 // SetIBMAPIVersion : Allow user to set IBMAPIVersion
 func (_options *ListTenantTargetsOptions) SetIBMAPIVersion(ibmAPIVersion string) *ListTenantTargetsOptions {
 	_options.IBMAPIVersion = core.StringPtr(ibmAPIVersion)
+	return _options
+}
+
+// SetRegion : Allow user to set Region
+func (_options *ListTenantTargetsOptions) SetRegion(region string) *ListTenantTargetsOptions {
+	_options.Region = core.StringPtr(region)
 	return _options
 }
 
@@ -1348,20 +1469,30 @@ type ListTenantsOptions struct {
 	// Optional: The name of a tenant.
 	Name *string `json:"name,omitempty"`
 
+	// Include this optional field if you want to list the tenants in a different region other than the one you are connected.
+	Region *string `json:"region,omitempty"`
+
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewListTenantsOptions : Instantiate ListTenantsOptions
-func (*IBMCloudLogsRoutingV0) NewListTenantsOptions(ibmAPIVersion string) *ListTenantsOptions {
+func (*IBMCloudLogsRoutingV0) NewListTenantsOptions(ibmAPIVersion string, region string) *ListTenantsOptions {
 	return &ListTenantsOptions{
 		IBMAPIVersion: core.StringPtr(ibmAPIVersion),
+		Region:        core.StringPtr(region),
 	}
 }
 
 // SetIBMAPIVersion : Allow user to set IBMAPIVersion
 func (_options *ListTenantsOptions) SetIBMAPIVersion(ibmAPIVersion string) *ListTenantsOptions {
 	_options.IBMAPIVersion = core.StringPtr(ibmAPIVersion)
+	return _options
+}
+
+// SetRegion : Allow user to set Region
+func (_options *ListTenantsOptions) SetRegion(region string) *ListTenantsOptions {
+	_options.Region = core.StringPtr(region)
 	return _options
 }
 
@@ -1851,6 +1982,9 @@ type UpdateTargetOptions struct {
 	// provided. Specify the current date to request the latest version.
 	IBMAPIVersion *string `json:"IBM-API-Version" validate:"-"`
 
+	// Include this optional field if you want to update a target for a tenant in a different region other than the one you are connected.
+	Region *string `json:"region,omitempty"`
+
 	// The instance ID of the tenant.
 	TenantID *strfmt.UUID `json:"tenant_id" validate:"required"`
 
@@ -1868,9 +2002,10 @@ type UpdateTargetOptions struct {
 }
 
 // NewUpdateTargetOptions : Instantiate UpdateTargetOptions
-func (*IBMCloudLogsRoutingV0) NewUpdateTargetOptions(ibmAPIVersion string, tenantID *strfmt.UUID, targetID *strfmt.UUID, ifMatch string, targetTypePatch map[string]interface{}) *UpdateTargetOptions {
+func (*IBMCloudLogsRoutingV0) NewUpdateTargetOptions(ibmAPIVersion string, region string, tenantID *strfmt.UUID, targetID *strfmt.UUID, ifMatch string, targetTypePatch map[string]interface{}) *UpdateTargetOptions {
 	return &UpdateTargetOptions{
 		IBMAPIVersion:   core.StringPtr(ibmAPIVersion),
+		Region:          core.StringPtr(region),
 		TenantID:        tenantID,
 		TargetID:        targetID,
 		IfMatch:         core.StringPtr(ifMatch),
@@ -1881,6 +2016,12 @@ func (*IBMCloudLogsRoutingV0) NewUpdateTargetOptions(ibmAPIVersion string, tenan
 // SetIBMAPIVersion : Allow user to set IBMAPIVersion
 func (_options *UpdateTargetOptions) SetIBMAPIVersion(ibmAPIVersion string) *UpdateTargetOptions {
 	_options.IBMAPIVersion = core.StringPtr(ibmAPIVersion)
+	return _options
+}
+
+// SetRegion : Allow user to set Region
+func (_options *UpdateTargetOptions) SetRegion(region string) *UpdateTargetOptions {
+	_options.Region = core.StringPtr(region)
 	return _options
 }
 
@@ -1920,6 +2061,9 @@ type UpdateTenantOptions struct {
 	// provided. Specify the current date to request the latest version.
 	IBMAPIVersion *string `json:"IBM-API-Version" validate:"-"`
 
+	// Include this optional field if you want to update a tenant in a different region other than the one you are connected.
+	Region *string `json:"region,omitempty"`
+
 	// The instance ID of the tenant.
 	TenantID *strfmt.UUID `json:"tenant_id" validate:"required"`
 
@@ -1934,9 +2078,10 @@ type UpdateTenantOptions struct {
 }
 
 // NewUpdateTenantOptions : Instantiate UpdateTenantOptions
-func (*IBMCloudLogsRoutingV0) NewUpdateTenantOptions(ibmAPIVersion string, tenantID *strfmt.UUID, ifMatch string, tenantPatch map[string]interface{}) *UpdateTenantOptions {
+func (*IBMCloudLogsRoutingV0) NewUpdateTenantOptions(ibmAPIVersion string, region string, tenantID *strfmt.UUID, ifMatch string, tenantPatch map[string]interface{}) *UpdateTenantOptions {
 	return &UpdateTenantOptions{
 		IBMAPIVersion: core.StringPtr(ibmAPIVersion),
+		Region:        core.StringPtr(region),
 		TenantID:      tenantID,
 		IfMatch:       core.StringPtr(ifMatch),
 		TenantPatch:   tenantPatch,
@@ -1946,6 +2091,12 @@ func (*IBMCloudLogsRoutingV0) NewUpdateTenantOptions(ibmAPIVersion string, tenan
 // SetIBMAPIVersion : Allow user to set IBMAPIVersion
 func (_options *UpdateTenantOptions) SetIBMAPIVersion(ibmAPIVersion string) *UpdateTenantOptions {
 	_options.IBMAPIVersion = core.StringPtr(ibmAPIVersion)
+	return _options
+}
+
+// SetRegion : Allow user to set Region
+func (_options *UpdateTenantOptions) SetRegion(region string) *UpdateTenantOptions {
+	_options.Region = core.StringPtr(region)
 	return _options
 }
 

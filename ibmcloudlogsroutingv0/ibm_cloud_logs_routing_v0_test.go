@@ -189,7 +189,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(listTenantsPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					Expect(req.URL.Query()["name"]).To(Equal([]string{"testString"}))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -206,7 +206,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 
 				// Construct an instance of the ListTenantsOptions model
 				listTenantsOptionsModel := new(ibmcloudlogsroutingv0.ListTenantsOptions)
-				listTenantsOptionsModel.IBMAPIVersion = core.StringPtr("testString")
+				listTenantsOptionsModel.IBMAPIVersion = core.StringPtr("2024-06-15")
 				listTenantsOptionsModel.Name = core.StringPtr("testString")
 				listTenantsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -239,7 +239,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					Expect(req.URL.Query()["name"]).To(Equal([]string{"testString"}))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
@@ -300,7 +300,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					Expect(req.URL.Query()["name"]).To(Equal([]string{"testString"}))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
@@ -415,7 +415,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(createTenantPath))
 					Expect(req.Method).To(Equal("POST"))
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -493,7 +493,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -582,7 +582,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
@@ -735,7 +735,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getTenantDetailPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -784,7 +784,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -844,7 +844,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -959,7 +959,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.Method).To(Equal("DELETE"))
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					res.WriteHeader(204)
 				}))
 			})
@@ -1030,7 +1030,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(updateTenantPath))
 					Expect(req.Method).To(Equal("PATCH"))
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					Expect(req.Header["If-Match"]).ToNot(BeNil())
 					Expect(req.Header["If-Match"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
 					res.Header().Set("Content-type", "application/json")
@@ -1105,7 +1105,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					Expect(req.Header["If-Match"]).ToNot(BeNil())
 					Expect(req.Header["If-Match"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
 					// Sleep a short time to support a timeout test
@@ -1191,7 +1191,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					Expect(req.Header["If-Match"]).ToNot(BeNil())
 					Expect(req.Header["If-Match"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
 					// Set mock response
@@ -1331,7 +1331,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(listTenantTargetsPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					Expect(req.URL.Query()["name"]).To(Equal([]string{"testString"}))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -1382,7 +1382,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					Expect(req.URL.Query()["name"]).To(Equal([]string{"testString"}))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
@@ -1444,7 +1444,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					Expect(req.URL.Query()["name"]).To(Equal([]string{"testString"}))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
@@ -1562,7 +1562,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(createTargetPath))
 					Expect(req.Method).To(Equal("POST"))
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -1640,7 +1640,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -1729,7 +1729,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
@@ -1882,7 +1882,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getTenantTargetDetailsPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -1932,7 +1932,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -1993,7 +1993,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -2110,7 +2110,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(updateTargetPath))
 					Expect(req.Method).To(Equal("PATCH"))
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					Expect(req.Header["If-Match"]).ToNot(BeNil())
 					Expect(req.Header["If-Match"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
 					res.Header().Set("Content-type", "application/json")
@@ -2194,7 +2194,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					Expect(req.Header["If-Match"]).ToNot(BeNil())
 					Expect(req.Header["If-Match"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
 					// Sleep a short time to support a timeout test
@@ -2289,7 +2289,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					Expect(req.Header["If-Match"]).ToNot(BeNil())
 					Expect(req.Header["If-Match"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
 					// Set mock response
@@ -2457,7 +2457,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 					Expect(req.Method).To(Equal("DELETE"))
 
 					Expect(req.Header["Ibm-Api-Version"]).ToNot(BeNil())
-					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Ibm-Api-Version"][0]).To(Equal(fmt.Sprintf("%v", "2024-06-15")))
 					res.WriteHeader(204)
 				}))
 			})
@@ -2549,8 +2549,9 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				// Construct an instance of the CreateTargetOptions model
 				tenantID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				ibmAPIVersion := "testString"
+				region := "ca-tor"
 				var targetTypePrototype ibmcloudlogsroutingv0.TargetTypePrototypeIntf = nil
-				createTargetOptionsModel := ibmCloudLogsRoutingService.NewCreateTargetOptions(tenantID, ibmAPIVersion, targetTypePrototype)
+				createTargetOptionsModel := ibmCloudLogsRoutingService.NewCreateTargetOptions(tenantID, ibmAPIVersion, region, targetTypePrototype)
 				createTargetOptionsModel.SetTenantID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				createTargetOptionsModel.SetIBMAPIVersion("testString")
 				createTargetOptionsModel.SetTargetTypePrototype(targetTypePrototypeModel)
@@ -2584,9 +2585,10 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 
 				// Construct an instance of the CreateTenantOptions model
 				ibmAPIVersion := "testString"
+				region := "ca-tor"
 				createTenantOptionsName := "my-logging-tenant"
 				createTenantOptionsTargets := []ibmcloudlogsroutingv0.TargetTypePrototypeIntf{}
-				createTenantOptionsModel := ibmCloudLogsRoutingService.NewCreateTenantOptions(ibmAPIVersion, createTenantOptionsName, createTenantOptionsTargets)
+				createTenantOptionsModel := ibmCloudLogsRoutingService.NewCreateTenantOptions(ibmAPIVersion, createTenantOptionsName, region, createTenantOptionsTargets)
 				createTenantOptionsModel.SetIBMAPIVersion("testString")
 				createTenantOptionsModel.SetName("my-logging-tenant")
 				createTenantOptionsModel.SetTargets([]ibmcloudlogsroutingv0.TargetTypePrototypeIntf{targetTypePrototypeModel})
@@ -2600,9 +2602,10 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 			It(`Invoke NewDeleteTargetOptions successfully`, func() {
 				// Construct an instance of the DeleteTargetOptions model
 				ibmAPIVersion := "testString"
+				region := "ca-tor"
 				tenantID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				targetID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
-				deleteTargetOptionsModel := ibmCloudLogsRoutingService.NewDeleteTargetOptions(ibmAPIVersion, tenantID, targetID)
+				deleteTargetOptionsModel := ibmCloudLogsRoutingService.NewDeleteTargetOptions(ibmAPIVersion, region, tenantID, targetID)
 				deleteTargetOptionsModel.SetIBMAPIVersion("testString")
 				deleteTargetOptionsModel.SetTenantID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				deleteTargetOptionsModel.SetTargetID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
@@ -2616,8 +2619,9 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 			It(`Invoke NewDeleteTenantOptions successfully`, func() {
 				// Construct an instance of the DeleteTenantOptions model
 				ibmAPIVersion := "testString"
+				region := "ca-tor"
 				tenantID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
-				deleteTenantOptionsModel := ibmCloudLogsRoutingService.NewDeleteTenantOptions(ibmAPIVersion, tenantID)
+				deleteTenantOptionsModel := ibmCloudLogsRoutingService.NewDeleteTenantOptions(ibmAPIVersion, region, tenantID)
 				deleteTenantOptionsModel.SetIBMAPIVersion("testString")
 				deleteTenantOptionsModel.SetTenantID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				deleteTenantOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
@@ -2629,8 +2633,9 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 			It(`Invoke NewGetTenantDetailOptions successfully`, func() {
 				// Construct an instance of the GetTenantDetailOptions model
 				ibmAPIVersion := "testString"
+				region := "ca-tor"
 				tenantID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
-				getTenantDetailOptionsModel := ibmCloudLogsRoutingService.NewGetTenantDetailOptions(ibmAPIVersion, tenantID)
+				getTenantDetailOptionsModel := ibmCloudLogsRoutingService.NewGetTenantDetailOptions(ibmAPIVersion, tenantID, region)
 				getTenantDetailOptionsModel.SetIBMAPIVersion("testString")
 				getTenantDetailOptionsModel.SetTenantID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				getTenantDetailOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
@@ -2658,8 +2663,9 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 			It(`Invoke NewListTenantTargetsOptions successfully`, func() {
 				// Construct an instance of the ListTenantTargetsOptions model
 				ibmAPIVersion := "testString"
+				region := "ca-tor"
 				tenantID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
-				listTenantTargetsOptionsModel := ibmCloudLogsRoutingService.NewListTenantTargetsOptions(ibmAPIVersion, tenantID)
+				listTenantTargetsOptionsModel := ibmCloudLogsRoutingService.NewListTenantTargetsOptions(ibmAPIVersion, region, tenantID)
 				listTenantTargetsOptionsModel.SetIBMAPIVersion("testString")
 				listTenantTargetsOptionsModel.SetTenantID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				listTenantTargetsOptionsModel.SetName("testString")
@@ -2673,7 +2679,8 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 			It(`Invoke NewListTenantsOptions successfully`, func() {
 				// Construct an instance of the ListTenantsOptions model
 				ibmAPIVersion := "testString"
-				listTenantsOptionsModel := ibmCloudLogsRoutingService.NewListTenantsOptions(ibmAPIVersion)
+				region := "ca-tor"
+				listTenantsOptionsModel := ibmCloudLogsRoutingService.NewListTenantsOptions(ibmAPIVersion, region)
 				listTenantsOptionsModel.SetIBMAPIVersion("testString")
 				listTenantsOptionsModel.SetName("testString")
 				listTenantsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
@@ -2703,8 +2710,9 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				tenantID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				targetID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				ifMatch := "testString"
+				region := "ca-tor"
 				targetTypePatch := map[string]interface{}{"anyKey": "anyValue"}
-				updateTargetOptionsModel := ibmCloudLogsRoutingService.NewUpdateTargetOptions(ibmAPIVersion, tenantID, targetID, ifMatch, targetTypePatch)
+				updateTargetOptionsModel := ibmCloudLogsRoutingService.NewUpdateTargetOptions(ibmAPIVersion, region, tenantID, targetID, ifMatch, targetTypePatch)
 				updateTargetOptionsModel.SetIBMAPIVersion("testString")
 				updateTargetOptionsModel.SetTenantID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				updateTargetOptionsModel.SetTargetID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
@@ -2724,8 +2732,9 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				ibmAPIVersion := "testString"
 				tenantID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				ifMatch := "testString"
+				region := "ca-tor"
 				tenantPatch := map[string]interface{}{"anyKey": "anyValue"}
-				updateTenantOptionsModel := ibmCloudLogsRoutingService.NewUpdateTenantOptions(ibmAPIVersion, tenantID, ifMatch, tenantPatch)
+				updateTenantOptionsModel := ibmCloudLogsRoutingService.NewUpdateTenantOptions(ibmAPIVersion, region, tenantID, ifMatch, tenantPatch)
 				updateTenantOptionsModel.SetIBMAPIVersion("testString")
 				updateTenantOptionsModel.SetTenantID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				updateTenantOptionsModel.SetIfMatch("testString")

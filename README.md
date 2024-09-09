@@ -1,11 +1,8 @@
 [![Build Status](https://travis-ci.com/IBM/logs-router-go-sdk.svg?token=eW5FVD71iyte6tTby8gr&branch=main)](https://travis-ci.com/IBM/logs-router-go-sdk.svg?token=eW5FVD71iyte6tTby8gr&branch=main)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-# IBM Cloud Logs Routing Go SDK 0.0.1
-Go client library to interact with the various [IBM Cloud Logs Router APIs](https://cloud.ibm.com/apidocs?category=logs-router).
-
-Disclaimer: this SDK is being released initially as a **pre-release** version.
-Changes might occur which impact applications that use this SDK.
+# IBM Cloud Logs Routing Go SDK 1.0.4
+Go client library to interact with the various [IBM Cloud Logs Router APIs](https://cloud.ibm.com/apidocs/logs-router-service-api/logs-router-v1).
 
 ## Table of Contents
 <!--
@@ -20,7 +17,6 @@ Changes might occur which impact applications that use this SDK.
 
 <!-- toc -->
 
-- [“IBM 0.0.1](#ibm-001)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Prerequisites](#prerequisites)
@@ -42,7 +38,7 @@ The IBM Cloud Logs Router Go SDK allows developers to programmatically interact 
 
 Service Name | Package name 
 --- | --- 
-<!-- [Example Service](https://cloud.ibm.com/apidocs/example-service) | exampleservicev1 -->
+[Logs Routing](https://cloud.ibm.com/apidocs/logs-router-service-api/logs-router-v1) | ibmcloudlogsroutingv0
 
 ## Prerequisites
 
@@ -53,7 +49,7 @@ Service Name | Package name
 * Go version 1.19 or above.
 
 ## Installation
-The current version of this SDK: 0.0.1
+The current version of this SDK: 1.0.4
 
 ### Go modules  
 If your application uses Go modules for dependency management (recommended), just add an import for each service 
@@ -62,20 +58,19 @@ Here is an example:
 
 ```go
 import (
-	"github.com/IBM/logs-router-go-sdk/exampleservicev1"
+	"github.com/IBM/logs-router-go-sdk/ibmcloudlogsroutingv0"
 )
 ```
 Next, run `go build` or `go mod tidy` to download and install the new dependencies and update your application's
 `go.mod` file.  
 
-In the example above, the `exampleservicev1` part of the import path is the package name
-associated with the Example Service service.
-See the service table above to find the approprate package name for the services used by your application.
+In the example above, the `ibmcloudlogsroutingv0` part of the import path is the package name
+associated with IBM Cloud Logs Routing.
 
 ### `go get` command  
 Alternatively, you can use the `go get` command to download and install the appropriate packages needed by your application:
 ```
-go get -u github.com/IBM/logs-router-go-sdk/exampleservicev1
+go get -u github.com/IBM/logs-router-go-sdk/ibmcloudlogsroutingv0
 ```
 Be sure to use the appropriate package name from the service table above for the services used by your application.
 

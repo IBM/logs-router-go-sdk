@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/IBM/logs-router-go-sdk.svg?token=eW5FVD71iyte6tTby8gr&branch=main)](https://travis-ci.com/IBM/logs-router-go-sdk.svg?token=eW5FVD71iyte6tTby8gr&branch=main)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-# IBM Cloud Logs Routing Go SDK 1.0.4
+# IBM Cloud Logs Routing Go SDK 1.0.5
 Go client library to interact with the various [IBM Cloud Logs Router APIs](https://cloud.ibm.com/apidocs/logs-router-service-api/logs-router-v1).
 
 ## Table of Contents
@@ -49,7 +49,7 @@ Service Name | Package name
 * Go version 1.19 or above.
 
 ## Installation
-The current version of this SDK: 1.0.4
+The current version of this SDK: 1.0.5
 
 ### Go modules  
 If your application uses Go modules for dependency management (recommended), just add an import for each service 

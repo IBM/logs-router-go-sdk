@@ -2647,9 +2647,10 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 			It(`Invoke NewGetTenantTargetDetailsOptions successfully`, func() {
 				// Construct an instance of the GetTenantTargetDetailsOptions model
 				ibmAPIVersion := "testString"
+				region := "ca-tor"
 				tenantID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				targetID := CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
-				getTenantTargetDetailsOptionsModel := ibmCloudLogsRoutingService.NewGetTenantTargetDetailsOptions(ibmAPIVersion, tenantID, targetID)
+				getTenantTargetDetailsOptionsModel := ibmCloudLogsRoutingService.NewGetTenantTargetDetailsOptions(ibmAPIVersion, region, tenantID, targetID)
 				getTenantTargetDetailsOptionsModel.SetIBMAPIVersion("testString")
 				getTenantTargetDetailsOptionsModel.SetTenantID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				getTenantTargetDetailsOptionsModel.SetTargetID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))

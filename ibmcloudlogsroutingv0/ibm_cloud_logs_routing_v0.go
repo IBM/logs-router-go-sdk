@@ -318,7 +318,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantsWithContext(ctx con
 	return
 }
 
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantsWithContextEndpoint(ctx context.Context, listTenantsOptions *ListTenantsOptions, endpoint string) (result *TenantCollection, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantsWithContextEndpoint(ctx context.Context, listTenantsOptions *ListTenantsOptions) (result *TenantCollection, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(listTenantsOptions, "listTenantsOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -330,27 +330,10 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantsWithContextEndpoint
 		return
 	}
 
-	if listTenantsOptions.Region != nil {
-		ibmCloudLogsRouting.SetServiceRegion(*listTenantsOptions.Region)
-	}
-
 	builder := core.NewRequestBuilder(core.GET)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
-	var requestURL string
-	if listTenantsOptions.Region != nil {
-		requestURL, err = GetServiceURLForRegion(*listTenantsOptions.Region)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "url-construct-error", common.GetComponentInfo())
-			return
-		}
-	} else {
-		requestURL = ibmCloudLogsRouting.Service.Options.URL
-	}
-	if endpoint != "" {
-		requestURL = endpoint
-	}
-	_, err = builder.ResolveRequestURL(requestURL, `/tenants`, nil)
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants`, nil)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
@@ -490,7 +473,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTenantWithContext(ctx co
 	return
 }
 
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTenantWithContextEndpoint(ctx context.Context, createTenantOptions *CreateTenantOptions, endpoint string) (result *Tenant, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTenantWithContextEndpoint(ctx context.Context, createTenantOptions *CreateTenantOptions) (result *Tenant, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(createTenantOptions, "createTenantOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -502,27 +485,10 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTenantWithContextEndpoin
 		return
 	}
 
-	if createTenantOptions.Region != nil {
-		ibmCloudLogsRouting.SetServiceRegion(*createTenantOptions.Region)
-	}
-
 	builder := core.NewRequestBuilder(core.POST)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
-	var requestURL string
-	if createTenantOptions.Region != nil {
-		requestURL, err = GetServiceURLForRegion(*createTenantOptions.Region)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "url-construct-error", common.GetComponentInfo())
-			return
-		}
-	} else {
-		requestURL = ibmCloudLogsRouting.Service.Options.URL
-	}
-	if endpoint != "" {
-		requestURL = endpoint
-	}
-	_, err = builder.ResolveRequestURL(requestURL, `/tenants`, nil)
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants`, nil)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
@@ -662,7 +628,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantDetailWithContext(ctx
 	return
 }
 
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantDetailWithContextEndpoint(ctx context.Context, getTenantDetailOptions *GetTenantDetailOptions, endpoint string) (result *Tenant, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantDetailWithContextEndpoint(ctx context.Context, getTenantDetailOptions *GetTenantDetailOptions) (result *Tenant, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(getTenantDetailOptions, "getTenantDetailOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -674,10 +640,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantDetailWithContextEndp
 		return
 	}
 
-	if getTenantDetailOptions.Region != nil {
-		ibmCloudLogsRouting.SetServiceRegion(*getTenantDetailOptions.Region)
-	}
-
 	pathParamsMap := map[string]string{
 		"tenant_id": fmt.Sprint(*getTenantDetailOptions.TenantID),
 	}
@@ -685,20 +647,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantDetailWithContextEndp
 	builder := core.NewRequestBuilder(core.GET)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
-	var requestURL string
-	if getTenantDetailOptions.Region != nil {
-		requestURL, err = GetServiceURLForRegion(*getTenantDetailOptions.Region)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "url-construct-error", common.GetComponentInfo())
-			return
-		}
-	} else {
-		requestURL = ibmCloudLogsRouting.Service.Options.URL
-	}
-	if endpoint != "" {
-		requestURL = endpoint
-	}
-	_, err = builder.ResolveRequestURL(requestURL, `/tenants/{tenant_id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants/{tenant_id}`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
@@ -761,10 +710,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTenantWithContext(ctx co
 		return
 	}
 
-	if deleteTenantOptions.Region != nil {
-		ibmCloudLogsRouting.SetServiceRegion(*deleteTenantOptions.Region)
-	}
-
 	pathParamsMap := map[string]string{
 		"tenant_id": fmt.Sprint(*deleteTenantOptions.TenantID),
 	}
@@ -772,17 +717,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTenantWithContext(ctx co
 	builder := core.NewRequestBuilder(core.DELETE)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
-	var requestURL string
-	if deleteTenantOptions.Region != nil {
-		requestURL, err = GetServiceURLForRegion(*deleteTenantOptions.Region)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "url-construct-error", common.GetComponentInfo())
-			return
-		}
-	} else {
-		requestURL = ibmCloudLogsRouting.Service.Options.URL
-	}
-	_, err = builder.ResolveRequestURL(requestURL, `/tenants/{tenant_id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants/{tenant_id}`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
@@ -814,7 +749,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTenantWithContext(ctx co
 	return
 }
 
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTenantWithContextEndpoint(ctx context.Context, deleteTenantOptions *DeleteTenantOptions, endpoint string) (response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTenantWithContextEndpoint(ctx context.Context, deleteTenantOptions *DeleteTenantOptions) (response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(deleteTenantOptions, "deleteTenantOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -826,10 +761,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTenantWithContextEndpoin
 		return
 	}
 
-	if deleteTenantOptions.Region != nil {
-		ibmCloudLogsRouting.SetServiceRegion(*deleteTenantOptions.Region)
-	}
-
 	pathParamsMap := map[string]string{
 		"tenant_id": fmt.Sprint(*deleteTenantOptions.TenantID),
 	}
@@ -837,20 +768,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTenantWithContextEndpoin
 	builder := core.NewRequestBuilder(core.DELETE)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
-	var requestURL string
-	if deleteTenantOptions.Region != nil {
-		requestURL, err = GetServiceURLForRegion(*deleteTenantOptions.Region)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "url-construct-error", common.GetComponentInfo())
-			return
-		}
-	} else {
-		requestURL = ibmCloudLogsRouting.Service.Options.URL
-	}
-	if endpoint != "" {
-		requestURL = endpoint
-	}
-	_, err = builder.ResolveRequestURL(requestURL, `/tenants/{tenant_id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants/{tenant_id}`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
@@ -976,7 +894,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTenantWithContext(ctx co
 	return
 }
 
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTenantWithContextEndpoint(ctx context.Context, updateTenantOptions *UpdateTenantOptions, endpoint string) (result *Tenant, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTenantWithContextEndpoint(ctx context.Context, updateTenantOptions *UpdateTenantOptions) (result *Tenant, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(updateTenantOptions, "updateTenantOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -988,10 +906,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTenantWithContextEndpoin
 		return
 	}
 
-	if updateTenantOptions.Region != nil {
-		ibmCloudLogsRouting.SetServiceRegion(*updateTenantOptions.Region)
-	}
-
 	pathParamsMap := map[string]string{
 		"tenant_id": fmt.Sprint(*updateTenantOptions.TenantID),
 	}
@@ -999,20 +913,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTenantWithContextEndpoin
 	builder := core.NewRequestBuilder(core.PATCH)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
-	var requestURL string
-	if updateTenantOptions.Region != nil {
-		requestURL, err = GetServiceURLForRegion(*updateTenantOptions.Region)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "url-construct-error", common.GetComponentInfo())
-			return
-		}
-	} else {
-		requestURL = ibmCloudLogsRouting.Service.Options.URL
-	}
-	if endpoint != "" {
-		requestURL = endpoint
-	}
-	_, err = builder.ResolveRequestURL(requestURL, `/tenants/{tenant_id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants/{tenant_id}`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
@@ -1152,7 +1053,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantTargetsWithContext(c
 	return
 }
 
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantTargetsWithContextEndpoint(ctx context.Context, listTenantTargetsOptions *ListTenantTargetsOptions, endpoint string) (result *TargetTypeCollection, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantTargetsWithContextEndpoint(ctx context.Context, listTenantTargetsOptions *ListTenantTargetsOptions) (result *TargetTypeCollection, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(listTenantTargetsOptions, "listTenantTargetsOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -1164,10 +1065,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantTargetsWithContextEn
 		return
 	}
 
-	if listTenantTargetsOptions.Region != nil {
-		ibmCloudLogsRouting.SetServiceRegion(*listTenantTargetsOptions.Region)
-	}
-
 	pathParamsMap := map[string]string{
 		"tenant_id": fmt.Sprint(*listTenantTargetsOptions.TenantID),
 	}
@@ -1175,20 +1072,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) ListTenantTargetsWithContextEn
 	builder := core.NewRequestBuilder(core.GET)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
-	var requestURL string
-	if listTenantTargetsOptions.Region != nil {
-		requestURL, err = GetServiceURLForRegion(*listTenantTargetsOptions.Region)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "url-construct-error", common.GetComponentInfo())
-			return
-		}
-	} else {
-		requestURL = ibmCloudLogsRouting.Service.Options.URL
-	}
-	if endpoint != "" {
-		requestURL = endpoint
-	}
-	_, err = builder.ResolveRequestURL(requestURL, `/tenants/{tenant_id}/targets`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants/{tenant_id}/targets`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
@@ -1326,7 +1210,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContext(ctx co
 	return
 }
 
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContextEndpoint(ctx context.Context, createTargetOptions *CreateTargetOptions, endpoint string) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContextEndpoint(ctx context.Context, createTargetOptions *CreateTargetOptions) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(createTargetOptions, "createTargetOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -1338,10 +1222,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContextEndpoin
 		return
 	}
 
-	if createTargetOptions.Region != nil {
-		ibmCloudLogsRouting.SetServiceRegion(*createTargetOptions.Region)
-	}
-
 	pathParamsMap := map[string]string{
 		"tenant_id": fmt.Sprint(*createTargetOptions.TenantID),
 	}
@@ -1349,20 +1229,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContextEndpoin
 	builder := core.NewRequestBuilder(core.POST)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
-	var requestURL string
-	if createTargetOptions.Region != nil {
-		requestURL, err = GetServiceURLForRegion(*createTargetOptions.Region)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "url-construct-error", common.GetComponentInfo())
-			return
-		}
-	} else {
-		requestURL = ibmCloudLogsRouting.Service.Options.URL
-	}
-	if endpoint != "" {
-		requestURL = endpoint
-	}
-	_, err = builder.ResolveRequestURL(requestURL, `/tenants/{tenant_id}/targets`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants/{tenant_id}/targets`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
@@ -1492,7 +1359,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantTargetDetailsWithCont
 	return
 }
 
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantTargetDetailsWithContextEndpoint(ctx context.Context, getTenantTargetDetailsOptions *GetTenantTargetDetailsOptions, endpoint string) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantTargetDetailsWithContextEndpoint(ctx context.Context, getTenantTargetDetailsOptions *GetTenantTargetDetailsOptions) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(getTenantTargetDetailsOptions, "getTenantTargetDetailsOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -1512,20 +1379,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) GetTenantTargetDetailsWithCont
 	builder := core.NewRequestBuilder(core.GET)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
-	var requestURL string
-	if getTenantTargetDetailsOptions.Region != nil {
-		requestURL, err = GetServiceURLForRegion(*getTenantTargetDetailsOptions.Region)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "url-construct-error", common.GetComponentInfo())
-			return
-		}
-	} else {
-		requestURL = ibmCloudLogsRouting.Service.Options.URL
-	}
-	if endpoint != "" {
-		requestURL = endpoint
-	}
-	_, err = builder.ResolveRequestURL(requestURL, `/tenants/{tenant_id}/targets/{target_id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants/{tenant_id}/targets/{target_id}`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
@@ -1662,7 +1516,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTargetWithContext(ctx co
 	return
 }
 
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTargetWithContextEndpoint(ctx context.Context, updateTargetOptions *UpdateTargetOptions, endpoint string) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTargetWithContextEndpoint(ctx context.Context, updateTargetOptions *UpdateTargetOptions) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(updateTargetOptions, "updateTargetOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -1674,10 +1528,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTargetWithContextEndpoin
 		return
 	}
 
-	if updateTargetOptions.Region != nil {
-		ibmCloudLogsRouting.SetServiceRegion(*updateTargetOptions.Region)
-	}
-
 	pathParamsMap := map[string]string{
 		"tenant_id": fmt.Sprint(*updateTargetOptions.TenantID),
 		"target_id": fmt.Sprint(*updateTargetOptions.TargetID),
@@ -1686,20 +1536,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateTargetWithContextEndpoin
 	builder := core.NewRequestBuilder(core.PATCH)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
-	var requestURL string
-	if updateTargetOptions.Region != nil {
-		requestURL, err = GetServiceURLForRegion(*updateTargetOptions.Region)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "url-construct-error", common.GetComponentInfo())
-			return
-		}
-	} else {
-		requestURL = ibmCloudLogsRouting.Service.Options.URL
-	}
-	if endpoint != "" {
-		requestURL = endpoint
-	}
-	_, err = builder.ResolveRequestURL(requestURL, `/tenants/{tenant_id}/targets/{target_id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants/{tenant_id}/targets/{target_id}`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
@@ -1840,7 +1677,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateLogsTargetWithContext(ct
 	return
 }
 
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateLogsTargetWithContextEndpoint(ctx context.Context, updateTargetOptions *UpdateTargetOptions, endpoint string) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateLogsTargetWithContextEndpoint(ctx context.Context, updateTargetOptions *UpdateTargetOptions) (result TargetTypeIntf, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(updateTargetOptions, "updateTargetOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -1852,10 +1689,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateLogsTargetWithContextEnd
 		return
 	}
 
-	if updateTargetOptions.Region != nil {
-		ibmCloudLogsRouting.SetServiceRegion(*updateTargetOptions.Region)
-	}
-
 	pathParamsMap := map[string]string{
 		"tenant_id": fmt.Sprint(*updateTargetOptions.TenantID),
 		"target_id": fmt.Sprint(*updateTargetOptions.TargetID),
@@ -1864,20 +1697,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) UpdateLogsTargetWithContextEnd
 	builder := core.NewRequestBuilder(core.PATCH)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
-	var requestURL string
-	if updateTargetOptions.Region != nil {
-		requestURL, err = GetServiceURLForRegion(*updateTargetOptions.Region)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "url-construct-error", common.GetComponentInfo())
-			return
-		}
-	} else {
-		requestURL = ibmCloudLogsRouting.Service.Options.URL
-	}
-	if endpoint != "" {
-		requestURL = endpoint
-	}
-	_, err = builder.ResolveRequestURL(requestURL, `/tenants/{tenant_id}/targets/{target_id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants/{tenant_id}/targets/{target_id}`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
@@ -2006,7 +1826,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTargetWithContext(ctx co
 	return
 }
 
-func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTargetWithContextEndpoint(ctx context.Context, deleteTargetOptions *DeleteTargetOptions, endpoint string) (response *core.DetailedResponse, err error) {
+func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTargetWithContextEndpoint(ctx context.Context, deleteTargetOptions *DeleteTargetOptions) (response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(deleteTargetOptions, "deleteTargetOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -2018,10 +1838,6 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTargetWithContextEndpoin
 		return
 	}
 
-	if deleteTargetOptions.Region != nil {
-		ibmCloudLogsRouting.SetServiceRegion(*deleteTargetOptions.Region)
-	}
-
 	pathParamsMap := map[string]string{
 		"tenant_id": fmt.Sprint(*deleteTargetOptions.TenantID),
 		"target_id": fmt.Sprint(*deleteTargetOptions.TargetID),
@@ -2030,20 +1846,7 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) DeleteTargetWithContextEndpoin
 	builder := core.NewRequestBuilder(core.DELETE)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = ibmCloudLogsRouting.GetEnableGzipCompression()
-	var requestURL string
-	if deleteTargetOptions.Region != nil {
-		requestURL, err = GetServiceURLForRegion(*deleteTargetOptions.Region)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "url-construct-error", common.GetComponentInfo())
-			return
-		}
-	} else {
-		requestURL = ibmCloudLogsRouting.Service.Options.URL
-	}
-	if endpoint != "" {
-		requestURL = endpoint
-	}
-	_, err = builder.ResolveRequestURL(requestURL, `/tenants/{tenant_id}/targets/{target_id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(ibmCloudLogsRouting.Service.Options.URL, `/tenants/{tenant_id}/targets/{target_id}`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return

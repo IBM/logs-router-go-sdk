@@ -2708,6 +2708,40 @@ func UnmarshalTargetTypePrototype(m map[string]json.RawMessage, result interface
 	return
 }
 
+// WriteStatus : The status of the write attempt to the target with the provided endpoint parameters.
+type WriteStatus struct {
+	// The status such as failed or success.
+	Status *string `json:"status" validate:"required"`
+
+	// Detailed description of the cause of the failure.
+	ReasonForLastFailure *string `json:"reason_for_last_failure,omitempty"`
+
+	// The timestamp of the failure.
+	LastFailure *strfmt.DateTime `json:"last_failure,omitempty"`
+}
+
+// UnmarshalWriteStatus unmarshals an instance of WriteStatus from the specified map of raw messages.
+func UnmarshalWriteStatus(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(WriteStatus)
+	err = core.UnmarshalPrimitive(m, "status", &obj.Status)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "status-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "reason_for_last_failure", &obj.ReasonForLastFailure)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "reason_for_last_failure-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "last_failure", &obj.LastFailure)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "last_failure-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // Tenant : Full tenant description.
 type Tenant struct {
 	// Unique ID of the tenant.
@@ -2730,6 +2764,9 @@ type Tenant struct {
 
 	// List of targets.
 	Targets []TargetTypeIntf `json:"targets" validate:"required"`
+
+	// The status of the write attempt to the target with the provided endpoint parameters.
+	WriteStatus *WriteStatus `json:"write_status" validate:"required"`
 }
 
 // UnmarshalTenant unmarshals an instance of Tenant from the specified map of raw messages.
@@ -2768,6 +2805,11 @@ func UnmarshalTenant(m map[string]json.RawMessage, result interface{}) (err erro
 	err = core.UnmarshalModel(m, "targets", &obj.Targets, UnmarshalTargetType)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "targets-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "write_status", &obj.WriteStatus, UnmarshalWriteStatus)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "write_status-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))

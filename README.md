@@ -1,8 +1,15 @@
 [![Build Status](https://travis-ci.com/IBM/logs-router-go-sdk.svg?token=eW5FVD71iyte6tTby8gr&branch=main)](https://travis-ci.com/IBM/logs-router-go-sdk.svg?token=eW5FVD71iyte6tTby8gr&branch=main)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-# IBM Cloud Logs Routing Go SDK 1.0.5
+# IBM Cloud Logs Routing Go SDK 1.1.0
 Go client library to interact with the various [IBM Cloud Logs Router APIs](https://cloud.ibm.com/apidocs/logs-router-service-api/logs-router-v1).
+
+> [!WARNING]
+> As of 28 March 2024 the logdna service is deprecated and will no longer be supported as of 30 March 2025.
+> The IBM Cloud Logs Routing Go SDK will stop supporting `logdna` targets at the same time and no logs will be routed to these type of targets after that date.
+> You should make sure that you have configured your tenant to direct your logs to another destination before 30 March 2025.
+> Any `logdna` targets still configured after 30 April 2025 will be removed automatically from your IBM Cloud Logs Routing configuration.
+
 
 ## Table of Contents
 <!--

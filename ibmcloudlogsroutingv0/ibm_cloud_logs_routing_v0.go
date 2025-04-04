@@ -400,6 +400,11 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTenantWithContext(ctx co
 		return
 	}
 
+	if _, ok := UnmarshalTargetTypeCollectionCheckLogdna(createTenantOptions.Targets); ok {
+		err = core.SDKErrorf(err, "", "logna-deprecated", common.GetComponentInfo())
+		return
+	}
+
 	if createTenantOptions.Region != nil {
 		ibmCloudLogsRouting.SetServiceRegion(*createTenantOptions.Region)
 	}
@@ -1137,6 +1142,11 @@ func (ibmCloudLogsRouting *IBMCloudLogsRoutingV0) CreateTargetWithContext(ctx co
 	err = core.ValidateStruct(createTargetOptions, "createTargetOptions")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	if _, ok := UnmarshalTargetTypeCheckLogdna(createTargetOptions.TargetTypePrototype); ok {
+		err = core.SDKErrorf(err, "", "logna-deprecated", common.GetComponentInfo())
 		return
 	}
 
@@ -2569,6 +2579,28 @@ func UnmarshalTargetTypeCollection(m map[string]json.RawMessage, result interfac
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
+}
+
+// UnmarshalTargetTypeCollection unmarshals an instance of TargetTypeCollection from the specified map of raw messages.
+func UnmarshalTargetTypeCollectionCheckLogdna(m []TargetTypePrototypeIntf) (err error, logdna bool) {
+	obj := new(TargetTypeCollection)
+	err = core.UnmarshalModel(m, "targets", &obj.Targets, UnmarshalTargetType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "targets-error", common.GetComponentInfo())
+		return
+	}
+	return nil, obj.Targets[0].isaTargetType()
+}
+
+// UnmarshalTargetTypeCollection unmarshals an instance of TargetTypeCollection from the specified map of raw messages.
+func UnmarshalTargetTypeCheckLogdna(m TargetTypePrototypeIntf) (err error, logdna bool) {
+	obj := new(TargetTypeCollection)
+	err = core.UnmarshalModel(m, "targets", &obj.Targets, UnmarshalTargetType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "targets-error", common.GetComponentInfo())
+		return
+	}
+	return nil, obj.Targets[0].isaTargetType()
 }
 
 // TargetTypePatch : Parameter set describing a particular type of target.

@@ -2366,17 +2366,13 @@ type TargetParametersTypeLogDnaPrototype struct {
 
 	// Network port of the log-sink.
 	Port *int64 `json:"port" validate:"required"`
-
-	// Secret to connect to the log-sink.
-	AccessCredential *string `json:"access_credential" validate:"required"`
 }
 
 // NewTargetParametersTypeLogDnaPrototype : Instantiate TargetParametersTypeLogDnaPrototype (Generic Model Constructor)
-func (*IBMCloudLogsRoutingV0) NewTargetParametersTypeLogDnaPrototype(host string, port int64, accessCredential string) (_model *TargetParametersTypeLogDnaPrototype, err error) {
+func (*IBMCloudLogsRoutingV0) NewTargetParametersTypeLogDnaPrototype(host string, port int64) (_model *TargetParametersTypeLogDnaPrototype, err error) {
 	_model = &TargetParametersTypeLogDnaPrototype{
-		Host:             core.StringPtr(host),
-		Port:             core.Int64Ptr(port),
-		AccessCredential: core.StringPtr(accessCredential),
+		Host: core.StringPtr(host),
+		Port: core.Int64Ptr(port),
 	}
 	err = core.ValidateStruct(_model, "required parameters")
 	if err != nil {
@@ -2396,11 +2392,6 @@ func UnmarshalTargetParametersTypeLogDnaPrototype(m map[string]json.RawMessage, 
 	err = core.UnmarshalPrimitive(m, "port", &obj.Port)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "port-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "access_credential", &obj.AccessCredential)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "access_credential-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))

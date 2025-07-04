@@ -29,7 +29,6 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-//
 // This file provides an example of how to use the IBM Cloud Logs Routing service.
 //
 // The following configuration properties are assumed to be defined:
@@ -41,14 +40,13 @@ import (
 // These configuration properties can be exported as environment variables, or stored
 // in a configuration file and then:
 // export IBM_CREDENTIALS_FILE=<name of configuration file>
-//
 var _ = Describe(`IBMCloudLogsRoutingV0 Examples Tests`, func() {
 
 	const externalConfigFile = "../ibm_cloud_logs_routing_v0.env"
 
 	var (
 		ibmCloudLogsRoutingService *ibmcloudlogsroutingv0.IBMCloudLogsRoutingV0
-		config       map[string]string
+		config                     map[string]string
 	)
 
 	var shouldSkipTest = func() {
@@ -129,7 +127,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0 Examples Tests`, func() {
 
 			targetTypePrototypeModel := &ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype{
 				LogSinkCRN: core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::"),
-				Name: core.StringPtr("my-log-sink"),
+				Name:       core.StringPtr("my-log-sink"),
 			}
 
 			createTenantOptions := ibmCloudLogsRoutingService.NewCreateTenantOptions(
@@ -177,8 +175,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0 Examples Tests`, func() {
 			fmt.Println("\nUpdateTenant() result:")
 			// begin-update_tenant
 
-			tenantPatchModel := &ibmcloudlogsroutingv0.TenantPatch{
-			}
+			tenantPatchModel := &ibmcloudlogsroutingv0.TenantPatch{}
 			tenantPatchModelAsPatch, asPatchErr := tenantPatchModel.AsPatch()
 			Expect(asPatchErr).To(BeNil())
 
@@ -230,7 +227,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0 Examples Tests`, func() {
 
 			targetTypePrototypeModel := &ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype{
 				LogSinkCRN: core.StringPtr("crn:v1:bluemix:public:logdna:eu-de:a/3516b8fa0a174a71899f5affa4f18d78:3517d2ed-9429-af34-ad52-34278391cbc8::"),
-				Name: core.StringPtr("my-log-sink"),
+				Name:       core.StringPtr("my-log-sink"),
 			}
 
 			createTargetOptions := ibmCloudLogsRoutingService.NewCreateTargetOptions(
@@ -279,8 +276,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0 Examples Tests`, func() {
 			fmt.Println("\nUpdateTarget() result:")
 			// begin-update_target
 
-			targetTypePatchModel := &ibmcloudlogsroutingv0.TargetTypePatchLogDna{
-			}
+			targetTypePatchModel := &ibmcloudlogsroutingv0.TargetTypePatchLogDna{}
 			targetTypePatchModelAsPatch, asPatchErr := targetTypePatchModel.AsPatch()
 			Expect(asPatchErr).To(BeNil())
 

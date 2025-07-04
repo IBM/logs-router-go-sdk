@@ -433,7 +433,6 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
 				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
 				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
@@ -516,7 +515,6 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
 				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
 				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
@@ -607,7 +605,6 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
 				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
 				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
@@ -641,7 +638,6 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
 				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
 				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
@@ -696,7 +692,6 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
 				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
 				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
@@ -1580,7 +1575,6 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
 				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
 				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
@@ -1663,7 +1657,6 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
 				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
 				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
@@ -1754,7 +1747,6 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
 				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
 				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
@@ -1788,7 +1780,6 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
 				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
 				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
@@ -1843,7 +1834,6 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
 				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
 				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
@@ -2130,7 +2120,6 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
 				// Construct an instance of the TargetTypePatchLogDna model
 				targetTypePatchModel := new(ibmcloudlogsroutingv0.TargetTypePatchLogDna)
@@ -2219,7 +2208,6 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
 				// Construct an instance of the TargetTypePatchLogDna model
 				targetTypePatchModel := new(ibmcloudlogsroutingv0.TargetTypePatchLogDna)
@@ -2316,7 +2304,6 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
 				// Construct an instance of the TargetTypePatchLogDna model
 				targetTypePatchModel := new(ibmcloudlogsroutingv0.TargetTypePatchLogDna)
@@ -2354,7 +2341,6 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
 				// Construct an instance of the TargetTypePatchLogDna model
 				targetTypePatchModel := new(ibmcloudlogsroutingv0.TargetTypePatchLogDna)
@@ -2413,7 +2399,6 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				targetParametersTypeLogDnaPrototypeModel := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 
 				// Construct an instance of the TargetTypePatchLogDna model
 				targetTypePatchModel := new(ibmcloudlogsroutingv0.TargetTypePatchLogDna)
@@ -2531,10 +2516,8 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(targetParametersTypeLogDnaPrototypeModel).ToNot(BeNil())
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 				Expect(targetParametersTypeLogDnaPrototypeModel.Host).To(Equal(core.StringPtr("www.example.com")))
 				Expect(targetParametersTypeLogDnaPrototypeModel.Port).To(Equal(core.Int64Ptr(int64(1))))
-				Expect(targetParametersTypeLogDnaPrototypeModel.AccessCredential).To(Equal(core.StringPtr("ingestion-secret")))
 
 				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
 				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
@@ -2568,10 +2551,8 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 				Expect(targetParametersTypeLogDnaPrototypeModel).ToNot(BeNil())
 				targetParametersTypeLogDnaPrototypeModel.Host = core.StringPtr("www.example.com")
 				targetParametersTypeLogDnaPrototypeModel.Port = core.Int64Ptr(int64(1))
-				targetParametersTypeLogDnaPrototypeModel.AccessCredential = core.StringPtr("ingestion-secret")
 				Expect(targetParametersTypeLogDnaPrototypeModel.Host).To(Equal(core.StringPtr("www.example.com")))
 				Expect(targetParametersTypeLogDnaPrototypeModel.Port).To(Equal(core.Int64Ptr(int64(1))))
-				Expect(targetParametersTypeLogDnaPrototypeModel.AccessCredential).To(Equal(core.StringPtr("ingestion-secret")))
 
 				// Construct an instance of the TargetTypePrototypeTargetTypeLogDnaPrototype model
 				targetTypePrototypeModel := new(ibmcloudlogsroutingv0.TargetTypePrototypeTargetTypeLogDnaPrototype)
@@ -2693,8 +2674,7 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 			It(`Invoke NewTargetParametersTypeLogDnaPrototype successfully`, func() {
 				host := "www.example.com"
 				port := int64(1)
-				accessCredential := "ingestion-secret"
-				_model, err := ibmCloudLogsRoutingService.NewTargetParametersTypeLogDnaPrototype(host, port, accessCredential)
+				_model, err := ibmCloudLogsRoutingService.NewTargetParametersTypeLogDnaPrototype(host, port)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
@@ -2770,7 +2750,6 @@ var _ = Describe(`IBMCloudLogsRoutingV0`, func() {
 			model := new(ibmcloudlogsroutingv0.TargetParametersTypeLogDnaPrototype)
 			model.Host = core.StringPtr("www.example.com")
 			model.Port = core.Int64Ptr(int64(1))
-			model.AccessCredential = core.StringPtr("ingestion-secret")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
